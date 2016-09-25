@@ -149,13 +149,13 @@ namespace Vocaluxe.Lib.Input
 
             var key = Keys.None;
 
-            if (buttonStates.DPad.IsDown && !_OldButtonStates.DPad.IsDown)
+            if ((buttonStates.DPad.IsDown && !_OldButtonStates.DPad.IsDown)||(buttonStates.ThumbSticks.Left.Y < -0.8f && _OldButtonStates.ThumbSticks.Left.Y > -0.8f))
                 key = Keys.Down;
-            else if (buttonStates.DPad.IsUp && !_OldButtonStates.DPad.IsUp)
+            else if ((buttonStates.DPad.IsUp && !_OldButtonStates.DPad.IsUp)||(buttonStates.ThumbSticks.Left.Y > 0.8f && _OldButtonStates.ThumbSticks.Left.Y < 0.8f))
                 key = Keys.Up;
-            else if (buttonStates.DPad.IsLeft && !_OldButtonStates.DPad.IsLeft)
+            else if ((buttonStates.DPad.IsLeft && !_OldButtonStates.DPad.IsLeft)|| (buttonStates.ThumbSticks.Left.X < -0.8f && _OldButtonStates.ThumbSticks.Left.X > -0.8f))
                 key = Keys.Left;
-            else if (buttonStates.DPad.IsRight && !_OldButtonStates.DPad.IsRight)
+            else if ((buttonStates.DPad.IsRight && !_OldButtonStates.DPad.IsRight)|| (buttonStates.ThumbSticks.Left.X > 0.8f && _OldButtonStates.ThumbSticks.Left.X < 0.8f))
                 key = Keys.Right;
             else if (buttonStates.Buttons.Start == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.Start == OpenTK.Input.ButtonState.Released)
                 key = Keys.Space;
@@ -173,7 +173,7 @@ namespace Vocaluxe.Lib.Input
             if (key != Keys.None)
                 AddKeyEvent(new SKeyEvent(ESender.Gamepad, false, false, false, false, char.MinValue, key));
 
-            if (Math.Abs(buttonStates.ThumbSticks.Right.X - _OldButtonStates.ThumbSticks.Right.X) > 0.01
+            /*if (Math.Abs(buttonStates.ThumbSticks.Right.X - _OldButtonStates.ThumbSticks.Right.X) > 0.01
                 || Math.Abs(buttonStates.ThumbSticks.Right.Y - _OldButtonStates.ThumbSticks.Right.Y) > 0.01
                 || lb || rb)
             {
@@ -181,7 +181,7 @@ namespace Vocaluxe.Lib.Input
                 var y = Math.Min(CSettings.RenderH, Math.Max(0, (int)(CSettings.RenderH  * (buttonStates.ThumbSticks.Right.Y / 2.0 * _LimitFactor * (-1) + 0.5f))));
 
                 AddMouseEvent(new SMouseEvent(ESender.Gamepad, EModifier.None, x, y, lb, false, rb, 0, false, false, false, false));
-            }
+            }*/
            
             _OldButtonStates = buttonStates;
         }
