@@ -413,6 +413,7 @@
       <SelColor Name="SelectSlideSelColor" />
       <ArrowColor Name="ArrowColor" />
       <ArrowSelColor Name="ArrowSelColor" />
+      <ArrowDisColor Name="ArrowDisColor" />
       <TextColor Name="TextColor" />
       <TextSelColor Name="TextSelColor" />
       <TextH>27</TextH>
