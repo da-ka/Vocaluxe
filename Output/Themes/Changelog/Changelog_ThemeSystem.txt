@@ -1,5 +1,17 @@
 Theme System
 
+++++++++++
+Version 6:
+
+Added:
+<SelectSlide>
+	<ArrowDisColor> - Arrow color when disabled (previous behaviour hides element)
+	<TextMarginLeft> - Optional text margin left
+	<TextMarginRight> - Optional text margin right
+
+It's optional. Possible values: Top, Center, Bottom (default: Center)
+It's for downsizing only (if the text-width reaches MaxW).
+
 
 ++++++++++
 Version 5 (yes it's still 5!):
