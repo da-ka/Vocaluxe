@@ -116,6 +116,12 @@
       <B>0.674</B>
       <A>1.000</A>
     </ArrowSelColor>
+    <ArrowDisColor>
+      <R>0.968</R>
+      <G>0.956</G>
+      <B>0.674</B>
+      <A>0.300</A>
+    </ArrowDisColor>
     <TextColor>
       <R>0.968</R>
       <G>0.956</G>

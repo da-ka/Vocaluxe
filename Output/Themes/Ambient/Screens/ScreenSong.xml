@@ -1023,6 +1023,7 @@
       <SelColor Name="ButtonSelColor" />
       <ArrowColor Name="ArrowColor" />
       <ArrowSelColor Name="ArrowSelColor" />
+      <ArrowDisColor Name="ArrowDisColor" />
       <TextColor Name="TextColor" />
       <TextSelColor Name="TextSelColor" />
       <TextH>25</TextH>
@@ -1065,6 +1066,7 @@
       <SelColor Name="ButtonSelColor" />
       <ArrowColor Name="ArrowColor" />
       <ArrowSelColor Name="ArrowSelColor" />
+      <ArrowDisColor Name="ArrowDisColor" />
       <TextColor Name="TextColor" />
       <TextSelColor Name="TextSelColor" />
       <TextH>25</TextH>
@@ -1107,6 +1109,7 @@
       <SelColor Name="ButtonSelColor" />
       <ArrowColor Name="ArrowColor" />
       <ArrowSelColor Name="ArrowSelColor" />
+      <ArrowDisColor Name="ArrowDisColor" />
       <TextColor Name="TextColor" />
       <TextSelColor Name="TextSelColor" />
       <TextH>25</TextH>
@@ -1149,6 +1152,7 @@
       <SelColor Name="ButtonSelColor" />
       <ArrowColor Name="ArrowColor" />
       <ArrowSelColor Name="ArrowSelColor" />
+      <ArrowDisColor Name="ArrowDisColor" />
       <TextColor Name="TextColor" />
       <TextSelColor Name="TextSelColor" />
       <TextH>25</TextH>
@@ -1190,7 +1194,7 @@
         <Style>Bold</Style>
         <Font>Outline</Font>
         <Text>TR_SCREENSONG_ARTIST_TITLE</Text>
-        </Text1>
+      </Text1>
       <StaticCover Name="StaticCover">
         <Skin />
         <Color Name="Visible" />
@@ -1201,7 +1205,7 @@
           <H>46</H>
           <Z>-1</Z>
         </Rect>
-        </StaticCover>
+      </StaticCover>
       <StaticPlaylistHeader Name="StaticPlaylistHeader">
         <Skin>Menu</Skin>
         <Color Name="StaticColor" />
@@ -1212,7 +1216,7 @@
           <H>40</H>
           <Z>-1</Z>
         </Rect>
-        </StaticPlaylistHeader>
+      </StaticPlaylistHeader>
       <StaticPlaylistFooter Name="StaticPlaylistFooter">
         <Skin>Menu</Skin>
         <Color Name="StaticColor" />
@@ -1223,7 +1227,7 @@
           <H>40</H>
           <Z>-1</Z>
         </Rect>
-        </StaticPlaylistFooter>
+      </StaticPlaylistFooter>
       <ButtonPlaylistName Name="ButtonPlaylistName">
         <Skin/>
         <SkinSelected />
@@ -1249,8 +1253,8 @@
           <Style>Bold</Style>
           <Font>Outline</Font>
           <Text />
-          </Text>
-            </ButtonPlaylistName>
+        </Text>
+      </ButtonPlaylistName>
       <ButtonPlaylistClose Name="ButtonPlaylistClose">
         <Skin>CloseIcon</Skin>
         <SkinSelected>CloseIcon</SkinSelected>
@@ -1276,8 +1280,8 @@
           <Style>Bold</Style>
           <Font>Outline</Font>
           <Text />
-          </Text>
-            </ButtonPlaylistClose>
+        </Text>
+      </ButtonPlaylistClose>
       <ButtonPlaylistSave Name="ButtonPlaylistSave">
         <Skin>SaveIcon</Skin>
         <SkinSelected>SaveIcon</SkinSelected>
@@ -1303,8 +1307,8 @@
           <Style>Bold</Style>
           <Font>Outline</Font>
           <Text />
-          </Text>
-            </ButtonPlaylistSave>
+        </Text>
+      </ButtonPlaylistSave>
       <ButtonPlaylistDelete Name="ButtonPlaylistDelete">
         <Skin>DeleteIcon</Skin>
         <SkinSelected>DeleteIcon</SkinSelected>
@@ -1330,8 +1334,8 @@
           <Style>Bold</Style>
           <Font>Outline</Font>
           <Text />
-          </Text>
-            </ButtonPlaylistDelete>
+        </Text>
+      </ButtonPlaylistDelete>
       <ButtonPlaylistSing Name="ButtonPlaylistSing">
         <Skin>SingIcon</Skin>
         <SkinSelected>SingIcon</SkinSelected>
@@ -1357,8 +1361,8 @@
           <Style>Bold</Style>
           <Font>Outline</Font>
           <Text />
-          </Text>
-            </ButtonPlaylistSing>
+        </Text>
+      </ButtonPlaylistSing>
       <SelectSlideGameMode Name="SelectSlideGameMode">
         <Skin>Button</Skin>
         <SkinArrowLeft>SelectSlideArrowLeft</SkinArrowLeft>
@@ -1389,8 +1393,9 @@
         </RectArrowRight>
         <Color Name="ButtonColor" />
         <SelColor Name="ButtonSelColor" />
-          <ArrowColor Name="ArrowColor" />
+        <ArrowColor Name="ArrowColor" />
         <ArrowSelColor Name="ArrowSelColor" />
+        <ArrowDisColor Name="ArrowDisColor" />
         <TextColor Name="TextColor" />
         <TextSelColor Name="TextSelColor" />
         <TextH>22.00</TextH>

@@ -48,6 +48,7 @@ namespace VocaluxeLib.Menu
 
         public SThemeColor ArrowColor;
         public SThemeColor ArrowSelColor;
+        public SThemeColor ArrowDisColor;
 
         public SThemeColor TextColor;
         public SThemeColor TextSelColor;
@@ -55,6 +56,10 @@ namespace VocaluxeLib.Menu
         public float TextH;
         [DefaultValue(0.0f)] public float TextRelativeX;
         [DefaultValue(0.0f)] public float TextRelativeY;
+
+        [DefaultValue(0.0f)] public float TextMarginLeft;
+        [DefaultValue(0.0f)] public float TextMarginRight;
+
         public float TextMaxW;
 
         public string TextFont;
@@ -98,12 +103,15 @@ namespace VocaluxeLib.Menu
 
         private SColorF _ColorArrow;
         private SColorF _SelColorArrow;
+        private SColorF _DisColorArrow;
 
         private SColorF _TextColor;
         private SColorF _SelTextColor;
 
         private float _TextRelativeX;
         private float _TextRelativeY;
+        private float _TextMarginLeft;
+        private float _TextMarginRight;
         private float _TextH;
         private float _MaxW;
 
@@ -246,12 +254,15 @@ namespace VocaluxeLib.Menu
 
             _ColorArrow = slide._ColorArrow;
             _SelColorArrow = slide._SelColorArrow;
+            _DisColorArrow = slide._DisColorArrow;
 
             _TextColor = slide._TextColor;
             _SelTextColor = slide._SelTextColor;
             _TextH = slide._TextH;
             _TextRelativeX = slide._TextRelativeX;
             _TextRelativeY = slide._TextRelativeY;
+            _TextMarginLeft = slide._TextMarginLeft;
+            _TextMarginRight = slide._TextMarginRight;
             _MaxW = slide._MaxW;
 
             _Values.AddRange(slide._Values);
@@ -341,6 +352,16 @@ namespace VocaluxeLib.Menu
                 ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/ArrowSA", ref _SelColorArrow.A);
             }
 
+            if (xmlReader.GetValue(item + "/ArrowDColor", out _Theme.ArrowDisColor.Name, String.Empty))
+                ThemeLoaded &= _Theme.ArrowColor.Get(_PartyModeID, out _ColorArrow);
+            else
+            {
+                ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/ArrowDR", ref _DisColorArrow.R);
+                ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/ArrowDG", ref _DisColorArrow.G);
+                ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/ArrowDB", ref _DisColorArrow.B);
+                ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/ArrowDA", ref _DisColorArrow.A);
+            }
+
             if (xmlReader.GetValue(item + "/TextColor", out _Theme.TextColor.Name, String.Empty))
                 ThemeLoaded &= _Theme.TextColor.Get(_PartyModeID, out _TextColor);
             else
@@ -363,6 +384,8 @@ namespace VocaluxeLib.Menu
             ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/TextH", ref _Theme.TextH);
             xmlReader.TryGetFloatValue(item + "/TextRelativeX", ref _Theme.TextRelativeX);
             xmlReader.TryGetFloatValue(item + "/TextRelativeY", ref _Theme.TextRelativeY);
+            xmlReader.TryGetFloatValue(item + "/TextMarginLeft", ref _Theme.TextMarginLeft);
+            xmlReader.TryGetFloatValue(item + "/TextMarginRight", ref _Theme.TextMarginRight);
             ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/TextMaxW", ref _Theme.TextMaxW);
 
             ThemeLoaded &= xmlReader.GetValue(item + "/TextFont", out _Theme.TextFont, "Normal");
@@ -576,9 +599,9 @@ namespace VocaluxeLib.Menu
             if (numvis == 0)
                 return;
 
-            float elWidth = (Rect.W - _TextRelativeX * 2) / numvis;
+            float elWidth = (Rect.W - (_TextRelativeX * 2) - _TextMarginLeft - _TextMarginRight) / numvis;
             //Center point of the first entry
-            float xStart = Rect.X + _TextRelativeX + elWidth / 2f;
+            float xStart = Rect.X + _TextRelativeX + _TextMarginLeft + elWidth / 2f;
 
             int offset = _GetCurOffset();
 
@@ -644,6 +667,10 @@ namespace VocaluxeLib.Menu
                 else
                     CBase.Drawing.DrawTexture(_TextureArrowLeft, RectArrowLeft, _ColorArrow);
             }
+            else
+            {
+                CBase.Drawing.DrawTexture(_SelTextureArrowLeft, RectArrowLeft, _DisColorArrow);
+            }
 
             if (_Selection < _Values.Count - 1 || CBase.Settings.GetProgramState() == EProgramState.EditTheme)
             {
@@ -651,6 +678,10 @@ namespace VocaluxeLib.Menu
                     CBase.Drawing.DrawTexture(_SelTextureArrowRight, RectArrowRight, _SelColorArrow);
                 else
                     CBase.Drawing.DrawTexture(_TextureArrowRight, RectArrowRight, _ColorArrow);
+            }
+            else
+            {
+                CBase.Drawing.DrawTexture(_SelTextureArrowRight, RectArrowRight, _DisColorArrow);
             }
 
             if (_NeedsRevalidate)
@@ -675,6 +706,7 @@ namespace VocaluxeLib.Menu
             _Theme.SelColor.Get(_PartyModeID, out _SelColor);
             _Theme.ArrowColor.Get(_PartyModeID, out _ColorArrow);
             _Theme.ArrowSelColor.Get(_PartyModeID, out _SelColorArrow);
+            _Theme.ArrowDisColor.Get(_PartyModeID, out _DisColorArrow);
             _Theme.TextColor.Get(_PartyModeID, out _TextColor);
             _Theme.TextSelColor.Get(_PartyModeID, out _SelTextColor);
 
@@ -687,6 +719,8 @@ namespace VocaluxeLib.Menu
             _TextH = _Theme.TextH;
             _TextRelativeX = _Theme.TextRelativeX;
             _TextRelativeY = _Theme.TextRelativeY;
+            _TextMarginLeft = _Theme.TextMarginLeft;
+            _TextMarginRight = _Theme.TextMarginRight;
             _MaxW = _Theme.TextMaxW;
 
             _Texture = CBase.Themes.GetSkinTexture(_Theme.Skin, _PartyModeID);
