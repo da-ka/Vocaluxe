@@ -42,6 +42,7 @@ namespace Vocaluxe.Screens
         private const string _SelectSlidePlayerNumber = "SelectSlidePlayerNumber";
         private const string _NameSelection = "NameSelection";
         private const string _ButtonBack = "ButtonBack";
+        private const string _ButtonNewPlayer = "ButtonNewPlayer";
         private const string _ButtonStart = "ButtonStart";
         private const string _TextWarningMics = "TextWarningMics";
         private const string _StaticWarningMics = "StaticWarningMics";
@@ -95,6 +96,7 @@ namespace Vocaluxe.Screens
             texts.Clear();
             texts.Add(_ButtonBack);
             texts.Add(_ButtonStart);
+            texts.Add(_ButtonNewPlayer);
 
             _ThemeButtons = texts.ToArray();
 
@@ -127,6 +129,7 @@ namespace Vocaluxe.Screens
 
         public override bool HandleInput(SKeyEvent keyEvent)
         {
+            _NameSelections[_NameSelection].UpdateList();
             switch (keyEvent.Key)
             {
                 case Keys.Add:
@@ -292,6 +295,8 @@ namespace Vocaluxe.Screens
 
                         if (_Buttons[_ButtonBack].Selected)
                             CGraphics.FadeTo(EScreen.Song);
+                        else if (_Buttons[_ButtonNewPlayer].Selected)
+                            CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
                         else if (_Buttons[_ButtonStart].Selected)
                             _StartSong();
 
@@ -351,6 +356,8 @@ namespace Vocaluxe.Screens
 
         public override bool HandleMouse(SMouseEvent mouseEvent)
         {
+            _NameSelections[_NameSelection].UpdateList();
+
             bool stopSelectingFast = false;
 
             if (_SelectingFast)
@@ -470,6 +477,8 @@ namespace Vocaluxe.Screens
             {
                 if (_Buttons[_ButtonBack].Selected)
                     CGraphics.FadeTo(EScreen.Song);
+                else if (_Buttons[_ButtonNewPlayer].Selected)
+                    CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
                 else if (_Buttons[_ButtonStart].Selected)
                     _StartSong();
                 else
