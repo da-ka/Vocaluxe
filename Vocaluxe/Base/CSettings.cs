@@ -62,6 +62,7 @@ namespace Vocaluxe.Base
         public const int DatabaseCoverVersion = 1;
         public const int DatabaseCreditsRessourcesVersion = 1;
 
+        public const int MaxNumScreens = 6;
         public const int RenderW = 1280;
         public const int RenderH = 720;
         public static readonly SRectF RenderRect = new SRectF(0, 0, RenderW, RenderH, 0);

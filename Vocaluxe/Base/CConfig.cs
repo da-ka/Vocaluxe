@@ -78,6 +78,7 @@ namespace Vocaluxe.Base
             [DefaultValue(ETextureQuality.TR_CONFIG_TEXTURE_MEDIUM)] public ETextureQuality TextureQuality;
             [XmlRanged(32, 1024), DefaultValue(256)] public int CoverSize;
 
+            [XmlRanged(1, 6), DefaultValue(1)]public int NumScreens;
             [DefaultValue(1024)] public int ScreenW;
             [DefaultValue(576)] public int ScreenH;
             [DefaultValue(EGeneralAlignment.Middle)] public EGeneralAlignment ScreenAlignment;
@@ -354,6 +355,9 @@ namespace Vocaluxe.Base
                 Config.Game.NumPlayers = 2;
             Array.Resize(ref Config.Game.Players, CSettings.MaxNumPlayer);
 
+            if (!Config.Graphics.NumScreens.IsInRange(1, CSettings.MaxNumScreens))
+                Config.Graphics.NumScreens = 1;
+
             bool langExists = CLanguage.SetLanguage(Config.Game.Language);
 
             if (langExists == false)
@@ -401,6 +405,8 @@ namespace Vocaluxe.Base
                     return "TextureQuality: " + CHelper.ListStrings(Enum.GetNames(typeof(ETextureQuality)));
                 case "CoverSize":
                     return "CoverSize (pixels): 32, 64, 128, 256, 512, 1024 (default: 128)";
+                case "NumScreens":
+                    return "Number of screens to use. 1 - 6 (default: 1)";
                 case "ScreenW":
                     return "Screen width and height (pixels)";
                 case "BorderLeft":
@@ -561,6 +567,11 @@ namespace Vocaluxe.Base
                     break;
             }
             return max;
+        }
+
+        public static int GetNumScreens()
+        {
+            return Config.Graphics.NumScreens;
         }
 
         /// <summary>

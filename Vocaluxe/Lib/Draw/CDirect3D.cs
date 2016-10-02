@@ -86,7 +86,7 @@ namespace Vocaluxe.Lib.Draw
         /// </summary>
         public CDirect3D()
         {
-            _Form = new CRenderFormHook {ClientSize = new Size(CConfig.Config.Graphics.ScreenW, CConfig.Config.Graphics.ScreenH)};
+            _Form[0] = new CRenderFormHook {ClientSize = new Size(CConfig.Config.Graphics.ScreenW, CConfig.Config.Graphics.ScreenH)};
 
             try
             {
@@ -97,17 +97,17 @@ namespace Vocaluxe.Lib.Draw
                 CLog.LogError("No DirectX runtimes were found, please download and install them from http://www.microsoft.com/download/en/details.aspx?id=8109", true, true, e);
             }
 
-            _Form.KeyDown += _OnKeyDown;
-            _Form.PreviewKeyDown += _OnPreviewKeyDown;
-            _Form.KeyPress += _OnKeyPress;
-            _Form.KeyUp += _OnKeyUp;
+            _Form[0].KeyDown += _OnKeyDown;
+            _Form[0].PreviewKeyDown += _OnPreviewKeyDown;
+            _Form[0].KeyPress += _OnKeyPress;
+            _Form[0].KeyUp += _OnKeyUp;
 
-            _Form.MouseMove += _OnMouseMove;
-            _Form.MouseWheel += _OnMouseWheel;
-            _Form.MouseDown += _OnMouseDown;
-            _Form.MouseUp += _OnMouseUp;
-            _Form.MouseLeave += _OnMouseLeave;
-            _Form.MouseEnter += _OnMouseEnter;
+            _Form[0].MouseMove += _OnMouseMove;
+            _Form[0].MouseWheel += _OnMouseWheel;
+            _Form[0].MouseDown += _OnMouseDown;
+            _Form[0].MouseUp += _OnMouseUp;
+            _Form[0].MouseLeave += _OnMouseLeave;
+            _Form[0].MouseEnter += _OnMouseEnter;
 
             _PresentParameters = new PresentParameters
                 {
@@ -173,7 +173,7 @@ namespace Vocaluxe.Lib.Draw
 
             try
             {
-                _Device = new Device(_D3D, _D3D.Adapters.DefaultAdapter.Adapter, DeviceType.Hardware, _Form.Handle, flags, _PresentParameters);
+                _Device = new Device(_D3D, _D3D.Adapters.DefaultAdapter.Adapter, DeviceType.Hardware, _Form[0].Handle, flags, _PresentParameters);
             }
             catch (Exception e)
             {
@@ -197,15 +197,15 @@ namespace Vocaluxe.Lib.Draw
         protected override void _DoResize()
         {
             // The window was minimized, so restore it to the last known size
-            if (_Form.ClientSize.Width == 0 || _Form.ClientSize.Height == 0)
-                _Form.ClientSize = _SizeBeforeMinimize;
+            if (_Form[0].ClientSize.Width == 0 || _Form[0].ClientSize.Height == 0)
+                _Form[0].ClientSize = _SizeBeforeMinimize[0];
 
-            if (_H == _Form.ClientSize.Height && _W == _Form.ClientSize.Width && CConfig.Config.Graphics.ScreenAlignment == _CurrentAlignment)
+            if (_H == _Form[0].ClientSize.Height && _W == _Form[0].ClientSize.Width && CConfig.Config.Graphics.ScreenAlignment == _CurrentAlignment)
                 return;
 
             _CurrentAlignment = CConfig.Config.Graphics.ScreenAlignment;
-            _H = _Form.ClientSize.Height;
-            _W = _Form.ClientSize.Width;
+            _H = _Form[0].ClientSize.Height;
+            _W = _Form[0].ClientSize.Width;
 
             if (CConfig.Config.Graphics.Stretch != EOffOn.TR_CONFIG_ON)
             {
@@ -213,8 +213,8 @@ namespace Vocaluxe.Lib.Draw
             }
 
             //Apply the new sizes to the PresentParameters
-            _PresentParameters.BackBufferWidth = _Form.ClientSize.Width;
-            _PresentParameters.BackBufferHeight = _Form.ClientSize.Height;
+            _PresentParameters.BackBufferWidth = _Form[0].ClientSize.Width;
+            _PresentParameters.BackBufferHeight = _Form[0].ClientSize.Height;
             if (_Run)
             {
                 _ClearScreen();
@@ -226,7 +226,7 @@ namespace Vocaluxe.Lib.Draw
             }
 
             //Store size so it can get restored after the window gets minimized
-            _SizeBeforeMinimize = _Form.ClientSize;
+            _SizeBeforeMinimize[0] = _Form[0].ClientSize;
         }
 
         // ReSharper disable RedundantOverridenMember

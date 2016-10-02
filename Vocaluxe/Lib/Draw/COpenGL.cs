@@ -95,55 +95,63 @@ namespace Vocaluxe.Lib.Draw
 
     class COpenGL : CDrawBaseWindows<COGLTexture>, IDraw
     {
-        private readonly GLControl _Control;
+        private readonly GLControl[] _Control = new GLControl[CConfig.Config.Graphics.NumScreens];
         private int _FBO;
+        private int _MFBO;
 
         public COpenGL()
         {
-            _Form = new CFormHook {ClientSize = new Size(CConfig.Config.Graphics.ScreenW, CConfig.Config.Graphics.ScreenH)};
-            //OpenGL needs that here but D3D needs it in the constructor, so do NOT unify!
-
-            //Check AA Mode
-            CConfig.Config.Graphics.AAMode = (EAntiAliasingModes)_CheckAntiAliasingMode((int)CConfig.Config.Graphics.AAMode);
-
-            bool ok = false;
-            try
+            for (int i = 0; i < _Form.Length; i++)
             {
-                #if WIN
-                var gm = new GraphicsMode(32, 24, 0, (int)CConfig.Config.Graphics.AAMode);
-                #else
-                var gm = new GraphicsMode(24, 24, 0, (int)CConfig.Config.Graphics.AAMode);
-                #endif
-                _Control = new GLControl(gm, 2, 1, GraphicsContextFlags.Default);
-                if (_Control.GraphicsMode != null)
-                    ok = true;
+                _Form[i] = new CFormHook { ClientSize = new Size(CConfig.Config.Graphics.ScreenW, CConfig.Config.Graphics.ScreenH) };
+            
+                //OpenGL needs that here but D3D needs it in the constructor, so do NOT unify!
+
+                //Check AA Mode
+                CConfig.Config.Graphics.AAMode = (EAntiAliasingModes)_CheckAntiAliasingMode((int)CConfig.Config.Graphics.AAMode);
+
+                bool ok = false;
+                try
+                {
+                    #if WIN
+                    var gm = new GraphicsMode(32, 24, 0, (int)CConfig.Config.Graphics.AAMode);
+                    #else
+                    var gm = new GraphicsMode(24, 24, 0, (int)CConfig.Config.Graphics.AAMode);
+                    #endif
+
+                    _Control[i] = new GLControl(gm, 2, 1, GraphicsContextFlags.Default);
+                    if (_Control[i].GraphicsMode != null)
+                        ok = true;
+                }
+                catch (Exception)
+                {
+                    ok = false;
+                }
+
+                if (!ok)
+                    _Control[i] = new GLControl();
+
+                _Control[i].MakeCurrent();
+                _Control[i].VSync = CConfig.Config.Graphics.VSync == EOffOn.TR_CONFIG_ON;
+
+                _Form[i].Controls.Add(_Control[i]);
+                _Control[i].ClientSize = _Form[i].ClientSize;
+
+                if(i == 0)
+                {
+                    _Control[i].KeyDown += _OnKeyDown;
+                    _Control[i].PreviewKeyDown += _OnPreviewKeyDown;
+                    _Control[i].KeyPress += _OnKeyPress;
+                    _Control[i].KeyUp += _OnKeyUp;
+
+                    _Control[i].MouseMove += _OnMouseMove;
+                    _Control[i].MouseWheel += _OnMouseWheel;
+                    _Control[i].MouseDown += _OnMouseDown;
+                    _Control[i].MouseUp += _OnMouseUp;
+                    _Control[i].MouseLeave += _OnMouseLeave;
+                    _Control[i].MouseEnter += _OnMouseEnter;
+                }
             }
-            catch (Exception)
-            {
-                ok = false;
-            }
-
-            if (!ok)
-                _Control = new GLControl();
-
-            _Control.MakeCurrent();
-            _Control.VSync = CConfig.Config.Graphics.VSync == EOffOn.TR_CONFIG_ON;
-
-            _Form.Controls.Add(_Control);
-            _Control.ClientSize = _Form.ClientSize;
-
-            _Control.KeyDown += _OnKeyDown;
-            _Control.PreviewKeyDown += _OnPreviewKeyDown;
-            _Control.KeyPress += _OnKeyPress;
-            _Control.KeyUp += _OnKeyUp;
-
-            _Control.MouseMove += _OnMouseMove;
-            _Control.MouseWheel += _OnMouseWheel;
-            _Control.MouseDown += _OnMouseDown;
-            _Control.MouseUp += _OnMouseUp;
-            _Control.MouseLeave += _OnMouseLeave;
-            _Control.MouseEnter += _OnMouseEnter;
-
             _NonPowerOf2TextureSupported = false;
         }
 
@@ -209,23 +217,33 @@ namespace Vocaluxe.Lib.Draw
 
         protected override void _OnResize(object sender, EventArgs e)
         {
-            _Control.ClientSize = _Form.ClientSize;
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                _Control[i].ClientSize = _Form[i].ClientSize;
+            }
             base._OnResize(sender, e);
         }
 
         protected override void _DoResize()
         {
-            _H = _Control.Height;
-            _W = _Control.Width;
             _CurrentAlignment = CConfig.Config.Graphics.ScreenAlignment;
 
-            if (CConfig.Config.Graphics.Stretch != EOffOn.TR_CONFIG_ON)
+            for (int i = 0; i < _Form.Length; i++)
             {
-                _AdjustAspect(true);
+                if(_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                _H = _Control[i].Height;
+                _W = _Control[i].Width;
+                if (CConfig.Config.Graphics.Stretch != EOffOn.TR_CONFIG_ON)
+                {
+                    _AdjustAspect(true);
+                }
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.LoadIdentity();
+                GL.Ortho(-CConfig.Config.Graphics.BorderLeft + (i * CSettings.RenderW), CConfig.Config.Graphics.BorderRight + ((1 + i) * CSettings.RenderW), CConfig.Config.Graphics.BorderBottom + CSettings.RenderH,
+                         -CConfig.Config.Graphics.BorderTop, CSettings.ZNear, CSettings.ZFar);
+                GL.Viewport(_X, _Y, _W, _H);
             }
-
-            _AdjustNewBorders();
-            GL.Viewport(_X, _Y, _W, _H);
         }
 
         public override bool Init()
@@ -233,19 +251,22 @@ namespace Vocaluxe.Lib.Draw
             if (!base.Init())
                 return false;
 
-            // Init Texturing
-            GL.Enable(EnableCap.Texture2D);
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                if (_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                // Init Texturing
+                GL.Enable(EnableCap.Texture2D);
 
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-            GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
-            GL.DepthRange(CSettings.ZFar, CSettings.ZNear);
-            GL.DepthFunc(DepthFunction.Lequal);
-            GL.Enable(EnableCap.DepthTest);
-            GL.ClearColor(Color.Black);
-
+                GL.DepthRange(CSettings.ZFar, CSettings.ZNear);
+                GL.DepthFunc(DepthFunction.Lequal);
+                GL.Enable(EnableCap.DepthTest);
+                GL.ClearColor(Color.Black);
+            }
             GL.GenFramebuffers(1, out _FBO);
-
             return true;
         }
 
@@ -262,31 +283,42 @@ namespace Vocaluxe.Lib.Draw
 
         protected override void _OnAfterDraw()
         {
-            _Control.SwapBuffers();
+            for (int i = 0; i < _Form.Length; i++)
+                _Control[i].SwapBuffers();
             Application.DoEvents();
         }
 
         public int GetScreenWidth()
         {
-            return _Control.Width;
+            return _Control[0].Width;
         }
 
         public int GetScreenHeight()
         {
-            return _Control.Height;
+            return _Control[0].Height;
         }
 
         protected override void _ClearScreen()
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                if (_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            }
         }
 
         protected override void _AdjustNewBorders()
         {
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-            GL.Ortho(-CConfig.Config.Graphics.BorderLeft, CConfig.Config.Graphics.BorderRight + CSettings.RenderW, CConfig.Config.Graphics.BorderBottom + CSettings.RenderH,
-                     -CConfig.Config.Graphics.BorderTop, CSettings.ZNear, CSettings.ZFar);
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                if (_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.LoadIdentity();
+                GL.Ortho(-CConfig.Config.Graphics.BorderLeft + (i * (CSettings.RenderW / 2)), CConfig.Config.Graphics.BorderRight + ((1+i)*(CSettings.RenderW/2)), CConfig.Config.Graphics.BorderBottom + CSettings.RenderH,
+                         -CConfig.Config.Graphics.BorderTop, CSettings.ZNear, CSettings.ZFar);
+            }
         }
 
         public void MakeScreenShot()
@@ -323,46 +355,56 @@ namespace Vocaluxe.Lib.Draw
 
         public void CopyScreen(ref CTextureRef textureRef)
         {
-            COGLTexture texture;
-            //Check for actual texture sizes as it may be downsized compared to OrigSize
-            if (!_GetTexture(textureRef, out texture) || texture.DataSize.Width != GetScreenWidth() || texture.DataSize.Height != GetScreenHeight())
+            for (int i = 0; i < _Form.Length; i++)
             {
-                RemoveTexture(ref textureRef);
-                textureRef = CopyScreen();
-            }
-            else
-            {
-                GL.BindTexture(TextureTarget.Texture2D, texture.Name);
-                GL.CopyTexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, 0, 0, GetScreenWidth(), GetScreenHeight());
-                GL.BindTexture(TextureTarget.Texture2D, 0);
+                if (_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                COGLTexture texture;
+                //Check for actual texture sizes as it may be downsized compared to OrigSize
+                if (!_GetTexture(textureRef, out texture) || texture.DataSize.Width != GetScreenWidth() || texture.DataSize.Height != GetScreenHeight())
+                {
+                    RemoveTexture(ref textureRef);
+                    textureRef = CopyScreen();
+                }
+                else
+                {
+                    GL.BindTexture(TextureTarget.Texture2D, texture.Name);
+                    GL.CopyTexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, 0, 0, GetScreenWidth(), GetScreenHeight());
+                    GL.BindTexture(TextureTarget.Texture2D, 0);
+                }
             }
         }
 
         public void DrawRect(SColorF color, SRectF rect)
         {
-            GL.Enable(EnableCap.Blend);
-            GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-
-            GL.Begin(PrimitiveType.Quads);
-            GL.MatrixMode(MatrixMode.Color);
-            GL.PushMatrix();
-            if (Math.Abs(rect.Rotation) > 0.001)
+            /*for (int i = 0; i < _Form.Length; i++)
             {
-                GL.Translate(0.5f, 0.5f, 0);
-                GL.Rotate(-rect.Rotation, 0f, 0f, 1f);
-                GL.Translate(-0.5f, -0.5f, 0);
-            }
-            GL.Vertex3(rect.X, rect.Y, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X + rect.W, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X + rect.W, rect.Y, rect.Z + CGraphics.ZOffset);
-            GL.End();
-            GL.PopMatrix();
-            GL.Disable(EnableCap.Blend);
+                _Control[i].MakeCurrent();*/
+                GL.Enable(EnableCap.Blend);
+                GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
+
+                GL.Begin(PrimitiveType.Quads);
+                GL.MatrixMode(MatrixMode.Color);
+                GL.PushMatrix();
+                if (Math.Abs(rect.Rotation) > 0.001)
+                {
+                    GL.Translate(0.5f, 0.5f, 0);
+                    GL.Rotate(-rect.Rotation, 0f, 0f, 1f);
+                    GL.Translate(-0.5f, -0.5f, 0);
+                }
+                GL.Vertex3(rect.X, rect.Y, rect.Z + CGraphics.ZOffset);
+                GL.Vertex3(rect.X, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
+                GL.Vertex3(rect.X + rect.W, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
+                GL.Vertex3(rect.X + rect.W, rect.Y, rect.Z + CGraphics.ZOffset);
+                GL.End();
+                GL.PopMatrix();
+                GL.Disable(EnableCap.Blend);
+            //}
         }
 
         public void DrawRectReflection(SColorF color, SRectF rect, float space, float height)
         {
+            
             if (rect.H < height)
                 height = rect.H;
 
@@ -383,32 +425,36 @@ namespace Vocaluxe.Lib.Draw
             if (ry2 > rect.Y + rect.H + space + height)
                 ry2 = rect.Y + rect.H + space + height;
 
-
-            GL.Enable(EnableCap.Blend);
-            GL.MatrixMode(MatrixMode.Color);
-            GL.PushMatrix();
-            if (Math.Abs(rect.Rotation) > 0.001)
+            /*for (int i = 0; i < _Form.Length; i++)
             {
-                GL.Translate(0.5f, 0.5f, 0);
-                GL.Rotate(-rect.Rotation, 0f, 0f, 1f);
-                GL.Translate(-0.5f, -0.5f, 0);
-            }
+                _Control[i].MakeCurrent();*/
 
-            GL.Begin(PrimitiveType.Quads);
+                GL.Enable(EnableCap.Blend);
+                GL.MatrixMode(MatrixMode.Color);
+                GL.PushMatrix();
+                if (Math.Abs(rect.Rotation) > 0.001)
+                {
+                    GL.Translate(0.5f, 0.5f, 0);
+                    GL.Rotate(-rect.Rotation, 0f, 0f, 1f);
+                    GL.Translate(-0.5f, -0.5f, 0);
+                }
 
-            GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-            GL.Vertex3(rx2, ry1, rect.Z + CGraphics.ZOffset);
+                GL.Begin(PrimitiveType.Quads);
 
-            GL.Color4(color.R, color.G, color.B, 0f);
-            GL.Vertex3(rx2, ry2, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rx1, ry2, rect.Z + CGraphics.ZOffset);
+                GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
+                GL.Vertex3(rx2, ry1, rect.Z + CGraphics.ZOffset);
 
-            GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-            GL.Vertex3(rx1, ry1, rect.Z + CGraphics.ZOffset);
+                GL.Color4(color.R, color.G, color.B, 0f);
+                GL.Vertex3(rx2, ry2, rect.Z + CGraphics.ZOffset);
+                GL.Vertex3(rx1, ry2, rect.Z + CGraphics.ZOffset);
 
-            GL.End();
-            GL.PopMatrix();
-            GL.Disable(EnableCap.Blend);
+                GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
+                GL.Vertex3(rx1, ry1, rect.Z + CGraphics.ZOffset);
+
+                GL.End();
+                GL.PopMatrix();
+                GL.Disable(EnableCap.Blend);
+            //}
         }
 
         protected override COGLTexture _CreateTexture(Size dataSize)
@@ -435,8 +481,8 @@ namespace Vocaluxe.Lib.Draw
 
         protected override void _WriteDataToTexture(COGLTexture texture, byte[] data)
         {
-            Debug.Assert(texture.Name > 0);
             _ClearTexture(texture);
+            Debug.Assert(texture.Name > 0);
             GL.BindTexture(TextureTarget.Texture2D, texture.Name);
 
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, texture.DataSize.Width, texture.DataSize.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data);
@@ -447,8 +493,8 @@ namespace Vocaluxe.Lib.Draw
 
         protected override void _WriteDataToTexture(COGLTexture texture, IntPtr data)
         {
-            Debug.Assert(texture.Name > 0);
             _ClearTexture(texture);
+            Debug.Assert(texture.Name > 0);
             GL.BindTexture(TextureTarget.Texture2D, texture.Name);
 
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, texture.DataSize.Width, texture.DataSize.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data);
@@ -459,51 +505,58 @@ namespace Vocaluxe.Lib.Draw
 
         protected override void _DrawTexture(COGLTexture texture, SDrawCoords dc, SColorF color, bool isReflection = false)
         {
+            
             // Align textures to full pixels to reduce artefacts
             dc.Wx1 = (float)Math.Round(dc.Wx1);
             dc.Wy1 = (float)Math.Round(dc.Wy1);
             dc.Wx2 = (float)Math.Round(dc.Wx2);
             dc.Wy2 = (float)Math.Round(dc.Wy2);
 
-            GL.BindTexture(TextureTarget.Texture2D, texture.Name);
-
-            GL.Enable(EnableCap.Blend);
-
-            GL.MatrixMode(MatrixMode.Texture);
-            GL.PushMatrix();
-
-            if (Math.Abs(dc.Rotation) > float.Epsilon)
+            for (int i = 0; i < _Form.Length; i++)
             {
-                GL.Translate(0.5f, 0.5f, 0);
-                GL.Rotate(-dc.Rotation, 0f, 0f, 1f);
-                GL.Translate(-0.5f, -0.5f, 0);
-            }
+                if (_Form.Length > 1)
+                    _Control[i].MakeCurrent();
+                GL.BindTexture(TextureTarget.Texture2D, texture.Name);
 
-            GL.Begin(PrimitiveType.Quads);
+                GL.Enable(EnableCap.Blend);
 
-            GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-            GL.TexCoord2(dc.Tx1, dc.Ty1);
-            GL.Vertex3(dc.Wx1, dc.Wy1, dc.Wz);
+                GL.MatrixMode(MatrixMode.Texture);
+                GL.PushMatrix();
 
-            if (isReflection)
-                GL.Color4(color.R, color.G, color.B, 0);
-            GL.TexCoord2(dc.Tx1, dc.Ty2);
-            GL.Vertex3(dc.Wx1, dc.Wy2, dc.Wz);
+                if (Math.Abs(dc.Rotation) > float.Epsilon)
+                {
+                    GL.Translate(0.5f, 0.5f, 0);
+                    GL.Rotate(-dc.Rotation, 0f, 0f, 1f);
+                    GL.Translate(-0.5f, -0.5f, 0);
+                }
 
-            GL.TexCoord2(dc.Tx2, dc.Ty2);
-            GL.Vertex3(dc.Wx2, dc.Wy2, dc.Wz);
 
-            if (isReflection)
+                GL.Begin(PrimitiveType.Quads);
+
                 GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-            GL.TexCoord2(dc.Tx2, dc.Ty1);
-            GL.Vertex3(dc.Wx2, dc.Wy1, dc.Wz);
+                GL.TexCoord2(dc.Tx1, dc.Ty1);
+                GL.Vertex3(dc.Wx1, dc.Wy1, dc.Wz);
 
-            GL.End();
+                if (isReflection)
+                    GL.Color4(color.R, color.G, color.B, 0);
+                GL.TexCoord2(dc.Tx1, dc.Ty2);
+                GL.Vertex3(dc.Wx1, dc.Wy2, dc.Wz);
 
-            GL.PopMatrix();
+                GL.TexCoord2(dc.Tx2, dc.Ty2);
+                GL.Vertex3(dc.Wx2, dc.Wy2, dc.Wz);
 
-            GL.Disable(EnableCap.Blend);
-            GL.BindTexture(TextureTarget.Texture2D, 0);
+                if (isReflection)
+                    GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
+                GL.TexCoord2(dc.Tx2, dc.Ty1);
+                GL.Vertex3(dc.Wx2, dc.Wy1, dc.Wz);
+
+                GL.End();
+
+                GL.PopMatrix();
+
+                GL.Disable(EnableCap.Blend);
+                GL.BindTexture(TextureTarget.Texture2D, 0);
+            }
         }
     }
 }

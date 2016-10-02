@@ -40,26 +40,31 @@ namespace Vocaluxe.Lib.Draw
             public int Width;
             public int Height;
         }
-
-        protected Form _Form;
-        private SClientRect _Restore;
-        protected Size _SizeBeforeMinimize;
+        protected Form[] _Form = new Form[CConfig.Config.Graphics.NumScreens];
+        private SClientRect[] _Restore = new SClientRect[CConfig.Config.Graphics.NumScreens];
+        protected Size[] _SizeBeforeMinimize = new Size[CConfig.Config.Graphics.NumScreens];
 
         public override void Close()
         {
             base.Close();
             try
             {
-                _Form.Close();
+                foreach(Form form in _Form)
+                {
+                    form.Close();
+                }
             }
             catch {}
         }
 
         protected void _CenterToScreen()
         {
-            Screen screen = Screen.FromControl(_Form);
-            _Form.Location = new Point((screen.WorkingArea.Width - _Form.Width) / 2,
-                                       (screen.WorkingArea.Height - _Form.Height) / 2);
+            foreach (Form form in _Form)
+            {
+                Screen screen = Screen.FromControl(form);
+                form.Location = new Point((screen.WorkingArea.Width - form.Width) / 2,
+                                           (screen.WorkingArea.Height - form.Height) / 2);
+            }
         }
 
         private static bool _OnMessageAvoidScreenOff(ref Message m)
@@ -86,32 +91,37 @@ namespace Vocaluxe.Lib.Draw
             Debug.Assert(!_Fullscreen);
             _Fullscreen = true;
 
-            _Restore.Location = _Form.Location;
-            _Restore.Width = _Form.Width;
-            _Restore.Height = _Form.Height;
-
-            _Form.FormBorderStyle = FormBorderStyle.None;
-
-            Screen screen = Screen.FromControl(_Form);
-            _Form.DesktopBounds = new Rectangle(screen.Bounds.Location, new Size(screen.Bounds.Width, screen.Bounds.Height));
-
-            if (_Form.WindowState == FormWindowState.Maximized)
+            for (int i = 0; i < _Form.Length; i++)
             {
-                _Form.WindowState = FormWindowState.Normal;
-                _DoResize();
-                _Form.WindowState = FormWindowState.Maximized;
-            }
-            else
-                _DoResize();
+                _Restore[i].Location = _Form[i].Location;
+                _Restore[i].Width = _Form[i].Width;
+                _Restore[i].Height = _Form[i].Height;
+
+                _Form[i].FormBorderStyle = FormBorderStyle.None;
+
+                Screen screen = Screen.FromControl(_Form[i]);
+                _Form[i].DesktopBounds = new Rectangle(screen.Bounds.Location, new Size(screen.Bounds.Width, screen.Bounds.Height));
+
+                if (_Form[i].WindowState == FormWindowState.Maximized)
+                {
+                    _Form[i].WindowState = FormWindowState.Normal;
+                    _DoResize();
+                    _Form[i].WindowState = FormWindowState.Maximized;
+                }
+                else
+                    _DoResize();
+            }            
         }
 
         protected override void _LeaveFullScreen()
         {
             Debug.Assert(_Fullscreen);
             _Fullscreen = false;
-
-            _Form.FormBorderStyle = FormBorderStyle.Sizable;
-            _Form.DesktopBounds = new Rectangle(_Restore.Location, new Size(_Restore.Width, _Restore.Height));
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                _Form[i].FormBorderStyle = FormBorderStyle.Sizable;
+                _Form[i].DesktopBounds = new Rectangle(_Restore[i].Location, new Size(_Restore[i].Width, _Restore[i].Height));
+            }
         }
 
         #region form event handlers
@@ -198,14 +208,19 @@ namespace Vocaluxe.Lib.Draw
         {
             if (!base.Init())
                 return false;
-            _Form.Icon = new Icon(Path.Combine(CSettings.ProgramFolder, CSettings.FileNameIcon));
-            _Form.Text = CSettings.GetFullVersionText();
-            ((IFormHook)_Form).OnMessage = _OnMessageAvoidScreenOff;
-            _Form.Closing += _OnClose;
-            _Form.Resize += _OnResize;
-            _Form.Load += _OnLoad;
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                _Form[i].Icon = new Icon(Path.Combine(CSettings.ProgramFolder, CSettings.FileNameIcon));
+                _Form[i].Text = CSettings.GetFullVersionText();
+                _Form[i].Text += " Screen "+i;
+                ((IFormHook)_Form[i]).OnMessage = _OnMessageAvoidScreenOff;
+                _Form[i].Closing += _OnClose;
+                _Form[i].Resize += _OnResize;
+                _Form[i].Load += _OnLoad;
 
-            _SizeBeforeMinimize = _Form.ClientSize;
+                _SizeBeforeMinimize[i] = _Form[i].ClientSize;
+            }
+
             _CenterToScreen();
 
             return true;
@@ -213,9 +228,15 @@ namespace Vocaluxe.Lib.Draw
 
         public override void MainLoop()
         {
-            _Form.Show();
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                _Form[i].Show();
+            }
             base.MainLoop();
-            _Form.Hide();
+            for (int i = 0; i < _Form.Length; i++)
+            {
+                _Form[i].Hide();
+            }
         }
     }
 }
