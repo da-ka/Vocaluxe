@@ -97,7 +97,6 @@ namespace Vocaluxe.Lib.Draw
     {
         private readonly GLControl[] _Control = new GLControl[CConfig.Config.Graphics.NumScreens];
         private int _FBO;
-        private int _MFBO;
 
         public COpenGL()
         {
