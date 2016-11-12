@@ -16,7 +16,7 @@
 #endregion
 
 //Uncomment to make the engine hit every note
-//#define DEBUG_HIT
+#define DEBUG_HIT
 
 using System;
 using System.Collections.Generic;

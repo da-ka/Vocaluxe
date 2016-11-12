@@ -150,6 +150,7 @@ namespace Vocaluxe.Screens
                     break;
 
                 case Keys.P:
+                case Keys.F21:
                     if (!_SelectingKeyboardActive)
                     {
                         _SelectingFastPlayerNr = 1;
@@ -295,6 +296,9 @@ namespace Vocaluxe.Screens
                         else if (_Buttons[_ButtonStart].Selected)
                             _StartSong();
 
+                        break;
+                    case Keys.Space:
+                        _StartSong();
                         break;
 
                     case Keys.D1:

@@ -278,6 +278,8 @@
     <SongSelectButton>SongSelectButton.png</SongSelectButton>
     <Warning>Warning.png</Warning>
     <PlayerSelBG>PlayerSelBG.png</PlayerSelBG>
+    <PressStart>presstart.png</PressStart>
+    <Logo>Logo.png</Logo>
   </Skins>
   <Videos>
     <BG_Video>BG_Video.mp4</BG_Video>

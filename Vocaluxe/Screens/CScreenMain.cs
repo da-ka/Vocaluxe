@@ -30,11 +30,11 @@ namespace Vocaluxe.Screens
             get { return 2; }
         }
 
-        private const string _ButtonSing = "ButtonSing";
+        /*private const string _ButtonSing = "ButtonSing";
         private const string _ButtonParty = "ButtonParty";
         private const string _ButtonOptions = "ButtonOptions";
         private const string _ButtonProfiles = "ButtonProfiles";
-        private const string _ButtonExit = "ButtonExit";
+        private const string _ButtonExit = "ButtonExit";*/
         private const string _StaticWarningProfiles = "StaticWarningProfiles";
         private const string _TextWarningProfiles = "TextWarningProfiles";
         private const string _TextRelease = "TextRelease";
@@ -45,7 +45,7 @@ namespace Vocaluxe.Screens
             base.Init();
 
             _ThemeStatics = new string[] {"StaticMenuBar", _StaticWarningProfiles};
-            _ThemeButtons = new string[] {_ButtonSing, _ButtonParty, _ButtonOptions, _ButtonProfiles, _ButtonExit};
+            //_ThemeButtons = new string[] {_ButtonSing, _ButtonParty, _ButtonOptions, _ButtonProfiles, _ButtonExit};
             _ThemeTexts = new string[] {_TextRelease, _TextWarningProfiles};
         }
 
@@ -70,6 +70,14 @@ namespace Vocaluxe.Screens
             {
                 switch (keyEvent.Key)
                 {
+                    case Keys.Space:
+                        CParty.SetNormalGameMode();
+                        CGraphics.FadeTo(EScreen.Song);
+                        break;
+
+                    case Keys.Q:
+                        return false;
+
                     case Keys.O:
                         CGraphics.FadeTo(EScreen.Options);
                         break;
@@ -88,7 +96,7 @@ namespace Vocaluxe.Screens
                         break;
 
                     case Keys.Enter:
-                        if (_Buttons[_ButtonSing].Selected)
+                        /*if (_Buttons[_ButtonSing].Selected)
                         {
                             CParty.SetNormalGameMode();
                             CGraphics.FadeTo(EScreen.Song);
@@ -104,7 +112,7 @@ namespace Vocaluxe.Screens
                             CGraphics.FadeTo(EScreen.Profiles);
 
                         if (_Buttons[_ButtonExit].Selected)
-                            return false;
+                            return false;*/
 
                         break;
                 }
@@ -118,7 +126,7 @@ namespace Vocaluxe.Screens
 
             if (mouseEvent.LB && _IsMouseOverCurSelection(mouseEvent))
             {
-                if (_Buttons[_ButtonSing].Selected)
+                /*if (_Buttons[_ButtonSing].Selected)
                 {
                     CParty.SetNormalGameMode();
                     CGraphics.FadeTo(EScreen.Song);
@@ -134,7 +142,7 @@ namespace Vocaluxe.Screens
                     CGraphics.FadeTo(EScreen.Profiles);
 
                 if (_Buttons[_ButtonExit].Selected)
-                    return false;
+                    return false;*/
             }
 
             return true;
@@ -145,8 +153,8 @@ namespace Vocaluxe.Screens
             bool profileOK = CProfiles.NumProfiles > 0;
             _Statics[_StaticWarningProfiles].Visible = !profileOK;
             _Texts[_TextWarningProfiles].Visible = !profileOK;
-            _Buttons[_ButtonSing].Selectable = profileOK;
-            _Buttons[_ButtonParty].Selectable = profileOK;
+            //_Buttons[_ButtonSing].Selectable = profileOK;
+            //_Buttons[_ButtonParty].Selectable = profileOK;
             return true;
         }
     }

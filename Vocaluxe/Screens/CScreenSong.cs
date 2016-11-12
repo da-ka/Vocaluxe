@@ -241,7 +241,11 @@ namespace Vocaluxe.Screens
                             if (CSongs.NumSongsVisible > 0 && !_Sso.Selection.PartyMode)
                             {
                                 if (_SongMenu.GetPreviewSongNr() != -1)
-                                    _ToggleSongOptions(ESongOptionsView.Song);
+                                {
+                                    _ShowSongOptionsSong();
+                                    _StartSong(_SongMenu.GetPreviewSongNr());
+                                    _ToggleSongOptions(ESongOptionsView.None);
+                                }
                             }
                             break;
 

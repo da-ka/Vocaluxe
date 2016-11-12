@@ -30,7 +30,7 @@ namespace Vocaluxe.Lib.Input
         private const float _LimitFactor = 1.0f;
 
         private GamePadState _OldButtonStates;
-        
+
         private bool _Connected
         {
             get { return _GamePadIndex != -1; }
@@ -41,6 +41,9 @@ namespace Vocaluxe.Lib.Input
         private Object _Sync;
         private bool _Active;
         private CRumbleTimer _RumbleTimer;
+
+        private int _repeat;
+        private int _repeatTrigger;
 
         public override string GetName()
         {
@@ -55,7 +58,7 @@ namespace Vocaluxe.Lib.Input
             _Sync = new Object();
             _RumbleTimer = new CRumbleTimer();
 
-            _HandlerThread = new Thread(_MainLoop) {Name = "GamePad", Priority = ThreadPriority.BelowNormal};
+            _HandlerThread = new Thread(_MainLoop) { Name = "GamePad", Priority = ThreadPriority.BelowNormal };
             _EvTerminate = new AutoResetEvent(false);
 
             _OldButtonStates = new GamePadState();
@@ -106,7 +109,7 @@ namespace Vocaluxe.Lib.Input
 
         private void _MainLoop()
         {
-            
+
             while (_Active)
             {
                 Thread.Sleep(5);
@@ -142,27 +145,86 @@ namespace Vocaluxe.Lib.Input
 
         private void _HandleButtons(GamePadState buttonStates)
         {
-            bool lb = (buttonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Released);
-            bool rb = (buttonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Released);
-            lb |= (buttonStates.Buttons.RightStick == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.RightStick == OpenTK.Input.ButtonState.Released);
-
-
             var key = Keys.None;
 
-            if (buttonStates.DPad.IsDown && !_OldButtonStates.DPad.IsDown)
+            if ((buttonStates.DPad.IsDown && !_OldButtonStates.DPad.IsDown) || (buttonStates.ThumbSticks.Left.Y < -0.8f && _OldButtonStates.ThumbSticks.Left.Y > -0.8f))
+            {
                 key = Keys.Down;
-            else if (buttonStates.DPad.IsUp && !_OldButtonStates.DPad.IsUp)
+                _repeat = 0;
+                _repeatTrigger = 80;
+            }
+            else if ((buttonStates.DPad.IsDown && _OldButtonStates.DPad.IsDown) || (buttonStates.ThumbSticks.Left.Y < -0.8f && _OldButtonStates.ThumbSticks.Left.Y < -0.8f))
+            {
+                _repeat++;
+                if (_repeat >= _repeatTrigger)
+                {
+                    key = Keys.Down;
+                    _repeat = 0;
+                    _repeatTrigger = 15;
+                }
+            }
+            else if ((buttonStates.DPad.IsUp && !_OldButtonStates.DPad.IsUp) || (buttonStates.ThumbSticks.Left.Y > 0.8f && _OldButtonStates.ThumbSticks.Left.Y < 0.8f))
+            {
                 key = Keys.Up;
-            else if (buttonStates.DPad.IsLeft && !_OldButtonStates.DPad.IsLeft)
+                _repeat = 0;
+                _repeatTrigger = 80;
+            }
+            else if ((buttonStates.DPad.IsUp && _OldButtonStates.DPad.IsUp) || (buttonStates.ThumbSticks.Left.Y > 0.8f && _OldButtonStates.ThumbSticks.Left.Y > 0.8f))
+            {
+                _repeat++;
+                if (_repeat >= _repeatTrigger)
+                {
+                    key = Keys.Up;
+                    _repeat = 0;
+                    _repeatTrigger = 15;
+                }
+            }
+            else if ((buttonStates.DPad.IsLeft && !_OldButtonStates.DPad.IsLeft) || (buttonStates.ThumbSticks.Left.X < -0.8f && _OldButtonStates.ThumbSticks.Left.X > -0.8f))
+            {
                 key = Keys.Left;
-            else if (buttonStates.DPad.IsRight && !_OldButtonStates.DPad.IsRight)
+                _repeat = 0;
+                _repeatTrigger = 80;
+            }
+            else if ((buttonStates.DPad.IsLeft && _OldButtonStates.DPad.IsLeft) || (buttonStates.ThumbSticks.Left.X < -0.8f && _OldButtonStates.ThumbSticks.Left.X < -0.8f))
+            {
+                _repeat++;
+                if (_repeat >= _repeatTrigger)
+                {
+                    key = Keys.Left;
+                    _repeat = 0;
+                    _repeatTrigger = 15;
+                }
+            }
+            else if ((buttonStates.DPad.IsRight && !_OldButtonStates.DPad.IsRight) || (buttonStates.ThumbSticks.Left.X > 0.8f && _OldButtonStates.ThumbSticks.Left.X < 0.8f))
+            {
                 key = Keys.Right;
+                _repeat = 0;
+                _repeatTrigger = 80;
+            }
+            else if ((buttonStates.DPad.IsRight && _OldButtonStates.DPad.IsRight) || (buttonStates.ThumbSticks.Left.X > 0.8f && _OldButtonStates.ThumbSticks.Left.X > 0.8f))
+            {
+                _repeat++;
+                if (_repeat >= _repeatTrigger)
+                {
+                    key = Keys.Right;
+                    _repeat = 0;
+                    _repeatTrigger = 15;
+                }
+            }
             else if (buttonStates.Buttons.Start == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.Start == OpenTK.Input.ButtonState.Released)
                 key = Keys.Space;
             else if (buttonStates.Buttons.A == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.A == OpenTK.Input.ButtonState.Released)
                 key = Keys.Enter;
-            else if (buttonStates.Buttons.X == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.X == OpenTK.Input.ButtonState.Released)
+            else if (buttonStates.Buttons.B == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.B == OpenTK.Input.ButtonState.Released)
                 key = Keys.Escape;
+            else if (buttonStates.Buttons.X == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.X == OpenTK.Input.ButtonState.Released)
+                key = Keys.F21;
+            else if (buttonStates.Buttons.Y == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.Y == OpenTK.Input.ButtonState.Released)
+                key = Keys.F22;
+            else if (buttonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Released)
+                key = Keys.F23;
+            else if (buttonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Released)
+                key = Keys.F24;
             else if (buttonStates.Buttons.Back == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.Back == OpenTK.Input.ButtonState.Released)
                 key = Keys.Back;
             else if (buttonStates.Triggers.Left >= 0.8 && _OldButtonStates.Triggers.Left < 0.8)
@@ -173,16 +235,6 @@ namespace Vocaluxe.Lib.Input
             if (key != Keys.None)
                 AddKeyEvent(new SKeyEvent(ESender.Gamepad, false, false, false, false, char.MinValue, key));
 
-            if (Math.Abs(buttonStates.ThumbSticks.Right.X - _OldButtonStates.ThumbSticks.Right.X) > 0.01
-                || Math.Abs(buttonStates.ThumbSticks.Right.Y - _OldButtonStates.ThumbSticks.Right.Y) > 0.01
-                || lb || rb)
-            {
-                var x = Math.Min(CSettings.RenderW, Math.Max(0, (int)(CSettings.RenderW  * (buttonStates.ThumbSticks.Right.X / 2.0 * _LimitFactor + 0.5f))));
-                var y = Math.Min(CSettings.RenderH, Math.Max(0, (int)(CSettings.RenderH  * (buttonStates.ThumbSticks.Right.Y / 2.0 * _LimitFactor * (-1) + 0.5f))));
-
-                AddMouseEvent(new SMouseEvent(ESender.Gamepad, EModifier.None, x, y, lb, false, rb, 0, false, false, false, false));
-            }
-           
             _OldButtonStates = buttonStates;
         }
 
@@ -210,11 +262,11 @@ namespace Vocaluxe.Lib.Input
             GamePad.SetVibration(_GamePadIndex, 1.0f, 1.0f);
             Thread.Sleep(125);
             GamePad.SetVibration(_GamePadIndex, 0.0f, 0.0f);
-          
+
 
             return _GamePadIndex != -1;
         }
 
-        
+
     }
 }

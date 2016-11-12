@@ -102,7 +102,7 @@ namespace VocaluxeLib.Menu.SingNotes
                     SRectF rect = _GetNoteRect(note);
 
                     _DrawNoteBG(rect, color);
-                    _DrawNote(rect, new SColorF(Color.White, 0.7f * Alpha), 0.7f);
+                    _DrawNote(rect, new SColorF(Color.White, 0.7f * Alpha), 1);
                 }
             }
 
@@ -118,7 +118,7 @@ namespace VocaluxeLib.Menu.SingNotes
                     if (note.EndBeat == CBase.Game.GetRecordedBeat())
                         rect.W -= (1 - (CBase.Game.GetMidRecordedBeat() - CBase.Game.GetRecordedBeat())) * Rect.W / beats;
 
-                    float factor = (note.Hit) ? 0.7f : 0.4f;
+                    float factor = (note.Hit) ? 1f : 0.6f;
 
                     _DrawNote(rect, color, factor);
 
