@@ -110,6 +110,7 @@
     <Compile Include="Draw\CTextureRef.cs" />
     <Compile Include="Menu\IThemeable.cs" />
     <Compile Include="Menu\SingNotes\CNoteBars.cs" />
+    <Compile Include="Menu\SongMenu\CSongMenuList.cs" />
     <Compile Include="Utils\Combinatorics\CCombinations.cs" />
     <Compile Include="XmlStructs.cs" />
     <Compile Include="Xml\CTypeExtensions.cs" />
@@ -120,7 +121,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Menu\IMenu.cs" />
     <Compile Include="Menu\IMenuElement.cs" />
-    <Compile Include="Menu\SongMenu\CSongMenuList.cs" />
+    <Compile Include="Menu\SongMenu\CSongMenuDetails.cs" />
     <Compile Include="Profile\CAvatar.cs" />
     <Compile Include="Profile\CProfile.cs" />
     <Compile Include="Songs\CLineBase.cs" />
