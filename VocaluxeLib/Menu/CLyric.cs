@@ -204,43 +204,45 @@ namespace VocaluxeLib.Menu
 
         private void _DrawSlide()
         {
-            float x = X - _Width / 2;
-
-            foreach (CSongNote note in _Line.Notes)
+            for (int i = 0; i < 4; i++)
             {
-                _Text.X = x;
-                _SetText(note);
-
-                if (_CurrentBeat >= note.StartBeat)
+                float x = X - _Width / 2;
+                foreach (CSongNote note in _Line.Notes)
                 {
-                    if (_CurrentBeat <= note.EndBeat)
-                    {
-                        _Text.Color = _ColorProcessed;
+                    _Text.X = x+(i*1280);
+                    _SetText(note);
 
-                        int diff = note.Duration;
-                        if (diff <= 0)
-                            _Text.Draw(0f, 1f);
+                    if (_CurrentBeat >= note.StartBeat)
+                    {
+                        if (_CurrentBeat <= note.EndBeat)
+                        {
+                            _Text.Color = _ColorProcessed;
+
+                            int diff = note.Duration;
+                            if (diff <= 0)
+                                _Text.Draw(0f, 1f);
+                            else
+                            {
+                                float p = (_CurrentBeat - note.StartBeat) / diff;
+                                _Text.Draw(0f, p);
+                                _Text.Color = _Color;
+                                _Text.Draw(p, 1f);
+                            }
+                        }
                         else
                         {
-                            float p = (_CurrentBeat - note.StartBeat) / diff;
-                            _Text.Draw(0f, p);
-                            _Text.Color = _Color;
-                            _Text.Draw(p, 1f);
+                            _Text.Color = _ColorProcessed;
+                            _Text.Draw();
                         }
                     }
                     else
                     {
-                        _Text.Color = _ColorProcessed;
+                        _Text.Color = _Color;
                         _Text.Draw();
                     }
-                }
-                else
-                {
-                    _Text.Color = _Color;
-                    _Text.Draw();
-                }
 
-                x += _Text.Rect.W;
+                    x += _Text.Rect.W;
+                }
             }
         }
 

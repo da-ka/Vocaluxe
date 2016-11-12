@@ -323,7 +323,12 @@ namespace VocaluxeLib.Menu
                 CBase.Video.GetFrame(_VideoStream, _VideoStream.VideoTime);
                 if (_VideoStream.Texture != null)
                 {
-                    CBase.Drawing.DrawTexture(_VideoStream.Texture, Rect, EAspect.Crop);
+                    SRectF MultiScreenRect = Rect;
+                    for(int i = 0; i < CBase.Config.GetNumScreens(); i++)
+                    {
+                        CBase.Drawing.DrawTexture(_VideoStream.Texture, MultiScreenRect, EAspect.Crop);
+                        MultiScreenRect.X += Rect.W;
+                    }
                     return true;
                 }
                 return false;
@@ -336,7 +341,12 @@ namespace VocaluxeLib.Menu
             CTextureRef videoTexture = CBase.BackgroundMusic.GetVideoTexture();
             if (videoTexture != null)
             {
-                CBase.Drawing.DrawTexture(videoTexture, Rect, EAspect.Crop);
+                SRectF MultiScreenRect = Rect;
+                for (int i = 0; i < CBase.Config.GetNumScreens(); i++)
+                {
+                    CBase.Drawing.DrawTexture(videoTexture, MultiScreenRect, EAspect.Crop);
+                    MultiScreenRect.X += Rect.W;
+                }
                 return true;
             }
             return false;

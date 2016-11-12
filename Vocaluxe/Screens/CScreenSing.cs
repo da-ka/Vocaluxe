@@ -50,6 +50,9 @@ namespace Vocaluxe.Screens
 
         private const string _TextSongName = "TextSongName";
         private const string _TextTime = "TextTime";
+        private const string _TextTime2 = "TextTime2";
+        private const string _TextTime3 = "TextTime3";
+        private const string _TextTime4 = "TextTime4";
         private const string _TextPause = "TextPause";
         private const string _TextDuetName1 = "TextDuetName1";
         private const string _TextDuetName2 = "TextDuetName2";
@@ -66,6 +69,9 @@ namespace Vocaluxe.Screens
         private const string _StaticTimeLineExpandedNormal = "StaticTimeLineExpandedNormal";
         private const string _StaticTimeLineExpandedHighlighted = "StaticTimeLineExpandedHighlighted";
         private const string _StaticTimePointer = "StaticTimePointer";
+        private const string _StaticTimePointer2 = "StaticTimePointer2";
+        private const string _StaticTimePointer3 = "StaticTimePointer3";
+        private const string _StaticTimePointer4 = "StaticTimePointer4";
         private const string _StaticLyricHelper = "StaticLyricHelper";
         private const string _StaticLyricHelperDuet = "StaticLyricHelperDuet";
         private const string _StaticLyricHelperTop = "StaticLyricHelperTop";
@@ -144,6 +150,9 @@ namespace Vocaluxe.Screens
                     _StaticTimeLineExpandedNormal,
                     _StaticTimeLineExpandedHighlighted,
                     _StaticTimePointer,
+                    _StaticTimePointer2,
+                    _StaticTimePointer3,
+                    _StaticTimePointer4,
                     _StaticLyricHelper,
                     _StaticLyricHelperDuet,
                     _StaticLyricHelperTop,
@@ -441,7 +450,12 @@ namespace Vocaluxe.Screens
                 {
                     SRectF bounds = CSettings.RenderRect;
                     SRectF rect = CHelper.FitInBounds(bounds, background.OrigAspect, aspect);
-                    CDraw.DrawTexture(background, rect, background.Color, bounds);
+                    for (int i = 0; i < CConfig.Config.Graphics.NumScreens; i++)
+                    {
+                        CDraw.DrawTexture(background, rect, background.Color, bounds);
+                        rect.X += CSettings.RenderW;
+                        bounds.X += CSettings.RenderW;
+                    }
                 }
                 else if (_SlideShow != null)
                     _SlideShow.Draw();
@@ -456,7 +470,16 @@ namespace Vocaluxe.Screens
                     break;
                 case ETimerLook.TR_CONFIG_TIMERLOOK_EXPANDED:
                     for (int i = 0; i < _TimeRects.Count; i++)
-                        CDraw.DrawTexture(_TimeRects[i].Rect.Texture, _Statics[_StaticTimeLine].Rect, _TimeRects[i].Rect.Color, _TimeRects[i].Rect.Rect);
+                    {
+                        SRectF STL = _Statics[_StaticTimeLine].Rect;
+                        SRectF TR = _TimeRects[i].Rect.Rect;
+                        for (int mi = 0; mi < CConfig.Config.Graphics.NumScreens; mi++)
+                        {
+                            CDraw.DrawTexture(_TimeRects[i].Rect.Texture, STL, _TimeRects[i].Rect.Color, TR);
+                            TR.X += CSettings.RenderW;
+                            STL.X += CSettings.RenderW;
+                        }
+                    }
                     break;
             }
 
@@ -986,8 +1009,13 @@ namespace Vocaluxe.Screens
                         _Statics[_StaticLyricHelper].Color.A * _Statics[_StaticLyricHelper].Alpha * alpha);
 
                     float distance = _Lyrics[_LyricMain].GetCurrentLyricPosX() - rect.X - rect.W;
-                    CDraw.DrawTexture(_Statics[_StaticLyricHelper].Texture,
-                                      new SRectF(rect.X + distance * (1f - time / totaltime), rect.Y, rect.W, rect.H, rect.Z), color);
+                    SRectF mrect = rect;
+                    for (int i = 0; i < CConfig.Config.Graphics.NumScreens; i++)
+                    {
+                        CDraw.DrawTexture(_Statics[_StaticLyricHelper].Texture,
+                                      new SRectF(mrect.X + distance * (1f - time / totaltime), mrect.Y, mrect.W, mrect.H, mrect.Z), color);
+                        mrect.X += CSettings.RenderW;
+                    }
                 }
 
                 if (_Statics[_StaticLyricsTop].Visible)
@@ -1000,8 +1028,13 @@ namespace Vocaluxe.Screens
                         _Statics[_StaticLyricHelperTop].Color.A * _Statics[_StaticLyricHelper].Alpha * alpha);
 
                     float distance = _Lyrics[_LyricMainTop].GetCurrentLyricPosX() - rect.X - rect.W;
-                    CDraw.DrawTexture(_Statics[_StaticLyricHelperTop].Texture,
-                                      new SRectF(rect.X + distance * (1f - time / totaltime), rect.Y, rect.W, rect.H, rect.Z), color);
+                    SRectF mrect = rect;
+                    for (int i = 0; i < CConfig.Config.Graphics.NumScreens; i++)
+                    {
+                        CDraw.DrawTexture(_Statics[_StaticLyricHelperTop].Texture,
+                                      new SRectF(mrect.X + distance * (1f - time / totaltime), mrect.Y, mrect.W, mrect.H, mrect.Z), color);
+                        mrect.X += CSettings.RenderW;
+                    }
                 }
             }
 
@@ -1027,9 +1060,14 @@ namespace Vocaluxe.Screens
                         _Statics[_StaticLyricHelperDuet].Color.A * _Statics[_StaticLyricHelperDuet].Alpha * alpha);
 
                     float distance = _Lyrics[_LyricMainDuet].GetCurrentLyricPosX() - rect.X - rect.W;
-                    CDraw.DrawTexture(_Statics[_StaticLyricHelperDuet].Texture,
-                                      new SRectF(rect.X + distance * (1f - time / totaltime), rect.Y, rect.W, rect.H, rect.Z),
+                    SRectF mrect = rect;
+                    for (int i = 0; i < CConfig.Config.Graphics.NumScreens; i++)
+                    {
+                        CDraw.DrawTexture(_Statics[_StaticLyricHelperDuet].Texture,
+                                      new SRectF(mrect.X + distance * (1f - time / totaltime), mrect.Y, mrect.W, mrect.H, mrect.Z),
                                       color);
+                        mrect.X += CSettings.RenderW;
+                    }
                 }
             }
         }
@@ -1256,18 +1294,27 @@ namespace Vocaluxe.Screens
                     var min = (int)Math.Floor(currentTime / 60f);
                     var sec = (int)(currentTime - min * 60f);
                     _Texts[_TextTime].Text = min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime2].Text = min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime3].Text = min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime4].Text = min.ToString("00") + ":" + sec.ToString("00");
                     break;
 
                 case ETimerMode.TR_CONFIG_TIMERMODE_REMAINING:
                     min = (int)Math.Floor(remainingTime / 60f);
                     sec = (int)(remainingTime - min * 60f);
                     _Texts[_TextTime].Text = "-" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime2].Text = "-" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime3].Text = "-" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime4].Text = "-" + min.ToString("00") + ":" + sec.ToString("00");
                     break;
 
                 case ETimerMode.TR_CONFIG_TIMERMODE_TOTAL:
                     min = (int)Math.Floor(totalTime / 60f);
                     sec = (int)(totalTime - min * 60f);
                     _Texts[_TextTime].Text = "#" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime2].Text = "#" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime3].Text = "#" + min.ToString("00") + ":" + sec.ToString("00");
+                    _Texts[_TextTime4].Text = "#" + min.ToString("00") + ":" + sec.ToString("00");
                     break;
             }
 
@@ -1295,6 +1342,9 @@ namespace Vocaluxe.Screens
                         }
                     }
                     _Statics[_StaticTimePointer].X = stat.X + stat.W * (currentTime / totalTime);
+                    _Statics[_StaticTimePointer2].X = stat.X + stat.W * (currentTime / totalTime) + (1280 * 1);
+                    _Statics[_StaticTimePointer3].X = stat.X + stat.W * (currentTime / totalTime) + (1280 * 2);
+                    _Statics[_StaticTimePointer4].X = stat.X + stat.W * (currentTime / totalTime) + (1280 * 3);
                     break;
             }
         }
@@ -1307,11 +1357,17 @@ namespace Vocaluxe.Screens
                 case ETimerLook.TR_CONFIG_TIMERLOOK_NORMAL:
                     _TimeLineRect = stat.Rect;
                     _Statics[_StaticTimePointer].Visible = false;
+                    _Statics[_StaticTimePointer2].Visible = false;
+                    _Statics[_StaticTimePointer3].Visible = false;
+                    _Statics[_StaticTimePointer4].Visible = false;
                     break;
 
                 case ETimerLook.TR_CONFIG_TIMERLOOK_EXPANDED:
                     _TimeRects.Clear();
                     _Statics[_StaticTimePointer].Visible = true;
+                    _Statics[_StaticTimePointer2].Visible = true;
+                    _Statics[_StaticTimePointer3].Visible = true;
+                    _Statics[_StaticTimePointer4].Visible = true;
 
                     CSong song = CGame.GetSong();
 

@@ -87,7 +87,13 @@ namespace Vocaluxe.Base
             if (_VideoStream.Texture == null)
                 return;
 
-            CDraw.DrawTexture(_VideoStream.Texture, CSettings.RenderRect, EAspect.Crop);
+            SRectF renderRect = CSettings.RenderRect;
+
+            for (int i = 0; i < CConfig.Config.Graphics.NumScreens; i++)
+            {
+                CDraw.DrawTexture(_VideoStream.Texture, renderRect, EAspect.Crop);
+                renderRect.X += renderRect.W;
+            }
         }
 
         public void PreLoad()

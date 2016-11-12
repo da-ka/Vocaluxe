@@ -170,7 +170,12 @@ namespace Vocaluxe.Base
         {
             CConfig.SongMenuChanged -= onSongMenuChanged;
         }
-    }
+
+        public int GetNumScreens()
+        {
+            return CConfig.GetNumScreens();
+        }
+}
 
     class CBsettings : ISettings
     {

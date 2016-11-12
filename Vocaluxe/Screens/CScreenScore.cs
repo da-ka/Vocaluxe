@@ -37,6 +37,9 @@ namespace Vocaluxe.Screens
         }
 
         private const string _TextSong = "TextSong";
+        private const string _TextSong2 = "TextSong2";
+        private const string _TextSong3 = "TextSong3";
+        private const string _TextSong4 = "TextSong4";
 
         private const string _ScreenSettingShortScore = "ScreenSettingShortScore";
         private const string _ScreenSettingShortRating = "ScreenSettingShortRating";
@@ -66,7 +69,7 @@ namespace Vocaluxe.Screens
         {
             base.Init();
 
-            var texts = new List<string> {_TextSong};
+            var texts = new List<string> {_TextSong, _TextSong2, _TextSong3, _TextSong4};
 
             _BuildTextStrings(ref texts);
 
@@ -275,6 +278,9 @@ namespace Vocaluxe.Screens
                     return;
 
                 _Texts[_TextSong].Text = song.Artist + " - " + song.Title;
+                _Texts[_TextSong2].Text = song.Artist + " - " + song.Title;
+                _Texts[_TextSong3].Text = song.Artist + " - " + song.Title;
+                _Texts[_TextSong4].Text = song.Artist + " - " + song.Title;
                 if (_Points.NumRounds > 1)
                     _Texts[_TextSong].Text += " (" + (_Round + 1) + "/" + _Points.NumRounds + ")";
                 players = _Points.GetPlayer(_Round, CGame.NumPlayers);
@@ -282,6 +288,9 @@ namespace Vocaluxe.Screens
             else
             {
                 _Texts[_TextSong].Text = "TR_SCREENSCORE_OVERALLSCORE";
+                _Texts[_TextSong2].Text = "TR_SCREENSCORE_OVERALLSCORE";
+                _Texts[_TextSong3].Text = "TR_SCREENSCORE_OVERALLSCORE";
+                _Texts[_TextSong4].Text = "TR_SCREENSCORE_OVERALLSCORE";
                 for (int i = 0; i < CGame.NumRounds; i++)
                 {
                     SPlayer[] points = _Points.GetPlayer(i, CGame.NumPlayers);
