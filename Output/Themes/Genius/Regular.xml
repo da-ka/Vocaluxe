@@ -227,6 +227,7 @@
     <Button>Button.png</Button>
     <CoverTile>CoverTile.png</CoverTile>
     <CoverTextBackground>CoverTextBackground.png</CoverTextBackground>
+    <TileBackground>TileBackground.png</TileBackground>
     <Cursor>Cursor.png</Cursor>
     <TimeBar>TimeBar.png</TimeBar>
     <TimeLine>TimeLine.png</TimeLine>

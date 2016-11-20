@@ -31,6 +31,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
         public string CoverBackground;
         public string CoverBigBackground;
+        public string TileBackground;
         public string DuetIcon;
         public string VideoIcon;
         public string MedleyCalcIcon;
@@ -243,6 +244,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
             ThemeLoaded &= xmlReader.GetValue(item + "/CoverBackground", out _Theme.CoverBackground, String.Empty);
             ThemeLoaded &= xmlReader.GetValue(item + "/CoverBigBackground", out _Theme.CoverBigBackground, String.Empty);
+            ThemeLoaded &= xmlReader.GetValue(item + "/TileBackground", out _Theme.TileBackground, String.Empty);
             ThemeLoaded &= xmlReader.GetValue(item + "/DuetIcon", out _Theme.DuetIcon, String.Empty);
             ThemeLoaded &= xmlReader.GetValue(item + "/VideoIcon", out _Theme.VideoIcon, String.Empty);
             ThemeLoaded &= xmlReader.GetValue(item + "/MedleyCalcIcon", out _Theme.MedleyCalcIcon, String.Empty);

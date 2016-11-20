@@ -30,6 +30,7 @@ namespace VocaluxeLib.Menu.SongMenu
     {
         private SRectF _ScrollRect;
         private List<CStatic>[] _Tiles = new List<CStatic>[4];
+        private List<CStatic>[] _TilesBG = new List<CStatic>[4];
         private List<CText>[] _Artists = new List<CText>[4];
         private List<CText>[] _Titles = new List<CText>[4];
         private readonly CStatic _CoverBig;
@@ -41,6 +42,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
         private CTextureRef _CoverBigBGTexture;
         private CTextureRef _CoverBGTexture;
+        private CTextureRef _TileBGTexture;
 
         private readonly CText _Artist;
         private readonly CText _Title;
@@ -199,6 +201,7 @@ namespace VocaluxeLib.Menu.SongMenu
             _TileH = _TileW;
 
             _CoverBGTexture = CBase.Themes.GetSkinTexture(_Theme.CoverBackground, _PartyModeID);
+            _TileBGTexture = CBase.Themes.GetSkinTexture(_Theme.TileBackground, _PartyModeID);
             _CoverBigBGTexture = CBase.Themes.GetSkinTexture(_Theme.CoverBigBackground, _PartyModeID);
 
             
@@ -206,18 +209,24 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 //Create cover tiles
                 _Tiles[mon] = new List<CStatic>();
+                _TilesBG[mon] = new List<CStatic>();
                 _Artists[mon] = new List<CText>();
                 _Titles[mon] = new List<CText>();
 
                 for (int i = 0; i < _ListLength; i++)
                 {
                     //Create Cover
-                    var rect = new SRectF(Rect.X + (mon*1280), Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
+                    var rect = new SRectF(Rect.X + _SpaceH + (mon*1280), Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
                     var tile = new CStatic(_PartyModeID, _CoverBGTexture, _Color, rect);
                     _Tiles[mon].Add(tile);
 
+                    //Create Tile BG
+                    var BGrect = new SRectF(MaxRect.X + (mon * 1280), MaxRect.Y + i * (_TileH + _SpaceH), MaxRect.W, _TileH + _SpaceH, Rect.Z+0.5f);
+                    var tilebg = new CStatic(_PartyModeID, _TileBGTexture, new SColorF(1,1,1,1), BGrect);
+                    _TilesBG[mon].Add(tilebg);
+
                     //Create text
-                    var artistRect = new SRectF(MaxRect.X + _TileW + _SpaceW, Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH) + (_TileH * 0.55f), _ListTextWidth, _TileH * 0.45f, Rect.Z);
+                    var artistRect = new SRectF(MaxRect.X + _TileW +_SpaceH + _SpaceW, Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH) + (_TileH * 0.55f), _ListTextWidth, _TileH * 0.45f, Rect.Z);
                     CText artist = new CText(artistRect.X + (mon * 1280), artistRect.Y, artistRect.Z,
                                            artistRect.H, artistRect.W, EAlignment.Left, EStyle.Normal,
                                            "Outline", _Artist.Color, "");
@@ -226,7 +235,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
                     _Artists[mon].Add(artist);
 
-                    var titleRect = new SRectF(MaxRect.X + _TileW + _SpaceW, (Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH)), _ListTextWidth, _TileH * 0.55f, Rect.Z);
+                    var titleRect = new SRectF(MaxRect.X + _TileW + _SpaceH + _SpaceW, (Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH)), _ListTextWidth, _TileH * 0.55f, Rect.Z);
                     CText title = new CText(titleRect.X + (mon * 1280), titleRect.Y, titleRect.Z,
                                            titleRect.H, titleRect.W, EAlignment.Left, EStyle.Bold,
                                            "Outline", _Artist.Color, "");
@@ -246,10 +255,14 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 foreach (CStatic tile in _Tiles[mon])
                     tile.Selected = false;
-
+                foreach (CStatic tilebg in _TilesBG[mon])
+                    tilebg.Selected = false;
                 int tileNr = _SelectionNr - _Offset;
                 if (tileNr >= 0 && tileNr < _Tiles[mon].Count)
+                {
                     _Tiles[mon][tileNr].Selected = true;
+                    _TilesBG[mon][tileNr].Selected = true;
+                }
             }
         }
 
@@ -547,14 +560,23 @@ namespace VocaluxeLib.Menu.SongMenu
                     tile.Draw(aspect);
                 }
 
+                foreach (CStatic tilebg in _TilesBG[mon])
+                {
+                    if (tilebg.Selected)
+                        tilebg.Color.A = 1f;
+                    else
+                        tilebg.Color.A = 0.3f;
+                    tilebg.Draw();
+                }
+
                 //highlight the text of the selected song
                 int i = 0;
                 foreach (CText text in _Artists[mon])
                 {
                     if (i < _Tiles[mon].Count && _Tiles[mon][i].Selected)
-                        text.Color = new SColorF(0, 0.58f, 0.792f, 1);
+                        text.Color.A = 1f;
                     else if (i < _Tiles[mon].Count)
-                        text.Color = new SColorF(1, 1, 1, 0.6f);
+                        text.Color.A = 0.6f;
                     else
                         text.Text = "";
                     text.Draw();
@@ -564,9 +586,9 @@ namespace VocaluxeLib.Menu.SongMenu
                 foreach (CText text in _Titles[mon])
                 {
                     if (i < _Tiles[mon].Count && _Tiles[mon][i].Selected)
-                        text.Color = new SColorF(0, 0.58f, 0.792f, 1);
+                        text.Color.A = 1f;
                     else if (i < _Tiles[mon].Count)
-                        text.Color = new SColorF(1, 1, 1, 0.6f);
+                        text.Color.A = 0.6f;
                     else
                         text.Text = "";
                     text.Draw();

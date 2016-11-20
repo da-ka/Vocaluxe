@@ -821,6 +821,7 @@
     <SongMenu Name="SongMenu">
       <CoverBackground>CoverTile</CoverBackground>
       <CoverBigBackground />
+      <TileBackground>TileBackground</TileBackground>
       <DuetIcon>DuetIcon</DuetIcon>
       <VideoIcon>VideoIcon</VideoIcon>
       <MedleyCalcIcon>MedleyCalcIcon</MedleyCalcIcon>
@@ -1095,7 +1096,7 @@
         <TileRect>
           <X>415</X>
           <Y>40</Y>
-          <W>850</W>
+          <W>830</W>
           <H>640</H>
           <Z>-1</Z>
         </TileRect>

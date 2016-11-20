@@ -323,57 +323,60 @@ namespace VocaluxeLib.Menu
 
         private void _DrawZoomOrJump()
         {
-            float x = X - _Width / 2; // most left position
-
-            int lastNote = _Line.FindPreviousNote((int)_CurrentBeat);
-            CSongNote highlightNote = null;
-            int hEndBeat = 0;
-            float hX = 0;
-
-            for (int note = 0; note < _Line.Notes.Length; note++)
+            for (int i = 0; i < 4; i++)
             {
-                _Text.X = x;
-                CSongNote curNote = _Line.Notes[note];
-                _SetText(curNote);
+                float x = (X +(i * 1280)) - _Width / 2; // most left position
 
-                if (_CurrentBeat >= curNote.StartBeat)
+                int lastNote = _Line.FindPreviousNote((int)_CurrentBeat);
+                CSongNote highlightNote = null;
+                int hEndBeat = 0;
+                float hX = 0 + (i * 1280);
+
+                for (int note = 0; note < _Line.Notes.Length; note++)
                 {
-                    int curEndBeat = curNote.EndBeat;
-                    if (note < _Line.Notes.Length - 1)
-                        curEndBeat = _Line.Notes[note + 1].StartBeat - 1;
+                    _Text.X = x;
+                    CSongNote curNote = _Line.Notes[note];
+                    _SetText(curNote);
 
-                    if (_CurrentBeat <= curEndBeat)
+                    if (_CurrentBeat >= curNote.StartBeat)
                     {
-                        highlightNote = curNote;
-                        hEndBeat = curEndBeat;
-                        hX = x;
+                        int curEndBeat = curNote.EndBeat;
+                        if (note < _Line.Notes.Length - 1)
+                            curEndBeat = _Line.Notes[note + 1].StartBeat - 1;
+
+                        if (_CurrentBeat <= curEndBeat)
+                        {
+                            highlightNote = curNote;
+                            hEndBeat = curEndBeat;
+                            hX = x;
+                        }
+                        else
+                        {
+                            // already passed
+                            _Text.Color = _ColorProcessed;
+                            _Text.Draw();
+                        }
                     }
                     else
                     {
-                        // already passed
-                        _Text.Color = lastNote == note ? _ColorProcessed : _Color;
+                        // not passed
+                        _Text.Color = _Color;
                         _Text.Draw();
                     }
+
+                    x += _Text.Rect.W;
                 }
+
+                // Draw the highlighted note after all others because we want it to be above those! (transparency won't work well otherwhise)
+                if (highlightNote == null)
+                    return;
+                _SetText(highlightNote);
+                _Text.X = hX;
+                if (LyricStyle == ELyricStyle.TR_CONFIG_LYRICSTYLE_JUMP)
+                    _DrawJumpingNode(highlightNote);
                 else
-                {
-                    // not passed
-                    _Text.Color = _Color;
-                    _Text.Draw();
-                }
-
-                x += _Text.Rect.W;
+                    _DrawZoomedNote(highlightNote, hEndBeat);
             }
-
-            // Draw the highlighted note after all others because we want it to be above those! (transparency won't work well otherwhise)
-            if (highlightNote == null)
-                return;
-            _SetText(highlightNote);
-            _Text.X = hX;
-            if (LyricStyle == ELyricStyle.TR_CONFIG_LYRICSTYLE_JUMP)
-                _DrawJumpingNode(highlightNote);
-            else
-                _DrawZoomedNote(highlightNote, hEndBeat);
         }
         #endregion draw
 
