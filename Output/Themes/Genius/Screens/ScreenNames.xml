@@ -20,7 +20,7 @@
       <Rect>
         <X>0</X>
         <Y>40</Y>
-        <W>1280</W>
+        <W>5120</W>
         <H>45</H>
         <Z>0</Z>
       </Rect>
@@ -29,8 +29,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>168</Y>
+        <X>60</X>
+        <Y>185</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -40,8 +40,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>235</Y>
+        <X>60</X>
+        <Y>265</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -51,8 +51,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>302</Y>
+        <X>358</X>
+        <Y>185</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -62,8 +62,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>369</Y>
+        <X>358</X>
+        <Y>265</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -73,8 +73,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>436</Y>
+        <X>657</X>
+        <Y>185</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -84,8 +84,8 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>955</X>
-        <Y>503</Y>
+        <X>657</X>
+        <Y>265</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -96,7 +96,7 @@
       <Color Name="Visible" />
       <Rect>
         <X>955</X>
-        <Y>503</Y>
+        <Y>185</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -107,7 +107,7 @@
       <Color Name="Visible" />
       <Rect>
         <X>955</X>
-        <Y>503</Y>
+        <Y>265</Y>
         <W>52</W>
         <H>52</H>
         <Z>-4</Z>
@@ -117,8 +117,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player1" />
       <Rect>
-        <X>950</X>
-        <Y>163</Y>
+        <X>55</X>
+        <Y>180</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -128,8 +128,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player2" />
       <Rect>
-        <X>950</X>
-        <Y>230</Y>
+        <X>55</X>
+        <Y>260</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -139,8 +139,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player3" />
       <Rect>
-        <X>950</X>
-        <Y>297</Y>
+        <X>353</X>
+        <Y>180</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -150,8 +150,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player4" />
       <Rect>
-        <X>950</X>
-        <Y>364</Y>
+        <X>353</X>
+        <Y>260</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -161,8 +161,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player5" />
       <Rect>
-        <X>950</X>
-        <Y>431</Y>
+        <X>652</X>
+        <Y>180</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -172,8 +172,8 @@
       <Skin>PlayerSelBG</Skin>
       <Color Name="Player6" />
       <Rect>
-        <X>950</X>
-        <Y>498</Y>
+        <X>652</X>
+        <Y>260</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -181,10 +181,10 @@
     </Static>
     <Static Name="StaticPlayer7">
       <Skin>PlayerSelBG</Skin>
-      <Color Name="Player6" />
+      <Color Name="Player7" />
       <Rect>
         <X>950</X>
-        <Y>498</Y>
+        <Y>180</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -192,10 +192,538 @@
     </Static>
     <Static Name="StaticPlayer8">
       <Skin>PlayerSelBG</Skin>
-      <Color Name="Player6" />
+      <Color Name="Player8" />
       <Rect>
         <X>950</X>
-        <Y>498</Y>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar1">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1340</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar2">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1340</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar3">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1638</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar4">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1638</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar5">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1937</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar6">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1937</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar7">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2235</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayerAvatar8">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2235</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer1">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player1" />
+      <Rect>
+        <X>1335</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer2">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player2" />
+      <Rect>
+        <X>1335</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer3">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player3" />
+      <Rect>
+        <X>1633</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer4">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player4" />
+      <Rect>
+        <X>1633</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer5">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player5" />
+      <Rect>
+        <X>1932</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer6">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player6" />
+      <Rect>
+        <X>1932</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer7">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player7" />
+      <Rect>
+        <X>2230</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticBPlayer8">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player8" />
+      <Rect>
+        <X>2230</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar1">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2620</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar2">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2620</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar3">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2918</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar4">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2918</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar5">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3217</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar6">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3217</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar7">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3515</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayerAvatar8">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3515</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer1">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player1" />
+      <Rect>
+        <X>2615</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer2">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player2" />
+      <Rect>
+        <X>2615</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer3">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player3" />
+      <Rect>
+        <X>2913</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer4">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player4" />
+      <Rect>
+        <X>2913</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer5">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player5" />
+      <Rect>
+        <X>3212</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer6">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player6" />
+      <Rect>
+        <X>3212</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer7">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player7" />
+      <Rect>
+        <X>3510</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticCPlayer8">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player8" />
+      <Rect>
+        <X>3510</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar1">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3900</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar2">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3900</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar3">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4198</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar4">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4198</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar5">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4497</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar6">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4497</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar7">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4795</X>
+        <Y>185</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayerAvatar8">
+      <Skin/>
+      <Color Name="Visible" />
+      <Rect>
+        <X>4795</X>
+        <Y>265</Y>
+        <W>52</W>
+        <H>52</H>
+        <Z>-4</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer1">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player1" />
+      <Rect>
+        <X>3895</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer2">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player2" />
+      <Rect>
+        <X>3895</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer3">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player3" />
+      <Rect>
+        <X>4193</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer4">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player4" />
+      <Rect>
+        <X>4193</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer5">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player5" />
+      <Rect>
+        <X>4492</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer6">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player6" />
+      <Rect>
+        <X>4492</X>
+        <Y>260</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer7">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player7" />
+      <Rect>
+        <X>4790</X>
+        <Y>180</Y>
+        <W>275</W>
+        <H>62</H>
+        <Z>-2</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticDPlayer8">
+      <Skin>PlayerSelBG</Skin>
+      <Color Name="Player8" />
+      <Rect>
+        <X>4790</X>
+        <Y>260</Y>
         <W>275</W>
         <H>62</H>
         <Z>-2</Z>
@@ -243,6 +771,48 @@
       <Font>Outline</Font>
       <Text>TR_SCREENNAMES_MENU</Text>
     </Text>
+    <Text Name="Text2">
+      <X>1920</X>
+      <Y>50</Y>
+      <Z>-3</Z>
+      <H>27</H>
+      <MaxW>0</MaxW>
+      <Color Name="StaticColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>TR_SCREENNAMES_MENU</Text>
+    </Text>
+    <Text Name="Text3">
+      <X>3200</X>
+      <Y>50</Y>
+      <Z>-3</Z>
+      <H>27</H>
+      <MaxW>0</MaxW>
+      <Color Name="StaticColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>TR_SCREENNAMES_MENU</Text>
+    </Text>
+    <Text Name="Text4">
+      <X>4480</X>
+      <Y>50</Y>
+      <Z>-3</Z>
+      <H>27</H>
+      <MaxW>0</MaxW>
+      <Color Name="StaticColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>TR_SCREENNAMES_MENU</Text>
+    </Text>
     <Text Name="TextWarningMics">
       <X>485</X>
       <Y>332</Y>
@@ -276,8 +846,8 @@
       </Reflection>
     </Text>
     <Text Name="TextPlayer1">
-      <X>1015</X>
-      <Y>168</Y>
+      <X>120</X>
+      <Y>185</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -290,8 +860,8 @@
       <Text />
     </Text>
     <Text Name="TextPlayer2">
-      <X>1015</X>
-      <Y>235</Y>
+      <X>120</X>
+      <Y>265</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -304,8 +874,8 @@
       <Text />
     </Text>
     <Text Name="TextPlayer3">
-      <X>1015</X>
-      <Y>302</Y>
+      <X>418</X>
+      <Y>185</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -318,8 +888,8 @@
       <Text />
     </Text>
     <Text Name="TextPlayer4">
-      <X>1015</X>
-      <Y>369</Y>
+      <X>418</X>
+      <Y>265</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -332,8 +902,8 @@
       <Text />
     </Text>
     <Text Name="TextPlayer5">
-      <X>1015</X>
-      <Y>436</Y>
+      <X>717</X>
+      <Y>185</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -346,8 +916,8 @@
       <Text />
     </Text>
     <Text Name="TextPlayer6">
-      <X>1015</X>
-      <Y>503</Y>
+      <X>717</X>
+      <Y>265</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -361,7 +931,7 @@
     </Text>
     <Text Name="TextPlayer7">
       <X>1015</X>
-      <Y>503</Y>
+      <Y>185</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -375,7 +945,343 @@
     </Text>
     <Text Name="TextPlayer8">
       <X>1015</X>
-      <Y>503</Y>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer1">
+      <X>1400</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer2">
+      <X>1400</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer3">
+      <X>1698</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer4">
+      <X>1698</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer5">
+      <X>1997</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer6">
+      <X>1997</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer7">
+      <X>2295</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextBPlayer8">
+      <X>2295</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer1">
+      <X>2680</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer2">
+      <X>2680</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer3">
+      <X>2978</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer4">
+      <X>2978</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer5">
+      <X>3277</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer6">
+      <X>3277</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer7">
+      <X>3575</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextCPlayer8">
+      <X>3575</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer1">
+      <X>3960</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer2">
+      <X>3960</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer3">
+      <X>4258</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer4">
+      <X>4258</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer5">
+      <X>4557</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer6">
+      <X>4557</X>
+      <Y>265</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer7">
+      <X>4855</X>
+      <Y>185</Y>
+      <Z>-4</Z>
+      <H>20</H>
+      <MaxW>205</MaxW>
+      <Color Name="TextSelColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text />
+    </Text>
+    <Text Name="TextDPlayer8">
+      <X>4855</X>
+      <Y>265</Y>
       <Z>-4</Z>
       <H>20</H>
       <MaxW>205</MaxW>
@@ -389,76 +1295,6 @@
     </Text>
   </Texts>
   <Buttons>
-    <Button Name="ButtonBack">
-      <Skin>Button</Skin>
-      <SkinSelected>Button</SkinSelected>
-      <Rect>
-        <X>55</X>
-        <Y>603</Y>
-        <W>150</W>
-        <H>50</H>
-        <Z>0</Z>
-      </Rect>
-      <Color Name="ButtonColor" />
-      <SelColor Name="ButtonSelColor" />
-      <Text Name="Text">
-        <X>75</X>
-        <Y>12</Y>
-        <Z>0</Z>
-        <H>27</H>
-        <MaxW>142</MaxW>
-        <Color Name="ButtonTextColor" />
-        <SelColor Name="ButtonTextSelColor" />
-        <Align>Center</Align>
-        <ResizeAlign>Center</ResizeAlign>
-        <Style>Bold</Style>
-        <Font>Outline</Font>
-        <Text>TR_BUTTON_BACK</Text>
-      </Text>
-      <Reflection>
-        <Height>26</Height>
-        <Space>10</Space>
-      </Reflection>
-      <SelReflection>
-        <Height>26</Height>
-        <Space>10</Space>
-      </SelReflection>
-    </Button>
-    <Button Name="ButtonStart">
-      <Skin>Button</Skin>
-      <SkinSelected>Button</SkinSelected>
-      <Rect>
-        <X>1075</X>
-        <Y>603</Y>
-        <W>150</W>
-        <H>50</H>
-        <Z>0</Z>
-      </Rect>
-      <Color Name="ButtonColor" />
-      <SelColor Name="ButtonSelColor" />
-      <Text Name="Text">
-        <X>75</X>
-        <Y>12</Y>
-        <Z>0</Z>
-        <H>27</H>
-        <MaxW>142</MaxW>
-        <Color Name="ButtonTextColor" />
-        <SelColor Name="ButtonTextSelColor" />
-        <Align>Center</Align>
-        <ResizeAlign>Center</ResizeAlign>
-        <Style>Bold</Style>
-        <Font>Outline</Font>
-        <Text>TR_BUTTON_START</Text>
-      </Text>
-      <Reflection>
-        <Height>26</Height>
-        <Space>10</Space>
-      </Reflection>
-      <SelReflection>
-        <Height>26</Height>
-        <Space>10</Space>
-      </SelReflection>
-    </Button>
   </Buttons>
   <SongMenus />
   <Lyrics />
@@ -847,9 +1683,9 @@
     <NameSelection Name="NameSelection">
       <Rect>
         <X>55</X>
-        <Y>130</Y>
-        <W>820</W>
-        <H>360</H>
+        <Y>400</Y>
+        <W>1170</W>
+        <H>180</H>
         <Z>0</Z>
       </Rect>
       <SkinEmptyTile>CoverTile</SkinEmptyTile>
@@ -861,10 +1697,10 @@
       </ColorEmptyTile>
       <SkinTileSelected>PlayerSelector</SkinTileSelected>
       <Tiles>
-        <W>100</W>
-        <H>100</H>
-        <NumW>8</NumW>
-        <NumH>4</NumH>
+        <W>108</W>
+        <H>108</H>
+        <NumW>10</NumW>
+        <NumH>2</NumH>
         <SpaceW>10</SpaceW>
         <SpaceH>10</SpaceH>
         <Name>
@@ -881,8 +1717,8 @@
     <Equalizer Name="EqualizerPlayer1">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>188</Y>
+        <X>120</X>
+        <Y>200</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -897,8 +1733,8 @@
     <Equalizer Name="EqualizerPlayer2">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>255</Y>
+        <X>120</X>
+        <Y>280</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -913,8 +1749,8 @@
     <Equalizer Name="EqualizerPlayer3">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>322</Y>
+        <X>418</X>
+        <Y>200</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -929,8 +1765,8 @@
     <Equalizer Name="EqualizerPlayer4">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>389</Y>
+        <X>418</X>
+        <Y>280</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -945,8 +1781,8 @@
     <Equalizer Name="EqualizerPlayer5">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>456</Y>
+        <X>717</X>
+        <Y>200</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -961,8 +1797,8 @@
     <Equalizer Name="EqualizerPlayer6">
       <Skin/>
       <Rect>
-        <X>1015</X>
-        <Y>523</Y>
+        <X>717</X>
+        <Y>280</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -978,7 +1814,7 @@
       <Skin/>
       <Rect>
         <X>1015</X>
-        <Y>523</Y>
+        <Y>200</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>
@@ -994,7 +1830,391 @@
       <Skin/>
       <Rect>
         <X>1015</X>
-        <Y>523</Y>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer1">
+      <Skin/>
+      <Rect>
+        <X>1400</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player1"><A>0.2</A></Color>
+      <MaxColor Name="Player1"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer2">
+      <Skin/>
+      <Rect>
+        <X>1400</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player2"><A>0.2</A></Color>
+      <MaxColor Name="Player2"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer3">
+      <Skin/>
+      <Rect>
+        <X>1698</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player3"><A>0.2</A></Color>
+      <MaxColor Name="Player3"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer4">
+      <Skin/>
+      <Rect>
+        <X>1698</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player4"><A>0.2</A></Color>
+      <MaxColor Name="Player4"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer5">
+      <Skin/>
+      <Rect>
+        <X>1997</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player5"><A>0.2</A></Color>
+      <MaxColor Name="Player5"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer6">
+      <Skin/>
+      <Rect>
+        <X>1997</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer7">
+      <Skin/>
+      <Rect>
+        <X>2295</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerBPlayer8">
+      <Skin/>
+      <Rect>
+        <X>2295</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer1">
+      <Skin/>
+      <Rect>
+        <X>2680</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player1"><A>0.2</A></Color>
+      <MaxColor Name="Player1"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer2">
+      <Skin/>
+      <Rect>
+        <X>2680</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player2"><A>0.2</A></Color>
+      <MaxColor Name="Player2"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer3">
+      <Skin/>
+      <Rect>
+        <X>2978</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player3"><A>0.2</A></Color>
+      <MaxColor Name="Player3"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer4">
+      <Skin/>
+      <Rect>
+        <X>2978</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player4"><A>0.2</A></Color>
+      <MaxColor Name="Player4"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer5">
+      <Skin/>
+      <Rect>
+        <X>3277</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player5"><A>0.2</A></Color>
+      <MaxColor Name="Player5"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer6">
+      <Skin/>
+      <Rect>
+        <X>3277</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer7">
+      <Skin/>
+      <Rect>
+        <X>3575</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerCPlayer8">
+      <Skin/>
+      <Rect>
+        <X>3575</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer1">
+      <Skin/>
+      <Rect>
+        <X>3960</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player1"><A>0.2</A></Color>
+      <MaxColor Name="Player1"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer2">
+      <Skin/>
+      <Rect>
+        <X>3960</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player2"><A>0.2</A></Color>
+      <MaxColor Name="Player2"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer3">
+      <Skin/>
+      <Rect>
+        <X>4258</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player3"><A>0.2</A></Color>
+      <MaxColor Name="Player3"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer4">
+      <Skin/>
+      <Rect>
+        <X>4258</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player4"><A>0.2</A></Color>
+      <MaxColor Name="Player4"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer5">
+      <Skin/>
+      <Rect>
+        <X>4557</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player5"><A>0.2</A></Color>
+      <MaxColor Name="Player5"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer6">
+      <Skin/>
+      <Rect>
+        <X>4557</X>
+        <Y>280</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer7">
+      <Skin/>
+      <Rect>
+        <X>4855</X>
+        <Y>200</Y>
+        <W>205</W>
+        <H>37</H>
+        <Z>-3</Z>
+      </Rect>
+      <NumBars>16</NumBars>
+      <Space>2</Space>
+      <Style>Columns</Style>
+      <DrawNegative>TR_CONFIG_OFF</DrawNegative>
+      <Color Name="Player6"><A>0.2</A></Color>
+      <MaxColor Name="Player6"><A>0.4</A></MaxColor>
+    </Equalizer>
+    <Equalizer Name="EqualizerDPlayer8">
+      <Skin/>
+      <Rect>
+        <X>4855</X>
+        <Y>280</Y>
         <W>205</W>
         <H>37</H>
         <Z>-3</Z>

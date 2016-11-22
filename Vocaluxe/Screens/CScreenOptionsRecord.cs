@@ -36,7 +36,7 @@ namespace Vocaluxe.Screens
 
         private const string _SelectSlideRecordDevices = "SelectSlideRecordDevices";
 
-        private readonly string[] _SelectSlideRecordPlayer = { "SelectSlideRecordPlayer1", "SelectSlideRecordPlayer2", "SelectSlideRecordPlayer3", "SelectSlideRecordPlayer4", "SelectSlideRecordPlayer5", "SelectSlideRecordPlayer6" };
+        private readonly string[] _SelectSlideRecordPlayer = { "SelectSlideRecordPlayer1", "SelectSlideRecordPlayer2", "SelectSlideRecordPlayer3", "SelectSlideRecordPlayer4", "SelectSlideRecordPlayer5", "SelectSlideRecordPlayer6", "SelectSlideRecordPlayer7", "SelectSlideRecordPlayer8" };
 
         private const string _SelectSlideDelay = "SelectSlideDelay";
 
@@ -46,13 +46,13 @@ namespace Vocaluxe.Screens
         private const string _ButtonExit = "ButtonExit";
         private const string _ButtonDelayTest = "ButtonDelayTest";
 
-        private readonly string[] _TextPlayer = { "TextPlayer1", "TextPlayer2", "TextPlayer3", "TextPlayer4", "TextPlayer5", "TextPlayer6" };
+        private readonly string[] _TextPlayer = { "TextPlayer1", "TextPlayer2", "TextPlayer3", "TextPlayer4", "TextPlayer5", "TextPlayer6", "TextPlayer7", "TextPlayer8" };
 
-        private readonly string[] _TextDelayPlayer = { "TextDelayPlayer1", "TextDelayPlayer2", "TextDelayPlayer3", "TextDelayPlayer4", "TextDelayPlayer5", "TextDelayPlayer6" };
+        private readonly string[] _TextDelayPlayer = { "TextDelayPlayer1", "TextDelayPlayer2", "TextDelayPlayer3", "TextDelayPlayer4", "TextDelayPlayer5", "TextDelayPlayer6", "TextDelayPlayer7", "TextDelayPlayer8" };
 
-        private readonly string[] _EqualizerPlayer = { "EqualizerPlayer1", "EqualizerPlayer2", "EqualizerPlayer3", "EqualizerPlayer4", "EqualizerPlayer5", "EqualizerPlayer6" };
+        private readonly string[] _EqualizerPlayer = { "EqualizerPlayer1", "EqualizerPlayer2", "EqualizerPlayer3", "EqualizerPlayer4", "EqualizerPlayer5", "EqualizerPlayer6", "EqualizerPlayer7", "EqualizerPlayer8" };
 
-        private readonly string[] _StaticEnergyPlayer = new string[] { "StaticEnergyPlayer1", "StaticEnergyPlayer2", "StaticEnergyPlayer3", "StaticEnergyPlayer4", "StaticEnergyPlayer5", "StaticEnergyPlayer6" };
+        private readonly string[] _StaticEnergyPlayer = new string[] { "StaticEnergyPlayer1", "StaticEnergyPlayer2", "StaticEnergyPlayer3", "StaticEnergyPlayer4", "StaticEnergyPlayer5", "StaticEnergyPlayer6", "StaticEnergyPlayer7", "StaticEnergyPlayer8" };
         private float[] _ChannelEnergy;
 
         private ReadOnlyCollection<CRecordDevice> _Devices;
