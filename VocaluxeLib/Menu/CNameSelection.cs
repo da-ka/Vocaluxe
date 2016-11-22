@@ -212,28 +212,40 @@ namespace VocaluxeLib.Menu
 
         public void Draw()
         {
-            int i = 0;
-            foreach (CTile tile in _Tiles)
+            for (int mon = 0; mon < 4; mon++)
             {
-                tile.Avatar.Draw();
-                tile.Name.Draw();
+                int i = 0;
+                foreach (CTile tile in _Tiles)
+                {
+                    float temp = tile.Avatar.X;
+                    tile.Avatar.X += mon * 1280;
+                    tile.Avatar.Draw();
+                    tile.Avatar.X = temp;
+                    temp = tile.Name.X;
+                    tile.Name.X += mon * 1280;
+                    tile.Name.Draw();
+                    tile.Name.X = temp;
 
+                    if (_PlayerSelector.Visible)
+                    {
+                        //Update PlayerSelector-Coords
+                        if (_Player > -1 && _ActualSelection == i)
+                        {
+                            _PlayerSelector.X = tile.Avatar.Rect.X - 3;
+                            _PlayerSelector.Y = tile.Avatar.Rect.Y - 3;
+                        }
+                    }
+
+                    i++;
+                }
                 if (_PlayerSelector.Visible)
                 {
-                    //Update PlayerSelector-Coords
-                    if (_Player > -1 && _ActualSelection == i)
-                    {
-                        _PlayerSelector.X = tile.Avatar.Rect.X - 3;
-                        _PlayerSelector.Y = tile.Avatar.Rect.Y - 3;
-                    }
+                    //Draw PlayerSelector
+                    float temp = _PlayerSelector.X;
+                    _PlayerSelector.X += mon * 1280;
+                    _PlayerSelector.Draw();
+                    _PlayerSelector.X = temp;
                 }
-
-                i++;
-            }
-            if (_PlayerSelector.Visible)
-            {
-                //Draw PlayerSelector
-                _PlayerSelector.Draw();
             }
         }
 
