@@ -550,27 +550,29 @@ namespace VocaluxeLib.Menu.SongMenu
             float TextBGX = _TextBG.X;
             for (int mon = 0; mon < 4; mon++)
             {
+                int i = 0;
                 foreach (CStatic tile in _Tiles[mon])
                 {
                     if (tile.Selected)
                         tile.Color.A = 1f;
-                    else
+                    else if (_Tiles[mon][i].Color.A > 0)
                         tile.Color.A = 0.6f;
                     EAspect aspect = (tile.Texture != _CoverBGTexture) ? EAspect.Crop : EAspect.Stretch;
                     tile.Draw(aspect);
                 }
-
+                i = 0;
                 foreach (CStatic tilebg in _TilesBG[mon])
                 {
                     if (tilebg.Selected)
                         tilebg.Color.A = 1f;
-                    else
+                    else if (_Tiles[mon][i].Color.A > 0)
                         tilebg.Color.A = 0.3f;
                     tilebg.Draw();
+                    i++;
                 }
 
                 //highlight the text of the selected song
-                int i = 0;
+                i = 0;
                 foreach (CText text in _Artists[mon])
                 {
                     if (i < _Tiles[mon].Count && _Tiles[mon][i].Selected)
@@ -732,6 +734,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     if (i + offset < itemCount)
                     {
                         _Tiles[mon][i].Color = new SColorF(1f, 1f, 1f, 1f);
+                        _TilesBG[mon][i].Color = new SColorF(1f, 1f, 1f, 1f);
                         if (isInCategory)
                         {
                             CSong currentSong = CBase.Songs.GetVisibleSong(i + offset);
@@ -752,6 +755,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     else
                     {
                         _Tiles[mon][i].Color.A = 0;
+                        _TilesBG[mon][i].Color.A = 0;
                         _Artists[mon][i].Text = "";
                         _Titles[mon][i].Text = "";
                     }
