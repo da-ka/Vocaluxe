@@ -87,6 +87,10 @@ namespace Vocaluxe.Screens
                             CGraphics.FadeTo(EScreen.Song);
                         break;
 
+                    case Keys.P:
+                        CGraphics.FadeTo(EScreen.Profiles);
+                        break;
+
                     case Keys.C:
                         CGraphics.FadeTo(EScreen.Credits);
                         break;

@@ -216,7 +216,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 for (int i = 0; i < _ListLength; i++)
                 {
                     //Create Cover
-                    var rect = new SRectF(Rect.X + _SpaceH + (mon*1280), Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
+                    var rect = new SRectF(Rect.X + (_SpaceH/2) + (mon*1280), Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
                     var tile = new CStatic(_PartyModeID, _CoverBGTexture, _Color, rect);
                     _Tiles[mon].Add(tile);
 
@@ -226,7 +226,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     _TilesBG[mon].Add(tilebg);
 
                     //Create text
-                    var artistRect = new SRectF(MaxRect.X + _TileW +_SpaceH + _SpaceW, Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH) + (_TileH * 0.55f), _ListTextWidth, _TileH * 0.45f, Rect.Z);
+                    var artistRect = new SRectF(MaxRect.X + _TileW + (_SpaceH/2) + _SpaceW, Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH) + (_TileH * 0.55f), _ListTextWidth, _TileH * 0.45f, Rect.Z);
                     CText artist = new CText(artistRect.X + (mon * 1280), artistRect.Y, artistRect.Z,
                                            artistRect.H, artistRect.W, EAlignment.Left, EStyle.Normal,
                                            "Outline", _Artist.Color, "");
@@ -235,7 +235,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
                     _Artists[mon].Add(artist);
 
-                    var titleRect = new SRectF(MaxRect.X + _TileW + _SpaceH + _SpaceW, (Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH)), _ListTextWidth, _TileH * 0.55f, Rect.Z);
+                    var titleRect = new SRectF(MaxRect.X + _TileW + (_SpaceH / 2) + _SpaceW, (Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH)), _ListTextWidth, _TileH * 0.55f, Rect.Z);
                     CText title = new CText(titleRect.X + (mon * 1280), titleRect.Y, titleRect.Z,
                                            titleRect.H, titleRect.W, EAlignment.Left, EStyle.Bold,
                                            "Outline", _Artist.Color, "");

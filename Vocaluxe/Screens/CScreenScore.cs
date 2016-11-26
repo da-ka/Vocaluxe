@@ -346,7 +346,11 @@ namespace Vocaluxe.Screens
                                                                             _Statics[_StaticPointsBar[p, CGame.NumPlayers - 1]].H;
                 }
                 if (CProfiles.IsProfileIDValid(players[p].ProfileID))
+                {
+                    _Statics[_StaticAvatar[p, CGame.NumPlayers - 1]].Aspect = EAspect.Crop;
                     _Statics[_StaticAvatar[p, CGame.NumPlayers - 1]].Texture = CProfiles.GetAvatarTextureFromProfile(players[p].ProfileID);
+                }
+                    
             }
 
             if (CConfig.Config.Game.ScoreAnimationTime < 1)

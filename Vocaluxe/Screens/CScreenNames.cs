@@ -121,12 +121,16 @@ namespace Vocaluxe.Screens
             {
                 _OriginalPlayerAvatarTextures[i] = _Statics[_StaticPlayerAvatar[i]].Texture;
                 _Statics[_StaticPlayerAvatar[i]].Aspect = EAspect.Crop;
+                _Statics[_StaticPlayerAvatar[8+i]].Aspect = EAspect.Crop;
+                _Statics[_StaticPlayerAvatar[16+i]].Aspect = EAspect.Crop;
+                _Statics[_StaticPlayerAvatar[24+i]].Aspect = EAspect.Crop;
             }
             _AddStatic(_ChooseAvatarStatic);
         }
 
         public override bool HandleInput(SKeyEvent keyEvent)
         {
+            _NameSelections[_NameSelection].UpdateList();
             switch (keyEvent.Key)
             {
                 /*case Keys.Add:
@@ -165,6 +169,11 @@ namespace Vocaluxe.Screens
                             _SelectingFastPlayerNr = 1;
                         _NameSelections[_NameSelection].FastSelection(true, _SelectingFastPlayerNr);
                     }
+                    break;
+
+                case Keys.N:
+                case Keys.F22:
+                    CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
                     break;
             }
             //Check if selecting with keyboard is active
@@ -353,6 +362,7 @@ namespace Vocaluxe.Screens
 
         public override bool HandleMouse(SMouseEvent mouseEvent)
         {
+            //_NameSelections[_NameSelection].UpdateList();
             bool stopSelectingFast = false;
 
             if (_SelectingFast)
