@@ -1218,7 +1218,7 @@
     <Text Name="Text1">
       <X>60</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1232,7 +1232,7 @@
     <Text Name="Text2">
       <X>1340</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1246,7 +1246,7 @@
     <Text Name="Text3">
       <X>2620</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1260,7 +1260,7 @@
     <Text Name="Text4">
       <X>3900</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1274,7 +1274,7 @@
     <Text Name="TextSong">
       <X>640</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1288,7 +1288,7 @@
     <Text Name="TextSong2">
       <X>1920</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1302,7 +1302,7 @@
     <Text Name="TextSong3">
       <X>3200</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />
@@ -1316,7 +1316,7 @@
     <Text Name="TextSong4">
       <X>4480</X>
       <Y>50</Y>
-      <Z>0</Z>
+      <Z>-1</Z>
       <H>27</H>
       <MaxW>0</MaxW>
       <Color Name="StaticColor" />

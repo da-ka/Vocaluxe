@@ -222,7 +222,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
                     //Create Tile BG
                     var BGrect = new SRectF(MaxRect.X + (mon * 1280), MaxRect.Y + i * (_TileH + _SpaceH), MaxRect.W, _TileH + _SpaceH, Rect.Z+0.5f);
-                    var tilebg = new CStatic(_PartyModeID, _TileBGTexture, new SColorF(1,1,1,1), BGrect);
+                    var tilebg = new CStatic(_PartyModeID, _TileBGTexture, _Color, BGrect);
                     _TilesBG[mon].Add(tilebg);
 
                     //Create text
@@ -424,11 +424,12 @@ namespace VocaluxeLib.Menu.SongMenu
                     }
                     break;
 
-                case Keys.Left:
+                /*case Keys.Left:
                     //Check for >0 so we do not allow selection of nothing (-1)
                     if (_SelectionNr > 0 && moveAllowed)
                     {
                         _SelectionNr--;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
                     break;
@@ -437,9 +438,10 @@ namespace VocaluxeLib.Menu.SongMenu
                     if (moveAllowed)
                     {
                         _SelectionNr++;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
-                    break;
+                    break;*/
 
                 case Keys.Up:
                     if (keyEvent.ModShift)
@@ -453,6 +455,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     else if (_SelectionNr >= 1 && moveAllowed)
                     {
                         _SelectionNr -= 1;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
                     break;
@@ -469,6 +472,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     else if (moveAllowed)
                     {
                         _SelectionNr += 1;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
                     break;
@@ -548,6 +552,7 @@ namespace VocaluxeLib.Menu.SongMenu
         {
             float CoverBigX = _CoverBig.X;
             float TextBGX = _TextBG.X;
+            _UpdateList(true);
             for (int mon = 0; mon < 4; mon++)
             {
                 int i = 0;
@@ -555,18 +560,15 @@ namespace VocaluxeLib.Menu.SongMenu
                 {
                     if (tile.Selected)
                         tile.Color.A = 1f;
-                    else if (_Tiles[mon][i].Color.A > 0)
-                        tile.Color.A = 0.6f;
                     EAspect aspect = (tile.Texture != _CoverBGTexture) ? EAspect.Crop : EAspect.Stretch;
                     tile.Draw(aspect);
                 }
+
                 i = 0;
                 foreach (CStatic tilebg in _TilesBG[mon])
                 {
                     if (tilebg.Selected)
                         tilebg.Color.A = 1f;
-                    else if (_Tiles[mon][i].Color.A > 0)
-                        tilebg.Color.A = 0.3f;
                     tilebg.Draw();
                     i++;
                 }
@@ -733,8 +735,9 @@ namespace VocaluxeLib.Menu.SongMenu
                 {
                     if (i + offset < itemCount)
                     {
-                        _Tiles[mon][i].Color = new SColorF(1f, 1f, 1f, 1f);
-                        _TilesBG[mon][i].Color = new SColorF(1f, 1f, 1f, 1f);
+                        _Tiles[mon][i].Color = new SColorF(1f, 1f, 1f, 0.6f);
+                        _TilesBG[mon][i].Color = new SColorF(1f, 1f, 1f, 0.3f);
+                        
                         if (isInCategory)
                         {
                             CSong currentSong = CBase.Songs.GetVisibleSong(i + offset);
