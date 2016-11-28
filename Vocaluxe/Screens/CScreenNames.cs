@@ -131,6 +131,10 @@ namespace Vocaluxe.Screens
         public override bool HandleInput(SKeyEvent keyEvent)
         {
             _NameSelections[_NameSelection].UpdateList();
+            for (int i = 1; i < 5; i++)
+            {
+                _Statics["Instructions" + i].Visible = true;
+            }
             switch (keyEvent.Key)
             {
                 /*case Keys.Add:
@@ -173,6 +177,10 @@ namespace Vocaluxe.Screens
 
                 case Keys.N:
                 case Keys.F22:
+                    for(int i = 1; i < 5; i++)
+                    {
+                        _Statics["Instructions" + i].Visible = false;
+                    }
                     CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
                     break;
             }

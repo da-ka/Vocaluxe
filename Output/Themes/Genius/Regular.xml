@@ -281,6 +281,8 @@
     <PlayerSelBG>PlayerSelBG.png</PlayerSelBG>
     <PressStart>presstart.png</PressStart>
     <Logo>Logo.png</Logo>
+    <IAB>iab.png</IAB>
+    <INames>inames.png</INames>
   </Skins>
   <Videos>
     <BG_Video>BG_Video.mp4</BG_Video>

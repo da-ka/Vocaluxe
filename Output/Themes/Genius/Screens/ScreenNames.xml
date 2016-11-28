@@ -14,6 +14,50 @@
     </Background>
   </Backgrounds>
   <Statics>
+    <Static Name="Instructions1">
+      <Skin>INames</Skin>
+      <Color Name="Visible" />
+      <Rect>
+        <X>0</X>
+        <Y>660</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
+    <Static Name="Instructions2">
+      <Skin>INames</Skin>
+      <Color Name="Visible" />
+      <Rect>
+        <X>1280</X>
+        <Y>660</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
+    <Static Name="Instructions3">
+      <Skin>INames</Skin>
+      <Color Name="Visible" />
+      <Rect>
+        <X>2560</X>
+        <Y>660</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
+    <Static Name="Instructions4">
+      <Skin>INames</Skin>
+      <Color Name="Visible" />
+      <Rect>
+        <X>3840</X>
+        <Y>660</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
     <Static Name="Static1">
       <Skin />
       <Color Name="BackgroundColorAlpha" />
