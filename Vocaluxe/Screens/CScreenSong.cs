@@ -76,6 +76,8 @@ namespace Vocaluxe.Screens
 
         private string _SearchText = String.Empty;
         private bool _SearchActive;
+        private bool _CursorBlink;
+        private static Timer _Timer;
 
         private readonly List<string> _ButtonsJoker = new List<string>();
         private readonly List<string> _TextsPlayer = new List<string>();
@@ -106,6 +108,11 @@ namespace Vocaluxe.Screens
         public override void Init()
         {
             base.Init();
+
+            _Timer = new Timer();
+            _Timer.Tick += new EventHandler(_TimerEvent);
+            _Timer.Interval = 400;
+            _Timer.Start();
 
             _ButtonsJoker.Clear();
             for (int i = 0; i < CSettings.MaxNumPlayer; i++)
@@ -144,6 +151,11 @@ namespace Vocaluxe.Screens
             _ThemePlaylists = new string[] {_PlaylistName};
 
             _DragAndDropCover = GetNewStatic();
+        }
+
+        private void _TimerEvent(Object sender, EventArgs e)
+        {
+            _CursorBlink = !_CursorBlink;
         }
 
         protected override void _OnSongMenuChanged()
@@ -701,18 +713,36 @@ namespace Vocaluxe.Screens
             _Texts[_TextSearchBar].Text = _SearchText;
             if (_SearchActive)
             {
-                _Texts[_TextSearchBar].Text += '|';
-
+                if(_CursorBlink)
+                    _Texts[_TextSearchBar].Text += "_";
+                else
+                    _Texts[_TextSearchBar].Text += " ";
+                
                 _Texts[_TextSearchBar].Visible = true;
                 _Texts[_TextSearchBarTitle].Visible = true;
                 _Statics[_StaticSearchBar].Visible = true;
+                _Texts["TextSearchBar1"].Visible = true;
+                _Statics["StaticSearchBar1"].Visible = true;
+                _Texts["TextSearchBar2"].Visible = true;
+                _Statics["StaticSearchBar1"].Visible = true;
+                _Texts["TextSearchBar3"].Visible = true;
+                _Statics["StaticSearchBar1"].Visible = true;
             }
             else
             {
                 _Texts[_TextSearchBar].Visible = false;
                 _Texts[_TextSearchBarTitle].Visible = false;
                 _Statics[_StaticSearchBar].Visible = false;
+                _Texts["TextSearchBar1"].Visible = false;
+                _Statics["StaticSearchBar1"].Visible = false;
+                _Texts["TextSearchBar2"].Visible = false;
+                _Statics["StaticSearchBar1"].Visible = false;
+                _Texts["TextSearchBar3"].Visible = false;
+                _Statics["StaticSearchBar1"].Visible = false;
             }
+            _Texts["TextSearchBar1"].Text = _Texts[_TextSearchBar].Text;
+            _Texts["TextSearchBar2"].Text = _Texts[_TextSearchBar].Text;
+            _Texts["TextSearchBar3"].Text = _Texts[_TextSearchBar].Text;
 
             _UpdatePartyModeOptions();
 
