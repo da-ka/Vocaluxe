@@ -100,7 +100,7 @@ namespace Vocaluxe.Lib.Draw
 
         public COpenGL()
         {
-            _Form = new CFormHook {ClientSize = new Size(CConfig.Config.Graphics.ScreenW, CConfig.Config.Graphics.ScreenH)};
+            _Form = new CFormHook {ClientSize = new Size(CConfig.Config.Graphics.ScreenW * CConfig.Config.Graphics.NumScreens, CConfig.Config.Graphics.ScreenH)};
             //OpenGL needs that here but D3D needs it in the constructor, so do NOT unify!
 
             //Check AA Mode
@@ -285,7 +285,7 @@ namespace Vocaluxe.Lib.Draw
         {
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            GL.Ortho(-CConfig.Config.Graphics.BorderLeft, CConfig.Config.Graphics.BorderRight + CSettings.RenderW, CConfig.Config.Graphics.BorderBottom + CSettings.RenderH,
+            GL.Ortho(-CConfig.Config.Graphics.BorderLeft, CConfig.Config.Graphics.BorderRight + CSettings.RenderW * CConfig.Config.Graphics.NumScreens, CConfig.Config.Graphics.BorderBottom + CSettings.RenderH,
                      -CConfig.Config.Graphics.BorderTop, CSettings.ZNear, CSettings.ZFar);
         }
 
