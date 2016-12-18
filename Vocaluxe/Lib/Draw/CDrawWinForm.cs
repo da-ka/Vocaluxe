@@ -308,7 +308,7 @@ namespace Vocaluxe.Lib.Draw
             _Backbuffer.Save(file, ImageFormat.Png);
         }
 
-        public void DrawRect(SColorF color, SRectF rect) {}
+        public void DrawRect(SColorF color, SRectF rect, bool allMonitors = true) {}
 
         public void DrawRectReflection(SColorF color, SRectF rect, float space, float height) {}
 

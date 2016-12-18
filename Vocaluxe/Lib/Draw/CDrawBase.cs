@@ -226,7 +226,6 @@ namespace Vocaluxe.Lib.Draw
                 return;
             SDrawCoords dc;
             TTextureType texture;
-            int loops;
             if (!_GetTexture(textureRef, out texture))
                 return;
             if (allMonitors)

@@ -40,6 +40,7 @@ namespace VocaluxeLib.Menu
         [XmlElement("Font")] public string FontFamily;
         public string Text;
         public SReflection? Reflection;
+        public bool? AllMonitors;
     }
 
     public sealed class CText : CMenuElementBase, IMenuElement, IThemeable, IFontObserver
@@ -162,6 +163,8 @@ namespace VocaluxeLib.Menu
         private float _ReflectionSpace;
         private float _ReflectionHeight;
 
+        public bool AllMonitors = true;
+
         private string _Text = String.Empty;
         public string Text
         {
@@ -249,6 +252,7 @@ namespace VocaluxeLib.Menu
             SelColor = text.SelColor;
             _ReflectionSpace = text._ReflectionSpace;
             _ReflectionHeight = text._ReflectionHeight;
+            AllMonitors = text.AllMonitors;
 
             Text = text.Text;
             Visible = text.Visible;
@@ -383,7 +387,7 @@ namespace VocaluxeLib.Menu
             SColorF currentColor = (Selected) ? SelColor : Color;
             var color = new SColorF(currentColor.R, currentColor.G, currentColor.B, currentColor.A * Alpha);
 
-            CBase.Fonts.DrawText(_Text, CalculatedFont, Rect.X, Rect.Y, Z, color);
+            CBase.Fonts.DrawText(_Text, CalculatedFont, Rect.X, Rect.Y, Z, color, AllMonitors);
 
             if (_ReflectionHeight > 0)
                 CBase.Fonts.DrawTextReflection(_Text, CalculatedFont, Rect.X, Rect.Y, Z, color, _ReflectionSpace, _ReflectionHeight);

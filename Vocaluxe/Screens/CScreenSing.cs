@@ -891,11 +891,15 @@ namespace Vocaluxe.Screens
                 for (int player = 0; player < CSettings.MaxNumPlayer && player <= numplayer; player++)
                 {
                     bool isIvisible = numplayer + 1 == CGame.NumPlayers && player <= CGame.NumPlayers;
+                    _Texts[_TextScores[player, numplayer]].AllMonitors = false;
                     _Texts[_TextScores[player, numplayer]].Visible = isIvisible;
+                    _Texts[_TextNames[player, numplayer]].AllMonitors = false;
                     _Texts[_TextNames[player, numplayer]].Visible = isIvisible &&
                                                                     (CConfig.Config.Theme.PlayerInfo == EPlayerInfo.TR_CONFIG_PLAYERINFO_BOTH ||
                                                                      CConfig.Config.Theme.PlayerInfo == EPlayerInfo.TR_CONFIG_PLAYERINFO_NAME);
+                    _Statics[_StaticScores[player, numplayer]].AllMonitors = false;
                     _Statics[_StaticScores[player, numplayer]].Visible = isIvisible;
+                    _Statics[_StaticAvatars[player, numplayer]].AllMonitors = false;
                     _Statics[_StaticAvatars[player, numplayer]].Visible = isIvisible &&
                                                                           (CConfig.Config.Theme.PlayerInfo == EPlayerInfo.TR_CONFIG_PLAYERINFO_BOTH ||
                                                                            CConfig.Config.Theme.PlayerInfo == EPlayerInfo.TR_CONFIG_PLAYERINFO_AVATAR);

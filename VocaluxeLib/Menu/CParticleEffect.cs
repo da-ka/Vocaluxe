@@ -35,6 +35,7 @@ namespace VocaluxeLib.Menu
         public EParticleType Type;
         public float Size;
         public int MaxNumber;
+        public bool? AllMonitors;
     }
 
     public enum EParticleType
@@ -59,6 +60,8 @@ namespace VocaluxeLib.Menu
         private float _NextSpawnTime;
 
         public float Alpha = 1f;
+
+        public bool AllMonitors = true;
 
         public string GetThemeName()
         {
@@ -301,7 +304,7 @@ namespace VocaluxeLib.Menu
             foreach (CParticle star in _Stars)
             {
                 star.Alpha2 = Alpha;
-                star.Draw();
+                star.Draw(AllMonitors);
             }
         }
 

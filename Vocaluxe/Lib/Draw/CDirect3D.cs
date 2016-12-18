@@ -572,7 +572,7 @@ namespace Vocaluxe.Lib.Draw
         /// </summary>
         /// <param name="color">The color in which the rectangle will be drawn in</param>
         /// <param name="rect">The coordinates in a SRectF struct</param>
-        public void DrawRect(SColorF color, SRectF rect)
+        public void DrawRect(SColorF color, SRectF rect, bool allMonitors = true)
         {
             DrawTexture(_BlankTexture, rect, color);
         }

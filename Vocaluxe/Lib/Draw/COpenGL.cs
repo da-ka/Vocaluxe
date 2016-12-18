@@ -338,27 +338,36 @@ namespace Vocaluxe.Lib.Draw
             }
         }
 
-        public void DrawRect(SColorF color, SRectF rect)
+        public void DrawRect(SColorF color, SRectF rect, bool allMonitors = true)
         {
-            GL.Enable(EnableCap.Blend);
-            GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
-
-            GL.Begin(PrimitiveType.Quads);
-            GL.MatrixMode(MatrixMode.Color);
-            GL.PushMatrix();
-            if (Math.Abs(rect.Rotation) > 0.001)
+            int loops = 1;
+            if (allMonitors)
+                loops = CConfig.Config.Graphics.NumScreens;
+            for (int i = 0; i < loops; i++)
             {
-                GL.Translate(0.5f, 0.5f, 0);
-                GL.Rotate(-rect.Rotation, 0f, 0f, 1f);
-                GL.Translate(-0.5f, -0.5f, 0);
+                SRectF newrect = rect;
+                newrect.X += CSettings.RenderW * i;
+
+                GL.Enable(EnableCap.Blend);
+                GL.Color4(color.R, color.G, color.B, color.A * CGraphics.GlobalAlpha);
+
+                GL.Begin(PrimitiveType.Quads);
+                GL.MatrixMode(MatrixMode.Color);
+                GL.PushMatrix();
+                if (Math.Abs(newrect.Rotation) > 0.001)
+                {
+                    GL.Translate(0.5f, 0.5f, 0);
+                    GL.Rotate(-newrect.Rotation, 0f, 0f, 1f);
+                    GL.Translate(-0.5f, -0.5f, 0);
+                }
+                GL.Vertex3(newrect.X, newrect.Y, newrect.Z + CGraphics.ZOffset);
+                GL.Vertex3(newrect.X, newrect.Y + newrect.H, newrect.Z + CGraphics.ZOffset);
+                GL.Vertex3(newrect.X + newrect.W, newrect.Y + newrect.H, newrect.Z + CGraphics.ZOffset);
+                GL.Vertex3(newrect.X + newrect.W, newrect.Y, newrect.Z + CGraphics.ZOffset);
+                GL.End();
+                GL.PopMatrix();
+                GL.Disable(EnableCap.Blend);
             }
-            GL.Vertex3(rect.X, rect.Y, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X + rect.W, rect.Y + rect.H, rect.Z + CGraphics.ZOffset);
-            GL.Vertex3(rect.X + rect.W, rect.Y, rect.Z + CGraphics.ZOffset);
-            GL.End();
-            GL.PopMatrix();
-            GL.Disable(EnableCap.Blend);
         }
 
         public void DrawRectReflection(SColorF color, SRectF rect, float space, float height)
