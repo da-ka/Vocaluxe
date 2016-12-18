@@ -583,7 +583,7 @@ namespace Vocaluxe.Screens
             }
 
             //Attention: This needs to be done after player-assignment!
-            _SingNotes[_SingBars].Init(CGame.NumPlayers);
+            _SingNotes[_SingBars].Init(CGame.NumPlayers, CConfig.Config.Graphics.NumScreens);
 
             _DynamicLyricsTop = false;
             _DynamicLyricsBottom = false;

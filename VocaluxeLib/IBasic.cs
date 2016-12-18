@@ -83,6 +83,7 @@ namespace VocaluxeLib
 
         int GetNumNoteLines();
         int GetMaxNumPlayer();
+        int GetMaxNumScreens();
 
         float GetDefaultMedleyFadeInTime();
         float GetDefaultMedleyFadeOutTime();

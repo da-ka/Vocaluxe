@@ -1703,7 +1703,7 @@
       <SkinToneHelper>ToneHelper</SkinToneHelper>
       <SkinPerfectNoteStart>PerfectNoteStar</SkinPerfectNoteStart>
       <BarPositions>
-        <Position Name="P1N1">
+      <Position Name="S1P1N1">
           <Rect>
             <X>35</X>
             <Y>350</Y>
@@ -1712,7 +1712,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P1N2">
+        <Position Name="S1P1N2">
           <Rect>
             <X>35</X>
             <Y>150</Y>
@@ -1721,7 +1721,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P2N2">
+        <Position Name="S1P2N2">
           <Rect>
             <X>35</X>
             <Y>350</Y>
@@ -1730,7 +1730,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P1N3">
+        <Position Name="S1P1N3">
           <Rect>
             <X>35</X>
             <Y>105</Y>
@@ -1739,7 +1739,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P2N3">
+        <Position Name="S1P2N3">
           <Rect>
             <X>35</X>
             <Y>268</Y>
@@ -1748,7 +1748,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P3N3">
+        <Position Name="S1P3N3">
           <Rect>
             <X>35</X>
             <Y>436</Y>
@@ -1757,7 +1757,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P1N4">
+        <Position Name="S1P1N4">
           <Rect>
             <X>35</X>
             <Y>150</Y>
@@ -1766,7 +1766,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P2N4">
+        <Position Name="S1P2N4">
           <Rect>
             <X>35</X>
             <Y>350</Y>
@@ -1775,7 +1775,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P3N4">
+        <Position Name="S1P3N4">
           <Rect>
             <X>678</X>
             <Y>150</Y>
@@ -1784,7 +1784,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P4N4">
+        <Position Name="S1P4N4">
           <Rect>
             <X>678</X>
             <Y>350</Y>
@@ -1793,7 +1793,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P1N5">
+        <Position Name="S1P1N5">
           <Rect>
             <X>35</X>
             <Y>105</Y>
@@ -1802,7 +1802,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P2N5">
+        <Position Name="S1P2N5">
           <Rect>
             <X>35</X>
             <Y>268</Y>
@@ -1811,7 +1811,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P3N5">
+        <Position Name="S1P3N5">
           <Rect>
             <X>35</X>
             <Y>436</Y>
@@ -1820,7 +1820,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P4N5">
+        <Position Name="S1P4N5">
           <Rect>
             <X>678</X>
             <Y>150</Y>
@@ -1829,7 +1829,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P5N5">
+        <Position Name="S1P5N5">
           <Rect>
             <X>678</X>
             <Y>350</Y>
@@ -1838,7 +1838,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P1N6">
+        <Position Name="S1P1N6">
           <Rect>
             <X>35</X>
             <Y>105</Y>
@@ -1847,7 +1847,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P2N6">
+        <Position Name="S1P2N6">
           <Rect>
             <X>35</X>
             <Y>268</Y>
@@ -1856,7 +1856,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P3N6">
+        <Position Name="S1P3N6">
           <Rect>
             <X>35</X>
             <Y>436</Y>
@@ -1865,7 +1865,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P4N6">
+        <Position Name="S1P4N6">
           <Rect>
             <X>678</X>
             <Y>105</Y>
@@ -1874,7 +1874,7 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P5N6">
+        <Position Name="S1P5N6">
           <Rect>
             <X>678</X>
             <Y>268</Y>
@@ -1883,9 +1883,954 @@
             <Z>-1.5</Z>
           </Rect>
         </Position>
-        <Position Name="P6N6">
+        <Position Name="S1P6N6">
           <Rect>
             <X>678</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N1">
+          <Rect>
+            <X>1315</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>200</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N2">
+          <Rect>
+            <X>1315</X>
+            <Y>150</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P2N2">
+          <Rect>
+            <X>1315</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N3">
+          <Rect>
+            <X>1315</X>
+            <Y>105</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P2N3">
+          <Rect>
+            <X>1315</X>
+            <Y>268</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P3N3">
+          <Rect>
+            <X>1315</X>
+            <Y>436</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N4">
+          <Rect>
+            <X>1315</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P2N4">
+          <Rect>
+            <X>1315</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P3N4">
+          <Rect>
+            <X>1958</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P4N4">
+          <Rect>
+            <X>1958</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N5">
+          <Rect>
+            <X>1315</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P2N5">
+          <Rect>
+            <X>1315</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P3N5">
+          <Rect>
+            <X>1315</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P4N5">
+          <Rect>
+            <X>1958</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P5N5">
+          <Rect>
+            <X>1958</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P1N6">
+          <Rect>
+            <X>1315</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P2N6">
+          <Rect>
+            <X>1315</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P3N6">
+          <Rect>
+            <X>1315</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P4N6">
+          <Rect>
+            <X>1958</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P5N6">
+          <Rect>
+            <X>1958</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S2P6N6">
+          <Rect>
+            <X>1958</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N1">
+          <Rect>
+            <X>2595</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>200</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N2">
+          <Rect>
+            <X>2595</X>
+            <Y>150</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P2N2">
+          <Rect>
+            <X>2595</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N3">
+          <Rect>
+            <X>2595</X>
+            <Y>105</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P2N3">
+          <Rect>
+            <X>2595</X>
+            <Y>268</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P3N3">
+          <Rect>
+            <X>2595</X>
+            <Y>436</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N4">
+          <Rect>
+            <X>2595</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P2N4">
+          <Rect>
+            <X>2595</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P3N4">
+          <Rect>
+            <X>3238</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P4N4">
+          <Rect>
+            <X>3238</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N5">
+          <Rect>
+            <X>2595</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P2N5">
+          <Rect>
+            <X>2595</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P3N5">
+          <Rect>
+            <X>2595</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P4N5">
+          <Rect>
+            <X>3238</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P5N5">
+          <Rect>
+            <X>3238</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P1N6">
+          <Rect>
+            <X>2595</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P2N6">
+          <Rect>
+            <X>2595</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P3N6">
+          <Rect>
+            <X>2595</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P4N6">
+          <Rect>
+            <X>3238</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P5N6">
+          <Rect>
+            <X>3238</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S3P6N6">
+          <Rect>
+            <X>3238</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N1">
+          <Rect>
+            <X>3875</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>200</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N2">
+          <Rect>
+            <X>3875</X>
+            <Y>150</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P2N2">
+          <Rect>
+            <X>3875</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N3">
+          <Rect>
+            <X>3875</X>
+            <Y>105</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P2N3">
+          <Rect>
+            <X>3875</X>
+            <Y>268</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P3N3">
+          <Rect>
+            <X>3875</X>
+            <Y>436</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N4">
+          <Rect>
+            <X>3875</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P2N4">
+          <Rect>
+            <X>3875</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P3N4">
+          <Rect>
+            <X>4518</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P4N4">
+          <Rect>
+            <X>4518</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N5">
+          <Rect>
+            <X>3875</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P2N5">
+          <Rect>
+            <X>3875</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P3N5">
+          <Rect>
+            <X>3875</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P4N5">
+          <Rect>
+            <X>4518</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P5N5">
+          <Rect>
+            <X>4518</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P1N6">
+          <Rect>
+            <X>3875</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P2N6">
+          <Rect>
+            <X>3875</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P3N6">
+          <Rect>
+            <X>3875</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P4N6">
+          <Rect>
+            <X>4518</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P5N6">
+          <Rect>
+            <X>4518</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S4P6N6">
+          <Rect>
+            <X>4518</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N1">
+          <Rect>
+            <X>5155</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>200</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N2">
+          <Rect>
+            <X>5155</X>
+            <Y>150</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P2N2">
+          <Rect>
+            <X>5155</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N3">
+          <Rect>
+            <X>5155</X>
+            <Y>105</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P2N3">
+          <Rect>
+            <X>5155</X>
+            <Y>268</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P3N3">
+          <Rect>
+            <X>5155</X>
+            <Y>436</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N4">
+          <Rect>
+            <X>5155</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P2N4">
+          <Rect>
+            <X>5155</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P3N4">
+          <Rect>
+            <X>5798</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P4N4">
+          <Rect>
+            <X>5798</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N5">
+          <Rect>
+            <X>5155</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P2N5">
+          <Rect>
+            <X>5155</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P3N5">
+          <Rect>
+            <X>5155</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P4N5">
+          <Rect>
+            <X>5798</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P5N5">
+          <Rect>
+            <X>5798</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P1N6">
+          <Rect>
+            <X>5155</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P2N6">
+          <Rect>
+            <X>5155</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P3N6">
+          <Rect>
+            <X>5155</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P4N6">
+          <Rect>
+            <X>5798</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P5N6">
+          <Rect>
+            <X>5798</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S5P6N6">
+          <Rect>
+            <X>5798</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N1">
+          <Rect>
+            <X>6435</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>200</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N2">
+          <Rect>
+            <X>6435</X>
+            <Y>150</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P2N2">
+          <Rect>
+            <X>6435</X>
+            <Y>350</Y>
+            <W>1210</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N3">
+          <Rect>
+            <X>6435</X>
+            <Y>105</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P2N3">
+          <Rect>
+            <X>6435</X>
+            <Y>268</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P3N3">
+          <Rect>
+            <X>6435</X>
+            <Y>436</Y>
+            <W>1210</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N4">
+          <Rect>
+            <X>6435</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P2N4">
+          <Rect>
+            <X>6435</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P3N4">
+          <Rect>
+            <X>7078</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P4N4">
+          <Rect>
+            <X>7078</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N5">
+          <Rect>
+            <X>6435</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P2N5">
+          <Rect>
+            <X>6435</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P3N5">
+          <Rect>
+            <X>6435</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P4N5">
+          <Rect>
+            <X>7078</X>
+            <Y>150</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P5N5">
+          <Rect>
+            <X>7078</X>
+            <Y>350</Y>
+            <W>578</W>
+            <H>175</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P1N6">
+          <Rect>
+            <X>6435</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P2N6">
+          <Rect>
+            <X>6435</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P3N6">
+          <Rect>
+            <X>6435</X>
+            <Y>436</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P4N6">
+          <Rect>
+            <X>7078</X>
+            <Y>105</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P5N6">
+          <Rect>
+            <X>7078</X>
+            <Y>268</Y>
+            <W>578</W>
+            <H>150</H>
+            <Z>-1.5</Z>
+          </Rect>
+        </Position>
+        <Position Name="S6P6N6">
+          <Rect>
+            <X>7078</X>
             <Y>436</Y>
             <W>578</W>
             <H>150</H>

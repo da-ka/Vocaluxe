@@ -234,6 +234,11 @@ namespace Vocaluxe.Base
             return CSettings.MaxNumPlayer;
         }
 
+        public int GetMaxNumScreens()
+        {
+            return CSettings.MaxNumScreens;
+        }
+
         public float GetDefaultMedleyFadeInTime()
         {
             return CSettings.DefaultMedleyFadeInTime;
