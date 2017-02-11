@@ -44,6 +44,18 @@
       <B>0.000</B>
       <A>1.000</A>
     </Player6>
+    <NoteBaseColor>
+      <R>0.980</R>
+      <G>0.980</G>
+      <B>0.980</B>
+      <A>1.000</A>
+    </NoteBaseColor>
+    <NoteLinesColor>
+      <R>0.980</R>
+      <G>0.980</G>
+      <B>0.980</B>
+      <A>0.500</A>
+    </NoteLinesColor>
     <BackgroundColor>
       <R>0.000</R>
       <G>0.000</G>
@@ -54,7 +66,7 @@
       <R>0.000</R>
       <G>0.000</G>
       <B>0.000</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </BackgroundColorAlpha>
     <StaticColor>
       <R>0.980</R>
@@ -66,7 +78,7 @@
       <R>0.980</R>
       <G>0.980</G>
       <B>0.980</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </StaticColorAlpha>
     <StaticWarningColor>
       <R>0.882</R>
@@ -108,7 +120,7 @@
       <R>0.890</R>
       <G>0.890</G>
       <B>0.890</B>
-      <A>0.600</A>
+      <A>0.750</A>
     </SelectSlideColorAlpha>
     <SelectSlideSelColor>
       <R>0.890</R>
@@ -138,7 +150,7 @@
       <R>0.980</R>
       <G>0.980</G>
       <B>0.980</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </TextColorAlpha>
     <TextSelColor>
       <R>0.980</R>
@@ -198,25 +210,25 @@
       <R>0.600</R>
       <G>0.600</G>
       <B>0.600</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </LyricSubColor>
     <LyricHelper>
       <R>0.000</R>
       <G>0.580</G>
       <B>0.792</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </LyricHelper>
     <LyricHelperDuet>
       <R>0.882</R>
       <G>0.149</G>
       <B>0.110</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </LyricHelperDuet>
     <TimeBar>
       <R>0.950</R>
       <G>0.950</G>
       <B>0.950</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </TimeBar>
     <TimeBarSentence>
       <R>0.950</R>
@@ -240,13 +252,13 @@
       <R>1.000</R>
       <G>1.000</G>
       <B>1.000</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </StaticAvatarColor>
     <TextNameColor>
       <R>1.000</R>
       <G>1.000</G>
       <B>1.000</B>
-      <A>0.500</A>
+      <A>0.750</A>
     </TextNameColor>
   </Colors>
   <Skins>
@@ -268,6 +280,9 @@
     <NoteLeft>NotesLeft.png</NoteLeft>
     <NoteMiddle>NotesMid.png</NoteMiddle>
     <NoteRight>NotesRight.png</NoteRight>
+    <NoteFillLeft>notesFillLeft.png</NoteFillLeft>
+    <NoteFillMiddle>notesFillMid.png</NoteFillMiddle>
+    <NoteFillRight>notesFillRight.png</NoteFillRight>
     <NoteBackgroundLeft>NotesBGLeft.png</NoteBackgroundLeft>
     <NoteBackgroundMiddle>NotesBGMid.png</NoteBackgroundMiddle>
     <NoteBackgroundRight>NotesBGRight.png</NoteBackgroundRight>
