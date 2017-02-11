@@ -54,11 +54,11 @@ namespace Vocaluxe.Base
         public static EProgramState ProgramState = EProgramState.Start;
 
         //Adjusting of programName and version now in the assembly config.
-        private static readonly Dictionary<string,string> _CodeNames = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> _CodeNames = new Dictionary<string, string>()
         {
             {"0.3.", "Shining Heaven"},
             {"0.4.", "Blue Sunrise"}
-        }; 
+        };
 
         private static string _ProgramCodeName
         {
@@ -97,6 +97,7 @@ namespace Vocaluxe.Base
         public const int DatabaseCoverVersion = 1;
         public const int DatabaseCreditsRessourcesVersion = 1;
 
+        public const int MaxNumScreens = 6;
         public const int RenderW = 1280;
         public const int RenderH = 720;
         public static readonly SRectF RenderRect = new SRectF(0, 0, RenderW, RenderH, 0);
@@ -175,7 +176,8 @@ namespace Vocaluxe.Base
         public const int MouseMoveDiffMinActive = 3;
         public const int MouseMoveDiffMinInactive = 15;
 
-        public const int MaxNumPlayer = 6;
+        public const int MaxScreenPlayer = 6;
+        public const int MaxNumPlayer = MaxScreenPlayer * MaxNumScreens;
         public const int MaxScore = 10000;
         public const int LinebonusScore = 1000;
         public const int MinScoreForDB = 100;
@@ -233,7 +235,7 @@ namespace Vocaluxe.Base
         public static string GetFullVersionText()
         {
             string version = ProgramName;
-            
+
             if (_ProgramCodeName != "")
                 version += " \"" + _ProgramCodeName + "\"";
 
@@ -252,7 +254,7 @@ namespace Vocaluxe.Base
 
         public static float GetRenderAspect()
         {
-            return RenderW / (float)RenderH;
+            return RenderW * CConfig.GetNumScreens() / (float)RenderH;
         }
 
         public static void CreateFolders()

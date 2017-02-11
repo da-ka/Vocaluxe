@@ -26,11 +26,13 @@ namespace VocaluxeLib.Menu
     [XmlType("Static")]
     public struct SThemeStatic
     {
-        [XmlAttribute(AttributeName = "Name")] public string Name;
+        [XmlAttribute(AttributeName = "Name")]
+        public string Name;
         public string Skin;
         public SThemeColor Color;
         public SRectF Rect;
         public SReflection? Reflection;
+        public bool? AllMonitors;
     }
 
     public sealed class CStatic : CMenuElementBase, IMenuElement, IThemeable
@@ -65,6 +67,8 @@ namespace VocaluxeLib.Menu
         public float ReflectionSpace;
         public float ReflectionHeight;
 
+        public bool AllMonitors = true;
+
         public float Alpha = 1;
 
         public EAspect Aspect = EAspect.Stretch;
@@ -84,6 +88,7 @@ namespace VocaluxeLib.Menu
             Reflection = s.Reflection;
             ReflectionSpace = s.ReflectionHeight;
             ReflectionHeight = s.ReflectionSpace;
+            AllMonitors = s.AllMonitors;
 
             Alpha = s.Alpha;
             Visible = s.Visible;
@@ -175,9 +180,9 @@ namespace VocaluxeLib.Menu
             {
                 if (texture != null)
                 {
-                    CBase.Drawing.DrawTexture(texture, rect, color, bounds);
+                    CBase.Drawing.DrawTexture(texture, rect, color, bounds, false, AllMonitors);
                     if (Reflection)
-                        CBase.Drawing.DrawTextureReflection(texture, rect, color, bounds, ReflectionSpace, ReflectionHeight);
+                        CBase.Drawing.DrawTextureReflection(texture, rect, color, bounds, ReflectionSpace, ReflectionHeight, AllMonitors);
                 }
                 else
                     CBase.Drawing.DrawRect(color, rect);
@@ -187,7 +192,7 @@ namespace VocaluxeLib.Menu
                 CBase.Drawing.DrawRect(new SColorF(1f, 1f, 1f, 0.5f), rect);
         }
 
-        public void UnloadSkin() {}
+        public void UnloadSkin() { }
 
         public void LoadSkin()
         {
