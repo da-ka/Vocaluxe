@@ -1,6 +1,12 @@
 ScreenSong
 
 ++++++++++
+Version 7:
+
+Add:
+<SongMenuDetails> to <SongMenu>
+
+++++++++++
 Version 6:
 
 Add:

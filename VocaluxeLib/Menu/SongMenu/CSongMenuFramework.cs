@@ -39,9 +39,43 @@ namespace VocaluxeLib.Menu.SongMenu
 
         //public SThemeSongMenuBook songMenuBook;
         //public SThemeSongMenuDreidel songMenuDreidel;
+        public SThemeSongMenuDetails SongMenuDetails;
         public SThemeSongMenuList SongMenuList;
         public SThemeSongMenuTileBoard SongMenuTileBoard;
     }
+
+    public struct SThemeSongMenuDetails
+    {
+        /// <summary>
+        ///     Number of visible songs in list
+        /// </summary>
+        public int ListLength;
+
+        /// <summary>
+        ///     Space between tiles horizontal
+        /// </summary>
+        public float SpaceW;
+
+        /// <summary>
+        ///     Space between tiles vertical
+        /// </summary>
+        public float SpaceH;
+
+        public SRectF TileRect;
+        public SRectF TileRectSmall;
+
+        public SThemeText TextArtist;
+        public SThemeText TextTitle;
+        public SThemeText TextSongLength;
+
+        public SThemeStatic StaticCoverBig;
+        public SThemeStatic StaticTextBG;
+        public SThemeStatic StaticDuetIcon;
+        public SThemeStatic StaticVideoIcon;
+        public SThemeStatic StaticMedleyCalcIcon;
+        public SThemeStatic StaticMedleyTagIcon;
+    }
+
     public struct SThemeSongMenuList
     {
         /// <summary>
@@ -264,6 +298,24 @@ namespace VocaluxeLib.Menu.SongMenu
             ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuList/TileRectSmall/W", ref _Theme.SongMenuList.TileRectSmall.W);
             ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuList/TileRectSmall/H", ref _Theme.SongMenuList.TileRectSmall.H);
             #endregion SongMenuList
+
+            #region SongMenuDetails
+            ThemeLoaded &= xmlReader.TryGetIntValue(item + "/SongMenuDetails/ListLength", ref _Theme.SongMenuDetails.ListLength);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/SpaceW", ref _Theme.SongMenuDetails.SpaceW);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/SpaceH", ref _Theme.SongMenuDetails.SpaceH);
+
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRect/X", ref _Theme.SongMenuDetails.TileRect.X);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRect/Y", ref _Theme.SongMenuDetails.TileRect.Y);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRect/Z", ref _Theme.SongMenuDetails.TileRect.Z);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRect/W", ref _Theme.SongMenuDetails.TileRect.W);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRect/H", ref _Theme.SongMenuDetails.TileRect.H);
+
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRectSmall/X", ref _Theme.SongMenuDetails.TileRectSmall.X);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRectSmall/Y", ref _Theme.SongMenuDetails.TileRectSmall.Y);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRectSmall/Z", ref _Theme.SongMenuDetails.TileRectSmall.Z);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRectSmall/W", ref _Theme.SongMenuDetails.TileRectSmall.W);
+            ThemeLoaded &= xmlReader.TryGetFloatValue(item + "/SongMenuDetails/TileRectSmall/H", ref _Theme.SongMenuDetails.TileRectSmall.H);
+            #endregion SongMenuDetails
 
             if (ThemeLoaded)
             {
