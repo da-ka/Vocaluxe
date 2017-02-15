@@ -30,6 +30,7 @@ namespace VocaluxeLib.Menu.SongMenu
     {
         private SRectF _ScrollRect;
         private List<CStatic> _Tiles;
+        private List<CStatic> _TilesBG;
         private List<CText> _Artists;
         private List<CText> _Titles;
         private readonly CStatic _CoverBig;
@@ -41,6 +42,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
         private CTextureRef _CoverBigBGTexture;
         private CTextureRef _CoverBGTexture;
+        private CTextureRef _TileBGTexture;
 
         private readonly CText _Artist;
         private readonly CText _Title;
@@ -200,18 +202,25 @@ namespace VocaluxeLib.Menu.SongMenu
 
             _CoverBGTexture = CBase.Themes.GetSkinTexture(_Theme.CoverBackground, _PartyModeID);
             _CoverBigBGTexture = CBase.Themes.GetSkinTexture(_Theme.CoverBigBackground, _PartyModeID);
+            _TileBGTexture = CBase.Themes.GetSkinTexture(_Theme.TileBackground, _PartyModeID);
 
             //Create cover tiles
             _Tiles = new List<CStatic>();
+            _TilesBG = new List<CStatic>();
             _Artists = new List<CText>();
             _Titles = new List<CText>();
 
             for (int i = 0; i < _ListLength; i++)
             {
                 //Create Cover
-                var rect = new SRectF(Rect.X, Rect.Y + (_SpaceH/2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
+                var rect = new SRectF(Rect.X + (_SpaceH/2), Rect.Y + (_SpaceH/2) + i * (_TileH + _SpaceH), _TileW, _TileH, Rect.Z);
                 var tile = new CStatic(_PartyModeID, _CoverBGTexture, _Color, rect);
                 _Tiles.Add(tile);
+
+                //Create Tile BG
+                var BGrect = new SRectF(MaxRect.X, MaxRect.Y + i * (_TileH + _SpaceH), MaxRect.W, _TileH + _SpaceH, Rect.Z + 0.5f);
+                var tilebg = new CStatic(_PartyModeID, _TileBGTexture, new SColorF(1, 1, 1, 1), BGrect);
+                _TilesBG.Add(tilebg);
 
                 //Create text
                 var artistRect = new SRectF(MaxRect.X + _TileW + _SpaceW, Rect.Y + (_SpaceH / 2) + i * (_TileH + _SpaceH) + (_TileH * 0.55f), _ListTextWidth, _TileH*0.45f, Rect.Z);
@@ -241,9 +250,12 @@ namespace VocaluxeLib.Menu.SongMenu
             foreach (CStatic tile in _Tiles)
                 tile.Selected = false;
 
+            foreach (CStatic tilebg in _TilesBG)
+                tilebg.Selected = false;
+
             int tileNr = _SelectionNr - _Offset;
             if (tileNr >= 0 && tileNr < _Tiles.Count)
-                _Tiles[tileNr].Selected = true;
+                _Tiles[tileNr].Selected = _TilesBG[tileNr].Selected = true;
         }
 
         public override void Update(SScreenSongOptions songOptions)
@@ -404,23 +416,6 @@ namespace VocaluxeLib.Menu.SongMenu
                     }
                     break;
 
-                case Keys.Left:
-                    //Check for >0 so we do not allow selection of nothing (-1)
-                    if (_SelectionNr > 0 && moveAllowed)
-                    {
-                        _SelectionNr--;
-                        keyEvent.Handled = true;
-                    }
-                    break;
-
-                case Keys.Right:
-                    if (moveAllowed)
-                    {
-                        _SelectionNr++;
-                        keyEvent.Handled = true;
-                    }
-                    break;
-
                 case Keys.Up:
                     if (keyEvent.ModShift)
                     {
@@ -433,6 +428,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     else if (_SelectionNr >= 1 && moveAllowed)
                     {
                         _SelectionNr -= 1;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
                     break;
@@ -449,6 +445,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     else if (moveAllowed)
                     {
                         _SelectionNr += 1;
+                        _PreviewNr = _SelectionNr;
                         keyEvent.Handled = true;
                     }
                     break;
@@ -534,6 +531,15 @@ namespace VocaluxeLib.Menu.SongMenu
                     tile.Color.A = 0.6f;
                 EAspect aspect = (tile.Texture != _CoverBGTexture) ? EAspect.Crop : EAspect.Stretch;
                 tile.Draw(aspect);
+            }
+
+            foreach (CStatic tilebg in _TilesBG)
+            {
+                if (tilebg.Selected)
+                    tilebg.Color.A = 1f;
+                else
+                    tilebg.Color.A = 0.3f;
+                tilebg.Draw();
             }
 
             //highlight the text of the selected song

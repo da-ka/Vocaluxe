@@ -751,6 +751,7 @@
     <SongMenu Name="SongMenu">
       <CoverBackground>CoverTile</CoverBackground>
       <CoverBigBackground />
+      <TileBackground>TileBackground</TileBackground>
       <DuetIcon>DuetIcon</DuetIcon>
       <VideoIcon>VideoIcon</VideoIcon>
       <MedleyCalcIcon>MedleyCalcIcon</MedleyCalcIcon>

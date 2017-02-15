@@ -324,6 +324,7 @@
     <Warning>Warning.png</Warning>
     <PlayerSelBG>PlayerSelBG.png</PlayerSelBG>
     <CalibrationBG>CalibrationBG.png</CalibrationBG>
+    <TileBackground>TileBackground.png</TileBackground>
   </Skins>
   <Videos>
     <BG_Video>BG_Video.mp4</BG_Video>
