@@ -218,9 +218,9 @@ namespace Vocaluxe.Lib.Input
             else if (buttonStates.Buttons.B == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.B == OpenTK.Input.ButtonState.Released)
                 key = Keys.Escape;
             else if (buttonStates.Buttons.X == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.X == OpenTK.Input.ButtonState.Released)
-                key = Keys.F11;
+                key = Keys.F21;
             else if (buttonStates.Buttons.Y == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.Y == OpenTK.Input.ButtonState.Released)
-                key = Keys.F12;
+                key = Keys.F22;
             else if (buttonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.LeftShoulder == OpenTK.Input.ButtonState.Released)
                 key = Keys.F9;
             else if (buttonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Pressed && _OldButtonStates.Buttons.RightShoulder == OpenTK.Input.ButtonState.Released)

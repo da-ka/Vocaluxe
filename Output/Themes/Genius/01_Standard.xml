@@ -325,6 +325,11 @@
     <PlayerSelBG>PlayerSelBG.png</PlayerSelBG>
     <CalibrationBG>CalibrationBG.png</CalibrationBG>
     <TileBackground>TileBackground.png</TileBackground>
+    <PressStart>presstart.png</PressStart>
+    <Logo>Logo.png</Logo>
+    <NamesInstructions>NameInstructions.png</NamesInstructions>
+    <ABInstructions>ABInstructions.png</ABInstructions>
+    <ContinueInstructions>ContinueInstructions.png</ContinueInstructions>
   </Skins>
   <Videos>
     <BG_Video>BG_Video.mp4</BG_Video>

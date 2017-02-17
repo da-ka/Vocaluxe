@@ -14,25 +14,91 @@
     </Background>
   </Backgrounds>
   <Statics>
-    <Static Name="Static1">
-      <Skin>Menu</Skin>
+    <Static Name="StaticMenuBar">
+      <Skin />
+      <Color Name="BackgroundColorAlpha" />
+      <Rect>
+        <X>0</X>
+        <Y>40</Y>
+        <W>1280</W>
+        <H>45</H>
+        <Z>1</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticPlayerSelect">
+      <Skin />
+      <Color Name="BackgroundColorAlpha" />
+      <Rect>
+        <X>0</X>
+        <Y>0</Y>
+        <W>1280</W>
+        <H>720</H>
+        <Z>-6</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticInstructions">
+      <Skin>NamesInstructions</Skin>
       <Color Name="StaticColor" />
       <Rect>
-        <X>40</X>
-        <Y>40</Y>
-        <W>1200</W>
+        <X>0</X>
+        <Y>660</Y>
+        <W>1280</W>
         <H>50</H>
-        <Z>0</Z>
+        <Z>-7</Z>
+      </Rect>
+    </Static>
+        <Static Name="StaticScreenBG1">
+      <Skin>Button</Skin>
+      <Color Name="StaticColorAlpha"/>
+      <Rect>
+        <X>178</X>
+        <Y>140</Y>
+        <W>372</W>
+        <H>25</H>
+        <Z>-1</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticScreenBG2">
+      <Skin>Button</Skin>
+      <Color Name="StaticColorAlpha"/>
+      <Rect>
+        <X>728</X>
+        <Y>140</Y>
+        <W>372</W>
+        <H>25</H>
+        <Z>-1</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticScreenBG3">
+      <Skin>Button</Skin>
+      <Color Name="StaticColorAlpha"/>
+      <Rect>
+        <X>178</X>
+        <Y>355</Y>
+        <W>372</W>
+        <H>25</H>
+        <Z>-1</Z>
+      </Rect>
+    </Static>
+    <Static Name="StaticScreenBG4">
+      <Skin>Button</Skin>
+      <Color Name="StaticColorAlpha"/>
+      <Rect>
+        <X>728</X>
+        <Y>355</Y>
+        <W>372</W>
+        <H>25</H>
+        <Z>-1</Z>
       </Rect>
     </Static>
     <Static Name="StaticPlayerAvatar1">
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>183</X>
+        <Y>175</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -40,10 +106,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>260</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>183</X>
+        <Y>230</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -51,10 +117,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>415</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>371</X>
+        <Y>175</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -62,10 +128,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>371</X>
+        <Y>230</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -73,10 +139,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>260</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>733</X>
+        <Y>175</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -84,10 +150,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>415</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>733</X>
+        <Y>230</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -95,10 +161,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>921</X>
+        <Y>175</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -106,10 +172,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>260</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>921</X>
+        <Y>230</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -117,10 +183,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>415</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>183</X>
+        <Y>390</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -128,10 +194,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>183</X>
+        <Y>445</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -139,10 +205,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>260</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>371</X>
+        <Y>390</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -150,10 +216,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>415</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>371</X>
+        <Y>445</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -161,10 +227,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>733</X>
+        <Y>390</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -172,10 +238,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>260</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>733</X>
+        <Y>445</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -183,10 +249,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>20</X>
-        <Y>415</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>921</X>
+        <Y>390</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -194,10 +260,10 @@
       <Skin/>
       <Color Name="Visible" />
       <Rect>
-        <X>1152</X>
-        <Y>105</Y>
-        <W>108</W>
-        <H>108</H>
+        <X>921</X>
+        <Y>445</Y>
+        <W>40</W>
+        <H>40</H>
         <Z>-3</Z>
       </Rect>
     </Static>
@@ -421,402 +487,6 @@
         <Z>-3</Z>
       </Rect>
     </Static>
-    <Static Name="StaticPlayer1">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer2">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer3">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer4">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer5">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer6">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer7">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer8">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer9">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer10">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer11">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer12">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer13">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer14">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer15">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer16">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer17">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer18">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer19">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer20">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer21">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer22">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer23">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer24">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer25">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer26">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer27">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer28">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer29">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer30">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer31">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player1" />
-      <Rect>
-        <X>15</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer32">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player2" />
-      <Rect>
-        <X>15</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer33">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player3" />
-      <Rect>
-        <X>15</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer34">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player4" />
-      <Rect>
-        <X>1147</X>
-        <Y>100</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer35">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player5" />
-      <Rect>
-        <X>1147</X>
-        <Y>255</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
-    <Static Name="StaticPlayer36">
-      <Skin>PlayerSelector</Skin>
-      <Color Name="Player6" />
-      <Rect>
-        <X>1147</X>
-        <Y>410</Y>
-        <W>118</W>
-        <H>118</H>
-        <Z>-2</Z>
-      </Rect>
-    </Static>
     <Static Name="StaticWarningMics">
       <Skin/>
       <Color Name="Invisible" />
@@ -841,19 +511,75 @@
     </Static>
   </Statics>
   <Texts>
-    <Text Name="Text1">
+    <Text Name="TextTitle">
       <X>640</X>
       <Y>50</Y>
       <Z>0</Z>
       <H>27</H>
       <MaxW>0</MaxW>
-      <Color Name="StaticColor" />
+      <Color Name="TextColor" />
       <SelColor Name="TextSelColor" />
       <Align>Center</Align>
       <ResizeAlign>Center</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text>TR_SCREENNAMES_MENU</Text>
+    </Text>
+    <Text Name="Screen1">
+      <X>364</X>
+      <Y>142</Y>
+      <Z>-3</Z>
+      <H>21</H>
+      <MaxW>0</MaxW>
+      <Color Name="TextColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>Screen 1</Text>
+    </Text>
+    <Text Name="Screen2">
+      <X>914</X>
+      <Y>142</Y>
+      <Z>-3</Z>
+      <H>21</H>
+      <MaxW>0</MaxW>
+      <Color Name="TextColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>Screen 2</Text>
+    </Text>
+    <Text Name="Screen3">
+      <X>364</X>
+      <Y>357</Y>
+      <Z>-3</Z>
+      <H>21</H>
+      <MaxW>0</MaxW>
+      <Color Name="TextColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>Screen 3</Text>
+    </Text>
+    <Text Name="Screen4">
+      <X>914</X>
+      <Y>357</Y>
+      <Z>-3</Z>
+      <H>21</H>
+      <MaxW>0</MaxW>
+      <Color Name="TextColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Center</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>Screen 4</Text>
     </Text>
     <Text Name="TextWarningMics">
       <X>640</X>
@@ -884,225 +610,225 @@
       <Text />
     </Text>
     <Text Name="TextPlayer1">
-      <X>74</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>228</X>
+      <Y>175</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player1" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer2">
-      <X>74</X>
-      <Y>374</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>228</X>
+      <Y>230</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player2" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer3">
-      <X>74</X>
-      <Y>529</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>416</X>
+      <Y>175</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player3" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer4">
-      <X>1206</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>416</X>
+      <Y>230</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player4" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer5">
-      <X>1206</X>
-      <Y>374</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>778</X>
+      <Y>175</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player5" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer6">
-      <X>1206</X>
-      <Y>529</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>778</X>
+      <Y>230</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player6" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer7">
-      <X>74</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>966</X>
+      <Y>175</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player1" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer8">
-      <X>74</X>
-      <Y>374</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>966</X>
+      <Y>230</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player2" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer9">
-      <X>74</X>
-      <Y>529</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>228</X>
+      <Y>390</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player3" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer10">
-      <X>1206</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>228</X>
+      <Y>445</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player4" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer11">
-      <X>1206</X>
-      <Y>374</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>416</X>
+      <Y>390</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player5" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer12">
-      <X>1206</X>
-      <Y>529</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>416</X>
+      <Y>445</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player6" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer13">
-      <X>74</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>778</X>
+      <Y>390</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player1" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer14">
-      <X>74</X>
-      <Y>374</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>778</X>
+      <Y>445</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player2" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer15">
-      <X>74</X>
-      <Y>529</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>966</X>
+      <Y>390</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player3" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
     </Text>
     <Text Name="TextPlayer16">
-      <X>1206</X>
-      <Y>219</Y>
-      <Z>0</Z>
-      <H>20</H>
-      <MaxW>0</MaxW>
+      <X>966</X>
+      <Y>445</Y>
+      <Z>-1</Z>
+      <H>21</H>
+      <MaxW>134</MaxW>
       <Color Name="Player4" />
       <SelColor Name="TextSelColor" />
-      <Align>Center</Align>
-      <ResizeAlign>Center</ResizeAlign>
+      <Align>Left</Align>
+      <ResizeAlign>Bottom</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
       <Text />
@@ -1458,6 +1184,1050 @@
         <Height>26</Height>
         <Space>10</Space>
       </SelReflection>
+    </Button>
+    <Button Name="ButtonP1">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP2">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP3">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP4">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP5">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player5">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player5" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP6">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player6">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player6" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP7">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP8">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP9">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP10">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP11">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player5">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player5" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP12">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player6">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player6" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP13">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP14">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP15">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP16">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP17">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP18">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP19">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP20">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP21">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player5">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player5" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP22">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player6">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player6" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP23">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP24">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP25">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP26">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP27">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player5">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player5" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP28">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player6">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player6" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP29">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP30">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>728</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP31">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>385</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP32">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>916</X>
+        <Y>440</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP33">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player1">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player1" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP34">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>178</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player2">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player2" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP35">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>170</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player3">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player3" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonP36">
+      <Skin>Button</Skin>
+      <SkinSelected>Button</SkinSelected>
+      <Rect>
+        <X>366</X>
+        <Y>225</Y>
+        <W>184</W>
+        <H>50</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="Player4">
+        <A>0.75</A>
+      </Color>
+      <SelColor Name="Player4" />
+      <Text Name="Text">
+        <X>50</X>
+        <Y>4</Y>
+        <Z>0</Z>
+        <H>21</H>
+        <MaxW>134</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Left</Align>
+        <ResizeAlign>Bottom</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
     </Button>
   </Buttons>
   <SongMenus />
@@ -3022,11 +3792,11 @@
   <NameSelections>
     <NameSelection Name="NameSelection">
       <Rect>
-        <X>172</X>
+        <X>73</X>
         <Y>127</Y>
-        <W>945</W>
+        <W>1000</W>
         <H>393</H>
-        <Z>0</Z>
+        <Z>-8</Z>
       </Rect>
       <SkinEmptyTile>CoverTile</SkinEmptyTile>
       <ColorEmptyTile>
@@ -3039,12 +3809,12 @@
       <Tiles>
         <W>100</W>
         <H>100</H>
-        <NumW>8</NumW>
-        <NumH>3</NumH>
-        <SpaceW>20.71</SpaceW>
-        <SpaceH>30</SpaceH>
+        <NumW>10</NumW>
+        <NumH>4</NumH>
+        <SpaceW>15</SpaceW>
+        <SpaceH>15</SpaceH>
         <Name>
-          <Space>2</Space>
+          <Space>-22</Space>
           <H>17</H>
           <Font>Outline</Font>
           <Style>Bold</Style>
@@ -3057,13 +3827,13 @@
     <Equalizer Name="EqualizerPlayer1">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>228</X>
+        <Y>195</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3077,13 +3847,13 @@
     <Equalizer Name="EqualizerPlayer2">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>307</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>228</X>
+        <Y>250</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3097,13 +3867,13 @@
     <Equalizer Name="EqualizerPlayer3">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>467</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>416</X>
+        <Y>195</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3117,13 +3887,13 @@
     <Equalizer Name="EqualizerPlayer4">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>416</X>
+        <Y>250</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3137,13 +3907,13 @@
     <Equalizer Name="EqualizerPlayer5">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>307</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>778</X>
+        <Y>195</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3157,13 +3927,13 @@
     <Equalizer Name="EqualizerPlayer6">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>467</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>778</X>
+        <Y>250</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3177,13 +3947,13 @@
     <Equalizer Name="EqualizerPlayer7">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>966</X>
+        <Y>195</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3197,13 +3967,13 @@
     <Equalizer Name="EqualizerPlayer8">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>307</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>966</X>
+        <Y>250</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3217,13 +3987,13 @@
     <Equalizer Name="EqualizerPlayer9">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>467</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>228</X>
+        <Y>410</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3237,13 +4007,13 @@
     <Equalizer Name="EqualizerPlayer10">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>228</X>
+        <Y>465</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3257,13 +4027,13 @@
     <Equalizer Name="EqualizerPlayer11">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>307</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>416</X>
+        <Y>410</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3277,13 +4047,13 @@
     <Equalizer Name="EqualizerPlayer12">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>467</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>416</X>
+        <Y>465</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3297,13 +4067,13 @@
     <Equalizer Name="EqualizerPlayer13">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>778</X>
+        <Y>410</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3317,13 +4087,13 @@
     <Equalizer Name="EqualizerPlayer14">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>307</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>778</X>
+        <Y>465</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3337,13 +4107,13 @@
     <Equalizer Name="EqualizerPlayer15">
       <Skin/>
       <Rect>
-        <X>21</X>
-        <Y>467</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>966</X>
+        <Y>410</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>
@@ -3357,13 +4127,13 @@
     <Equalizer Name="EqualizerPlayer16">
       <Skin/>
       <Rect>
-        <X>1153</X>
-        <Y>152</Y>
-        <W>108</W>
-        <H>60</H>
+        <X>966</X>
+        <Y>465</Y>
+        <W>129</W>
+        <H>20</H>
         <Z>-4</Z>
       </Rect>
-      <NumBars>8</NumBars>
+      <NumBars>10</NumBars>
       <Space>2</Space>
       <Style>Columns</Style>
       <DrawNegative>TR_CONFIG_OFF</DrawNegative>

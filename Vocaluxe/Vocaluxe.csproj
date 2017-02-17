@@ -245,6 +245,7 @@
     <Compile Include="Lib\Video\Acinerella\CDecoderThread.cs" />
     <Compile Include="Lib\Video\Acinerella\CFramebuffer.cs" />
     <Compile Include="Lib\Sound\Record\CDelayTest.cs" />
+    <Compile Include="Screens\CPopupNewPlayer.cs" />
     <Compile Include="Screens\CPopupScreenServerQR.cs" />
     <Compile Include="Screens\CScreenOptionsVideoAdjustments.cs" />
     <Compile Include="SongQueue\CSongQueue.cs" />

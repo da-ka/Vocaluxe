@@ -57,6 +57,10 @@ namespace Vocaluxe.Screens
             _Texts[_TextRelease].Visible = true;
             _Statics[_StaticWarningProfiles].Visible = false;
             _Texts[_TextWarningProfiles].Visible = false;
+            foreach(string btn in _ThemeButtons)
+            {
+                _Buttons[btn].Visible = false;
+            }
         }
 
         public override bool HandleInput(SKeyEvent keyEvent)
@@ -68,6 +72,18 @@ namespace Vocaluxe.Screens
             {
                 switch (keyEvent.Key)
                 {
+                    case Keys.Space:
+                        CParty.SetNormalGameMode();
+                        CGraphics.FadeTo(EScreen.Song);
+                        break;
+
+                    case Keys.Q:
+                        return false;
+
+                    case Keys.P:
+                        CGraphics.FadeTo(EScreen.Profiles);
+                        break;
+
                     case Keys.O:
                         CGraphics.FadeTo(EScreen.Options);
                         break;

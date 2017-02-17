@@ -14,6 +14,17 @@
     </Background>
   </Backgrounds>
   <Statics>
+  <Static Name="StaticInstructions">
+      <Skin>ContinueInstructions</Skin>
+      <Color Name="StaticColor" />
+      <Rect>
+        <X>0</X>
+        <Y>660</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-15</Z>
+      </Rect>
+    </Static>
     <Static Name="StaticMenuBar">
       <Skin />
       <Color Name="BackgroundColorAlpha" />

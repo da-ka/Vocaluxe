@@ -14,6 +14,28 @@
     </Background>
   </Backgrounds>
   <Statics>
+  <Static Name="Logo">
+      <Skin>Logo</Skin>
+      <Color Name="StaticColor" />
+      <Rect>
+        <X>340</X>
+        <Y>80</Y>
+        <W>600</W>
+        <H>200</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
+    <Static Name="PressStart">
+      <Skin>PressStart</Skin>
+      <Color Name="StaticColor" />
+      <Rect>
+        <X>515</X>
+        <Y>600</Y>
+        <W>250</W>
+        <H>50</H>
+        <Z>-5</Z>
+      </Rect>
+    </Static>
     <Static Name="StaticWarningProfiles">
       <Skin>Warning</Skin>
       <Color Name="StaticWarningColor" />

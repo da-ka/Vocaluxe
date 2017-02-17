@@ -47,9 +47,11 @@ namespace Vocaluxe.Screens
         private const string _StaticWarningMics = "StaticWarningMics";
         private const string _TextWarningProfiles = "TextWarningProfiles";
         private const string _StaticWarningProfiles = "StaticWarningProfiles";
-        private string[] _StaticPlayer;
+        private const string _StaticPlayerSelect = "StaticPlayerSelect";
+        //private string[] _StaticPlayer;
         private string[] _StaticPlayerAvatar;
         private string[] _TextPlayer;
+        private string[] _ButtonPlayer;
         private string[] _EqualizerPlayer;
         private string[] _SelectSlideDuetPlayer;
         private readonly CTextureRef[] _OriginalPlayerAvatarTextures = new CTextureRef[CSettings.MaxNumPlayer];
@@ -61,6 +63,7 @@ namespace Vocaluxe.Screens
         private int _SelectedProfileID = -1;
         private bool _AvatarsChanged;
         private bool _ProfilesChanged;
+        private int _SelectedPlayer = -1;
 
         public override EMusicType CurrentMusicType
         {
@@ -76,7 +79,8 @@ namespace Vocaluxe.Screens
 
             var statics = new List<string>();
             statics.AddRange(_StaticPlayerAvatar);
-            statics.AddRange(_StaticPlayer);
+            //statics.AddRange(_StaticPlayer);
+            statics.Add(_StaticPlayerSelect);
             statics.Add(_StaticWarningMics);
             statics.Add(_StaticWarningProfiles);
             _ThemeStatics = statics.ToArray();
@@ -129,6 +133,20 @@ namespace Vocaluxe.Screens
         {
             switch (keyEvent.Key)
             {
+                case Keys.Enter:
+                    for (int p = 1; p <= CConfig.Config.Game.NumPlayers; p++)
+                    {
+                        if (_Buttons["ButtonP" + p].Selected)
+                        {
+                            _SelectedPlayer = p;
+                            _SelectingFastPlayerNr = p;
+                        }
+                    }
+                    break;
+                case Keys.Space:
+                    if (!_SelectingKeyboardActive)
+                        _StartSong();
+                    break;
                 case Keys.Add:
                     if (CConfig.Config.Game.NumPlayers + 1 <= CSettings.MaxNumPlayer)
                     {
@@ -164,6 +182,10 @@ namespace Vocaluxe.Screens
                             _SelectingFastPlayerNr = 1;
                         _NameSelections[_NameSelection].FastSelection(true, _SelectingFastPlayerNr);
                     }
+                    break;
+                case Keys.N:
+                case Keys.F22:
+                    CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
                     break;
             }
             //Check if selecting with keyboard is active
@@ -202,31 +224,6 @@ namespace Vocaluxe.Screens
                         }
                         else
                             resetSelection = true;
-                        break;
-
-                    case Keys.D1:
-                    case Keys.NumPad1:
-                        numberPressed = 1;
-                        break;
-                    case Keys.D2:
-                    case Keys.NumPad2:
-                        numberPressed = 2;
-                        break;
-                    case Keys.D3:
-                    case Keys.NumPad3:
-                        numberPressed = 3;
-                        break;
-                    case Keys.D4:
-                    case Keys.NumPad4:
-                        numberPressed = 4;
-                        break;
-                    case Keys.D5:
-                    case Keys.NumPad5:
-                        numberPressed = 5;
-                        break;
-                    case Keys.D6:
-                    case Keys.NumPad6:
-                        numberPressed = 6;
                         break;
 
                     case Keys.Escape:
@@ -298,33 +295,67 @@ namespace Vocaluxe.Screens
                         break;
 
                     case Keys.D1:
-                    case Keys.NumPad1:
                         _SelectingFastPlayerNr = 1;
                         break;
 
                     case Keys.D2:
-                    case Keys.NumPad2:
                         _SelectingFastPlayerNr = 2;
                         break;
 
                     case Keys.D3:
-                    case Keys.NumPad3:
                         _SelectingFastPlayerNr = 3;
                         break;
 
                     case Keys.D4:
-                    case Keys.NumPad4:
                         _SelectingFastPlayerNr = 4;
                         break;
 
                     case Keys.D5:
-                    case Keys.NumPad5:
                         _SelectingFastPlayerNr = 5;
                         break;
 
                     case Keys.D6:
-                    case Keys.NumPad6:
                         _SelectingFastPlayerNr = 6;
+                        break;
+
+                    case Keys.D7:
+                        _SelectingFastPlayerNr = 7;
+                        break;
+
+                    case Keys.D8:
+                        _SelectingFastPlayerNr = 8;
+                        break;
+
+                    case Keys.D9:
+                        _SelectingFastPlayerNr = 9;
+                        break;
+
+                    case Keys.D0:
+                        _SelectingFastPlayerNr = 10;
+                        break;
+
+                    case Keys.Q:
+                        _SelectingFastPlayerNr = 11;
+                        break;
+
+                    case Keys.W:
+                        _SelectingFastPlayerNr = 12;
+                        break;
+
+                    case Keys.E:
+                        _SelectingFastPlayerNr = 13;
+                        break;
+
+                    case Keys.R:
+                        _SelectingFastPlayerNr = 14;
+                        break;
+
+                    case Keys.T:
+                        _SelectingFastPlayerNr = 15;
+                        break;
+
+                    case Keys.Y:
+                        _SelectingFastPlayerNr = 16;
                         break;
                     default:
                         _UpdatePlayerNumber();
@@ -359,7 +390,7 @@ namespace Vocaluxe.Screens
                 base.HandleMouse(mouseEvent);
 
             //Check if LeftButton is hold and Select-Mode inactive
-            if (mouseEvent.LBH && _SelectedProfileID < 0 && !_SelectingFast)
+            /*if (mouseEvent.LBH && _SelectedProfileID < 0 && !_SelectingFast)
             {
                 //Save mouse-coords
                 _OldMouseX = mouseEvent.X;
@@ -441,7 +472,7 @@ namespace Vocaluxe.Screens
                 _SelectedProfileID = -1;
                 //Reset variables
                 _ChooseAvatarStatic.Visible = false;
-            }
+            }*/
 
             if (mouseEvent.LB && _SelectingFast)
             {
@@ -505,7 +536,7 @@ namespace Vocaluxe.Screens
                 //Remove profile-selection
                 for (int i = 0; i < CConfig.Config.Game.NumPlayers; i++)
                 {
-                    if (CHelper.IsInBounds(_Statics[_StaticPlayer[i]].Rect, mouseEvent))
+                    if (CHelper.IsInBounds(_Statics[_StaticPlayerAvatar[i]].Rect, mouseEvent))
                     {
                         _ResetPlayerSelection(i);
                         exit = false;
@@ -554,7 +585,8 @@ namespace Vocaluxe.Screens
 
         public override bool UpdateGame()
         {
-            _NameSelections[_NameSelection].Visible = _SelectingKeyboardActive;
+            _NameSelections[_NameSelection].Visible = _Statics[_StaticPlayerSelect].Visible = _SelectingKeyboardActive;
+            
             if (_ProfilesChanged || _AvatarsChanged)
                 _LoadProfiles();
 
@@ -562,7 +594,15 @@ namespace Vocaluxe.Screens
             {
                 CRecord.AnalyzeBuffer(i - 1);
                 _Equalizers["EqualizerPlayer" + i].Update(CRecord.ToneWeigth(i - 1), CRecord.GetMaxVolume(i - 1));
+                _Texts["TextPlayer" + i].Selected = _Buttons["ButtonP" + i].Selected;
             }
+
+            if (_SelectedPlayer > 0)
+            {
+                _SelectElement(_Buttons["ButtonP" + _SelectedPlayer]);
+                _SelectedPlayer = -1;
+            }
+
             return true;
         }
 
@@ -572,6 +612,7 @@ namespace Vocaluxe.Screens
             CRecord.Start();
 
             _NameSelections[_NameSelection].Init();
+            _NameSelections[_NameSelection].Visible = _SelectSlides[_SelectSlidePlayerNumber].Visible = _Buttons[_ButtonStart].Visible = _Buttons[_ButtonBack].Visible = _Statics[_StaticPlayerSelect].Visible = false;
             _LoadProfiles();
             _SelectElement(_Buttons[_ButtonStart]);
         }
@@ -595,14 +636,14 @@ namespace Vocaluxe.Screens
 
         private void _BuildPlayerStrings()
         {
-            _StaticPlayer = new string[CSettings.MaxNumPlayer];
+            _ButtonPlayer = new string[CSettings.MaxNumPlayer];
             _StaticPlayerAvatar = new string[CSettings.MaxNumPlayer];
             _TextPlayer = new string[CSettings.MaxNumPlayer];
             _EqualizerPlayer = new string[CSettings.MaxNumPlayer];
             _SelectSlideDuetPlayer = new string[CSettings.MaxNumPlayer];
             for (int p = 0; p < CSettings.MaxNumPlayer; p++)
             {
-                _StaticPlayer[p] = "StaticPlayer" + (p + 1);
+                _ButtonPlayer[p] = "ButtonP" + (p + 1);
                 _StaticPlayerAvatar[p] = "StaticPlayerAvatar" + (p + 1);
                 _TextPlayer[p] = "TextPlayer" + (p + 1);
                 _EqualizerPlayer[p] = "EqualizerPlayer" + (p + 1);
@@ -671,7 +712,7 @@ namespace Vocaluxe.Screens
             {
                 if (i <= CGame.NumPlayers)
                 {
-                    _Statics["StaticPlayer" + i].Visible = true;
+                    _Buttons["ButtonP" + i].Visible = true;
                     _Statics["StaticPlayerAvatar" + i].Visible = true;
                     _Texts["TextPlayer" + i].Visible = true;
                     if (_Texts["TextPlayer" + i].Text == "")
@@ -682,7 +723,7 @@ namespace Vocaluxe.Screens
                 }
                 else
                 {
-                    _Statics["StaticPlayer" + i].Visible = false;
+                    _Buttons["ButtonP" + i].Visible = false;
                     _Statics["StaticPlayerAvatar" + i].Visible = false;
                     _Texts["TextPlayer" + i].Visible = false;
                     _Equalizers["EqualizerPlayer" + i].Visible = false;
