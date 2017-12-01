@@ -29,6 +29,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
         public string CoverBackground;
         public string CoverBigBackground;
+        public string TileBackground;
         public string DuetIcon;
         public string VideoIcon;
         public string MedleyCalcIcon;
@@ -37,9 +38,43 @@ namespace VocaluxeLib.Menu.SongMenu
 
         //public SThemeSongMenuBook songMenuBook;
         //public SThemeSongMenuDreidel songMenuDreidel;
+        public SThemeSongMenuDetails SongMenuDetails;
         public SThemeSongMenuList SongMenuList;
         public SThemeSongMenuTileBoard SongMenuTileBoard;
     }
+
+    public struct SThemeSongMenuDetails
+    {
+        /// <summary>
+        ///     Number of visible songs in list
+        /// </summary>
+        public int ListLength;
+
+        /// <summary>
+        ///     Space between tiles horizontal
+        /// </summary>
+        public float SpaceW;
+
+        /// <summary>
+        ///     Space between tiles vertical
+        /// </summary>
+        public float SpaceH;
+
+        public SRectF TileRect;
+        public SRectF TileRectSmall;
+
+        public SThemeText TextArtist;
+        public SThemeText TextTitle;
+        public SThemeText TextSongLength;
+
+        public SThemeStatic StaticCoverBig;
+        public SThemeStatic StaticTextBG;
+        public SThemeStatic StaticDuetIcon;
+        public SThemeStatic StaticVideoIcon;
+        public SThemeStatic StaticMedleyCalcIcon;
+        public SThemeStatic StaticMedleyTagIcon;
+    }
+
     public struct SThemeSongMenuList
     {
         /// <summary>
