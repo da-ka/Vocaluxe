@@ -40,20 +40,31 @@ namespace Vocaluxe.Screens
         private int _OldMouseY;
 
         private const string _SelectSlidePlayerNumber = "SelectSlidePlayerNumber";
-        private const string _NameSelection = "NameSelection";
+        private string _NameSelection = CConfig.GetNumScreens() + "ScreenNameSelection";
         private const string _ButtonBack = "ButtonBack";
         private const string _ButtonStart = "ButtonStart";
         private const string _TextWarningMics = "TextWarningMics";
         private const string _StaticWarningMics = "StaticWarningMics";
         private const string _TextWarningProfiles = "TextWarningProfiles";
         private const string _StaticWarningProfiles = "StaticWarningProfiles";
-        private string[] _StaticPlayer;
-        private string[] _StaticPlayerAvatar;
-        private string[] _TextPlayer;
-        private string[] _ButtonPlayer;
-        private string[] _EqualizerPlayer;
-        private string[] _SelectSlideDuetPlayer;
+        private string[] _MetaRelativePlayerPanel;
+        private string[] _MetaPlayersPanel;
+        private string[] _StaticScreenBG;
+        private string[,] _StaticPlayer;
+        private string[,] _StaticPlayerAvatar;
+        private string[] _TextScreen;
+        private string[,] _TextPlayer;
+        private string[,] _ButtonPlayer;
+        private string[,] _EqualizerPlayer;
+        private string[,] _SelectSlideDuetPlayer;
         private readonly CTextureRef[] _OriginalPlayerAvatarTextures = new CTextureRef[CSettings.MaxNumPlayer];
+
+        private string[] _PlayerStatic;
+        private string[] _PlayerStaticAvatar;
+        private string[] _PlayerText;
+        private string[] _PlayerButton;
+        private string[] _PlayerEqualizer;
+        private string[] _PlayerSelectSlideDuet;
 
         private bool _SelectingKeyboardActive;
         private bool _SelectingFast;
@@ -73,37 +84,7 @@ namespace Vocaluxe.Screens
         {
             base.Init();
 
-            _BuildPlayerStrings();
-
-            var statics = new List<string>();
-            statics.AddRange(_StaticPlayerAvatar);
-            statics.Add(_StaticWarningMics);
-            statics.Add(_StaticWarningProfiles);
-            _ThemeStatics = statics.ToArray();
-
-            var texts = new List<string> {_SelectSlidePlayerNumber};
-            texts.AddRange(_SelectSlideDuetPlayer);
-            _ThemeSelectSlides = texts.ToArray();
-
-            texts.Clear();
-            texts.Add(_TextWarningMics);
-            texts.Add(_TextWarningProfiles);
-            texts.AddRange(_TextPlayer);
-            _ThemeTexts = texts.ToArray();
-
-            texts.Clear();
-            texts.Add(_ButtonBack);
-            texts.Add(_ButtonStart);
-
-            _ThemeButtons = texts.ToArray();
-
-            texts.Clear();
-            texts.Add(_NameSelection);
-            _ThemeNameSelections = texts.ToArray();
-
-            texts.Clear();
-            texts.AddRange(_EqualizerPlayer);
-            _ThemeEqualizers = texts.ToArray();
+            _BuildElementStrings();
 
             _ChooseAvatarStatic = GetNewStatic();
             _ChooseAvatarStatic.Visible = false;
@@ -118,9 +99,18 @@ namespace Vocaluxe.Screens
 
             for (int i = 0; i < CSettings.MaxNumPlayer; i++)
             {
-                _OriginalPlayerAvatarTextures[i] = _Statics[_StaticPlayerAvatar[i]].Texture;
-                _Statics[_StaticPlayerAvatar[i]].Aspect = EAspect.Crop;
+                _OriginalPlayerAvatarTextures[i] = _Statics["StaticPlayerAvatar"].Texture;
             }
+            for (int s = 1; s <= CSettings.MaxNumScreens; s++)
+            {
+                if (CConfig.GetNumScreens() != s)
+                {
+                    _NameSelections[s + "ScreenNameSelection"].Visible = false;
+                }
+            }
+            
+            _CreatePlayerElements();
+            _Statics["StaticPlayerAvatar"].Aspect = EAspect.Crop;
             _AddStatic(_ChooseAvatarStatic);
         }
 
@@ -247,7 +237,7 @@ namespace Vocaluxe.Screens
                     case Keys.F10:
                         if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
                         {
-                            CSelectSlide selectSlideDuetPart = _SelectSlides[_SelectSlideDuetPlayer[_SelectingFastPlayerNr - 1]];
+                            CSelectSlide selectSlideDuetPart = _SelectSlides[_PlayerSelectSlideDuet[_SelectingFastPlayerNr - 1]];
                             selectSlideDuetPart.Selection = (selectSlideDuetPart.Selection + 1) % 2;
                             //Reset all values
                             _SelectingFastPlayerNr = 0;
@@ -383,12 +373,12 @@ namespace Vocaluxe.Screens
                 {
                     for (int i = 0; i < CGame.NumPlayers; i++)
                     {
-                        if (CHelper.IsInBounds(_Statics[_StaticPlayer[i]].Rect, mouseEvent))
+                        if (CHelper.IsInBounds(_Statics[_PlayerStatic[i]].Rect, mouseEvent))
                         {
                             _SelectingSwitchNr = i;
                             _SelectedProfileID = CGame.Players[i].ProfileID;
                             //Update of Drag/Drop-Texture
-                            CStatic selectedPlayer = _Statics[_StaticPlayerAvatar[i]];
+                            CStatic selectedPlayer = _Statics[_PlayerStaticAvatar[i]];
                             _ChooseAvatarStatic.Visible = true;
                             _ChooseAvatarStatic.MaxRect = selectedPlayer.Rect;
                             _ChooseAvatarStatic.Z = CSettings.ZNear;
@@ -413,13 +403,13 @@ namespace Vocaluxe.Screens
             else if (_SelectedProfileID != Guid.Empty && !_SelectingFast)
             {
                 //Foreach Drop-Area
-                for (int i = 0; i < _StaticPlayer.Length; i++)
+                for (int i = 0; i < _PlayerStatic.Length; i++)
                 {
                     //Check first, if area is "Active"
-                    if (!_Statics[_StaticPlayer[i]].Visible)
+                    if (!_Statics[_PlayerStatic[i]].Visible)
                         continue;
                     //Check if Mouse is in area
-                    if (CHelper.IsInBounds(_Statics[_StaticPlayer[i]].Rect, mouseEvent))
+                    if (CHelper.IsInBounds(_Statics[_PlayerStatic[i]].Rect, mouseEvent))
                     {
                         if (_SelectingSwitchNr > -1 && CGame.Players[i].ProfileID != Guid.Empty)
                             _UpdateSelectedProfile(_SelectingSwitchNr, CGame.Players[i].ProfileID);
@@ -504,7 +494,7 @@ namespace Vocaluxe.Screens
                 //Remove profile-selection
                 for (int i = 0; i < CConfig.Config.Game.NumPlayers; i++)
                 {
-                    if (CHelper.IsInBounds(_Statics[_StaticPlayer[i]].Rect, mouseEvent))
+                    if (CHelper.IsInBounds(_Statics[_PlayerStatic[i]].Rect, mouseEvent))
                     {
                         _ResetPlayerSelection(i);
                         exit = false;
@@ -556,21 +546,21 @@ namespace Vocaluxe.Screens
             if (_ProfilesChanged || _AvatarsChanged)
                 _LoadProfiles();
 
-            for (int i = 1; i <= CGame.NumPlayers; i++)
-            {
-                CRecord.AnalyzeBuffer(i - 1);
-                _Equalizers["EqualizerPlayer" + i].Update(CRecord.ToneWeigth(i - 1), CRecord.GetMaxVolume(i - 1));
-            }
+            _UpdateEqualizers();
+
             return true;
         }
 
         public override void OnShow()
         {
             base.OnShow();
+
             CRecord.Start();
 
             _NameSelections[_NameSelection].Init();
+
             _LoadProfiles();
+            
             _SelectElement(_Buttons[_ButtonStart]);
         }
 
@@ -591,23 +581,146 @@ namespace Vocaluxe.Screens
                 _ProfilesChanged = true;
         }
 
-        private void _BuildPlayerStrings()
+        private void _UpdateEqualizers()
         {
-            _ButtonPlayer = new string[CSettings.MaxNumPlayer];
-            _StaticPlayer = new string[CSettings.MaxNumPlayer];
-            _StaticPlayerAvatar = new string[CSettings.MaxNumPlayer];
-            _TextPlayer = new string[CSettings.MaxNumPlayer];
-            _EqualizerPlayer = new string[CSettings.MaxNumPlayer];
-            _SelectSlideDuetPlayer = new string[CSettings.MaxNumPlayer];
-            for (int p = 0; p < CSettings.MaxNumPlayer; p++)
+            for (int i = 0; i < CGame.NumPlayers; i++)
             {
-                _ButtonPlayer[p] = "ButtonP" + (p + 1);
-                _StaticPlayer[p] = "StaticPlayerAvatar" + (p + 1);
-                _StaticPlayerAvatar[p] = "StaticPlayerAvatar" + (p + 1);
-                _TextPlayer[p] = "TextPlayer" + (p + 1);
-                _EqualizerPlayer[p] = "EqualizerPlayer" + (p + 1);
-                _SelectSlideDuetPlayer[p] = "SelectSlideDuetPlayer" + (p + 1);
+                CRecord.AnalyzeBuffer(i);
+                _Equalizers[_PlayerEqualizer[i]].Update(CRecord.ToneWeigth(i), CRecord.GetMaxVolume(i));
             }
+        }
+
+        private void _BuildElementStrings()
+        {
+            _MetaRelativePlayerPanel = new string[CSettings.MaxScreenPlayer];
+            _MetaPlayersPanel= new string[CConfig.GetNumScreens()];
+            _ButtonPlayer = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+            _StaticScreenBG = new string[CConfig.GetNumScreens()];
+            _StaticPlayer = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+            _StaticPlayerAvatar = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+            _TextScreen = new string[CConfig.GetNumScreens()];
+            _TextPlayer = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+            _EqualizerPlayer = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+            _SelectSlideDuetPlayer = new string[CConfig.GetNumScreens(), CSettings.MaxScreenPlayer];
+
+            var statics = new List<string>
+            {
+                _StaticWarningMics,
+                _StaticWarningProfiles
+            };
+
+            var texts = new List<string>
+            {
+                _TextWarningMics,
+                _TextWarningProfiles
+            };
+
+            var buttons = new List<string>
+            {
+                _ButtonBack,
+                _ButtonStart
+            };
+
+            var nameselections = new List<string>
+            {
+                _NameSelection
+            };
+
+            var equalizers = new List<string>();
+
+            var selectslides = new List<string>
+            {
+                _SelectSlidePlayerNumber
+            };
+
+            var metas = new List<string>();
+
+            buttons.Add("ButtonPlayer");
+            statics.Add("StaticScreenBG");
+            statics.Add("StaticPlayer");
+            statics.Add("StaticPlayerAvatar");
+            texts.Add("TextScreen");
+            texts.Add("TextPlayer");
+            equalizers.Add("EqualizerPlayer");
+            selectslides.Add("SelectSlideDuetPlayer");
+
+            for (int screen = 0; screen <  CConfig.GetNumScreens(); screen++)
+            {
+                _StaticScreenBG[screen] = "StaticScreenBGS" + (screen + 1);
+                _TextScreen[screen] = "TextScreenS" + (screen + 1);
+                _MetaPlayersPanel[screen] = CConfig.GetNumScreens() + "ScreenMetaPlayersPanelS" + (screen + 1);
+                metas.Add(_MetaPlayersPanel[screen]);
+            }
+
+            for (int player = 0; player < CSettings.MaxScreenPlayer; player++)
+            {
+                _MetaRelativePlayerPanel[player] = "MetaRelativePlayerPanel" + (player + 1);
+                metas.Add(_MetaRelativePlayerPanel[player]);
+                for (int screen = 0; screen < CConfig.GetNumScreens(); screen++)
+                {
+                    _ButtonPlayer[screen, player] = "ButtonPlayerS" + (screen + 1) + "P" + (player + 1);
+                    _StaticPlayer[screen, player] = "StaticPlayerS" + (screen + 1) + "P" + (player + 1);
+                    _StaticPlayerAvatar[screen, player] = "StaticPlayerAvatarS" + (screen + 1) + "P" + (player + 1);
+                    _TextPlayer[screen, player] = "TextPlayerS" + (screen + 1) + "P" + (player + 1);
+                    _EqualizerPlayer[screen, player] = "EqualizerPlayerS" + (screen + 1) + "P" + (player + 1);
+                    _SelectSlideDuetPlayer[screen, player] = "SelectSlideDuetPlayerS" + (screen + 1) + "P" + (player + 1);
+                }
+            }
+            _ThemeStatics = statics.ToArray();
+            _ThemeTexts = texts.ToArray();
+            _ThemeSelectSlides = selectslides.ToArray();
+            _ThemeButtons = buttons.ToArray();
+            _ThemeNameSelections = nameselections.ToArray();
+            _ThemeEqualizers = equalizers.ToArray();
+            _ThemeMetas = metas.ToArray();
+        }
+
+        private void _CreatePlayerElements()
+        {
+            for (int screen = 0; screen < CConfig.GetNumScreens(); screen++)
+            {
+                _AddStatic(GetNewStatic(_Statics["StaticScreenBG"]), _StaticScreenBG[screen]);
+                _Statics[_StaticScreenBG[screen]].X += _Metas[_MetaPlayersPanel[screen]].X;
+                _Statics[_StaticScreenBG[screen]].Y += _Metas[_MetaPlayersPanel[screen]].Y;
+                _AddText(GetNewText(_Texts["TextScreen"]), _TextScreen[screen]);
+                _Texts[_TextScreen[screen]].X += _Metas[_MetaPlayersPanel[screen]].X;
+                _Texts[_TextScreen[screen]].Y += _Metas[_MetaPlayersPanel[screen]].Y;
+                _Texts[_TextScreen[screen]].Text = "Screen " + (screen + 1);
+                for (int player = 0; player < CSettings.MaxScreenPlayer; player++)
+                {
+                    _AddButton(GetNewButton(_Buttons["ButtonPlayer"]), _ButtonPlayer[screen, player]);
+                    _Buttons[_ButtonPlayer[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _Buttons[_ButtonPlayer[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+
+                    _AddStatic(GetNewStatic(_Statics["StaticPlayer"]), _StaticPlayer[screen, player]);
+                    _Statics[_StaticPlayer[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _Statics[_StaticPlayer[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+
+                    _AddStatic(GetNewStatic(_Statics["StaticPlayerAvatar"]), _StaticPlayerAvatar[screen, player]);
+                    _Statics[_StaticPlayerAvatar[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _Statics[_StaticPlayerAvatar[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+
+                    _AddText(GetNewText(_Texts["TextPlayer"]), _TextPlayer[screen, player]);
+                    _Texts[_TextPlayer[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _Texts[_TextPlayer[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+
+                    _AddEqualizer(GetNewEqualizer(_Equalizers["EqualizerPlayer"]), _EqualizerPlayer[screen, player]);
+                    _Equalizers[_EqualizerPlayer[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _Equalizers[_EqualizerPlayer[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+
+                    _AddSelectSlide(GetNewSelectSlide(_SelectSlides["SelectSlideDuetPlayer"]), _SelectSlideDuetPlayer[screen, player]);
+                    _SelectSlides[_SelectSlideDuetPlayer[screen, player]].X += _Metas[_MetaPlayersPanel[screen]].X + _Metas[_MetaRelativePlayerPanel[player]].X;
+                    _SelectSlides[_SelectSlideDuetPlayer[screen, player]].Y += _Metas[_MetaPlayersPanel[screen]].Y + _Metas[_MetaRelativePlayerPanel[player]].Y;
+                }
+            }
+            _Buttons["ButtonPlayer"].Visible = false;
+            _Statics["StaticScreenBG"].Visible = false;
+            _Statics["StaticPlayer"].Visible = false;
+            _Statics["StaticPlayerAvatar"].Visible = false;
+            _Texts["TextScreen"].Visible = false;
+            _Texts["TextPlayer"].Visible = false;
+            _Equalizers["EqualizerPlayer"].Visible = false;
+            _SelectSlides["SelectSlideDuetPlayer"].Visible = false;
         }
 
         private void _LoadProfiles()
@@ -619,30 +732,58 @@ namespace Vocaluxe.Screens
             _CheckMics();
             _CheckPlayers();
 
-            CSong firstSong = CGame.GetSong(0);
-
-            for (int i = 0; i < CSettings.MaxNumPlayer; i++)
-            {
-                _NameSelections[_NameSelection].UseProfile(CGame.Players[i].ProfileID);
-                _Statics[_StaticPlayerAvatar[i]].Texture = CProfiles.IsProfileIDValid(CGame.Players[i].ProfileID) ?
-                                                               CProfiles.GetAvatarTextureFromProfile(CGame.Players[i].ProfileID) :
-                                                               _OriginalPlayerAvatarTextures[i];
-                _Texts[_TextPlayer[i]].Text = CProfiles.GetPlayerName(CGame.Players[i].ProfileID, i + 1);
-                if (CGame.GetNumSongs() == 1 && firstSong.IsDuet)
-                {
-                    _SelectSlides[_SelectSlideDuetPlayer[i]].Clear();
-                    _SelectSlides[_SelectSlideDuetPlayer[i]].Visible = i + 1 <= CGame.NumPlayers;
-
-                    for (int j = 0; j < firstSong.Notes.VoiceCount; j++)
-                        _SelectSlides[_SelectSlideDuetPlayer[i]].AddValue(firstSong.Notes.VoiceNames[j]);
-                    _SelectSlides[_SelectSlideDuetPlayer[i]].Selection = i % 2;
-                }
-                else
-                    _SelectSlides[_SelectSlideDuetPlayer[i]].Visible = false;
-            }
+            _LoadPlayerPanels();
+            
             _NameSelections[_NameSelection].UpdateList();
             _ProfilesChanged = false;
             _AvatarsChanged = false;
+        }
+
+        private void _LoadPlayerPanels()
+        {
+            for (int i = 0; i < CGame.NumPlayers; i++)
+            {
+                _NameSelections[_NameSelection].UseProfile(CGame.Players[i].ProfileID);
+                _Statics[_PlayerStaticAvatar[i]].Texture = CProfiles.IsProfileIDValid(CGame.Players[i].ProfileID) ?
+                                                               CProfiles.GetAvatarTextureFromProfile(CGame.Players[i].ProfileID) :
+                                                               _OriginalPlayerAvatarTextures[i];
+                _Texts[_PlayerText[i]].Text = CProfiles.GetPlayerName(CGame.Players[i].ProfileID, i + 1);
+            }
+            _PopulateVoiceSelection();
+        }
+
+        private void _PopulateVoiceSelection()
+        {
+            CSong firstSong = CGame.GetSong(0);
+            for (int s = 0; s < CConfig.GetNumScreens(); s++)
+            {
+                for(int p = 0; p < CSettings.MaxScreenPlayer; p++)
+                {
+                    if (CGame.GetNumSongs() == 1 && firstSong.IsDuet)
+                    {
+                        _SelectSlides[_SelectSlideDuetPlayer[s, p]].Clear();
+
+                        for (int j = 0; j < firstSong.Notes.VoiceCount; j++)
+                            _SelectSlides[_SelectSlideDuetPlayer[s, p]].AddValue(firstSong.Notes.VoiceNames[j]);
+                    }
+                    else
+                    _SelectSlides[_SelectSlideDuetPlayer[s, p]].Visible = false;
+                }
+            }
+            /*for (int i = 0; i < (CConfig.GetNumScreens() * CSettings.MaxScreenPlayer); i++)
+            {
+                if (CGame.GetNumSongs() == 1 && firstSong.IsDuet)
+                {
+                    _SelectSlides[_PlayerSelectSlideDuet[i]].Clear();
+                    _SelectSlides[_PlayerSelectSlideDuet[i]].Visible = i + 1 <= CGame.NumPlayers;
+
+                    for (int j = 0; j < firstSong.Notes.VoiceCount; j++)
+                        _SelectSlides[_PlayerSelectSlideDuet[i]].AddValue(firstSong.Notes.VoiceNames[j]);
+                    _SelectSlides[_PlayerSelectSlideDuet[i]].Selection = i % 2;
+                }
+                else
+                    _SelectSlides[_PlayerSelectSlideDuet[i]].Visible = false;
+            }*/
         }
 
         private void _StartSong()
@@ -650,7 +791,7 @@ namespace Vocaluxe.Screens
             if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
             {
                 for (int i = 0; i < CGame.NumPlayers; i++)
-                    CGame.Players[i].VoiceNr = _SelectSlides[_SelectSlideDuetPlayer[i]].Selection;
+                    CGame.Players[i].VoiceNr = _SelectSlides[_PlayerSelectSlideDuet[i]].Selection;
             }
             CGraphics.FadeTo(EScreen.Sing);
         }
@@ -663,31 +804,60 @@ namespace Vocaluxe.Screens
             _SelectSlides[_SelectSlidePlayerNumber].Selection = CConfig.Config.Game.NumPlayers - 1;
         }
 
+        private void _ResetPlayerElements()
+        {
+            for (int player = 0; player < CSettings.MaxScreenPlayer; player++)
+            {
+                for (int screen = 0; screen < CConfig.GetNumScreens(); screen++)
+                {
+                    _Statics[_StaticPlayer[screen, player]].Visible = false;
+                    _Statics[_StaticPlayerAvatar[screen, player]].Visible = false;
+                    _Texts[_TextPlayer[screen, player]].Visible = false;
+                    _Equalizers[_EqualizerPlayer[screen, player]].Visible = false;
+                    _SelectSlides[_SelectSlideDuetPlayer[screen, player]].Visible = false;
+                }
+            }
+        }
+
         private void _UpdatePlayerNumber()
         {
             CConfig.Config.Game.NumPlayers = _SelectSlides[_SelectSlidePlayerNumber].Selection + 1;
             CGame.NumPlayers = _SelectSlides[_SelectSlidePlayerNumber].Selection + 1;
-            for (int i = 1; i <= CSettings.MaxNumPlayer; i++)
+            _AssignPlayerElements();
+            //_LoadPlayerPanels();
+            _ResetPlayerElements();
+
+            for (int i = 0; i < CSettings.MaxNumPlayer; i++)
             {
-                if (i <= CGame.NumPlayers)
+                if (i < CGame.NumPlayers)
                 {
-                    _Statics["StaticPlayer" + i].Visible = true;
-                    _Statics["StaticPlayerAvatar" + i].Visible = true;
-                    _Texts["TextPlayer" + i].Visible = true;
-                    if (_Texts["TextPlayer" + i].Text == "")
-                        _Texts["TextPlayer" + i].Text = CProfiles.GetPlayerName(Guid.Empty, i);
-                    _Equalizers["EqualizerPlayer" + i].Visible = true;
+                    _Statics[_PlayerStatic[i]].Visible = true;
+                    _Statics[_PlayerStaticAvatar[i]].Visible = true;
+                    _Texts[_PlayerText[i]].Visible = true;
+                    if (CGame.Players[i].ProfileID != Guid.Empty)
+                    {
+                        _Statics[_PlayerStaticAvatar[i]].Texture = CProfiles.GetAvatarTexture(CProfiles.GetAvatarID(CGame.Players[i].ProfileID));
+                        _Texts[_PlayerText[i]].Text = CProfiles.GetPlayerName(CGame.Players[i].ProfileID, i + 1);
+                    }
+                    else
+                    {
+                        _Texts[_PlayerText[i]].Text = CProfiles.GetPlayerName(Guid.Empty, i + 1);
+                        _Statics[_PlayerStaticAvatar[i]].Texture = _OriginalPlayerAvatarTextures[i];
+                    }
+                    _Texts[_PlayerText[i]].Color = CBase.Themes.GetPlayerColor(i + 1);
+                    _Equalizers[_PlayerEqualizer[i]].Color.R = CBase.Themes.GetPlayerColor(i + 1).R;
+                    _Equalizers[_PlayerEqualizer[i]].Color.G = CBase.Themes.GetPlayerColor(i + 1).G;
+                    _Equalizers[_PlayerEqualizer[i]].Color.B = CBase.Themes.GetPlayerColor(i + 1).B;
+                    _Equalizers[_PlayerEqualizer[i]].MaxColor.R = CBase.Themes.GetPlayerColor(i + 1).R;
+                    _Equalizers[_PlayerEqualizer[i]].MaxColor.G = CBase.Themes.GetPlayerColor(i + 1).G;
+                    _Equalizers[_PlayerEqualizer[i]].MaxColor.B = CBase.Themes.GetPlayerColor(i + 1).B;
+                    _Equalizers[_PlayerEqualizer[i]].Visible = true;
                     if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
-                        _SelectSlides["SelectSlideDuetPlayer" + i].Visible = true;
+                        _SelectSlides[_PlayerSelectSlideDuet[i]].Visible = true;
                 }
                 else
                 {
-                    _Statics["StaticPlayer" + i].Visible = false;
-                    _Statics["StaticPlayerAvatar" + i].Visible = false;
-                    _Texts["TextPlayer" + i].Visible = false;
-                    _Equalizers["EqualizerPlayer" + i].Visible = false;
-                    _SelectSlides["SelectSlideDuetPlayer" + i].Visible = false;
-                    _ResetPlayerSelection(i - 1);
+                    _ResetPlayerSelection(i);
                 }
             }
             CConfig.SaveConfig();
@@ -705,8 +875,8 @@ namespace Vocaluxe.Screens
             CConfig.Config.Game.Players[playerNum] = CProfiles.GetProfileFileName(profileId);
             CConfig.SaveConfig();
             //Update texture and name
-            _Statics[_StaticPlayerAvatar[playerNum]].Texture = CProfiles.GetAvatarTextureFromProfile(profileId);
-            _Texts[_TextPlayer[playerNum]].Text = CProfiles.GetPlayerName(profileId);
+            _Statics[_PlayerStaticAvatar[playerNum]].Texture = CProfiles.GetAvatarTextureFromProfile(profileId);
+            _Texts[_PlayerText[playerNum]].Text = CProfiles.GetPlayerName(profileId);
             //Update profile-warning
             _CheckPlayers();
             //Update Tiles-List
@@ -722,8 +892,8 @@ namespace Vocaluxe.Screens
                 //Update config for default players.
                 CConfig.Config.Game.Players[i] = String.Empty;
                 //Update texture and name
-                _Statics[_StaticPlayerAvatar[i]].Texture = _OriginalPlayerAvatarTextures[i];
-                _Texts[_TextPlayer[i]].Text = CProfiles.GetPlayerName(Guid.Empty, i + 1);
+                _Statics[_PlayerStaticAvatar[i]].Texture = _OriginalPlayerAvatarTextures[i];
+                _Texts[_PlayerText[i]].Text = CProfiles.GetPlayerName(Guid.Empty, i + 1);
             }
             _NameSelections[_NameSelection].UpdateList();
             CConfig.SaveConfig();
@@ -737,8 +907,10 @@ namespace Vocaluxe.Screens
             CConfig.Config.Game.Players[playerNum] = String.Empty;
             CConfig.SaveConfig();
             //Update texture and name
-            _Statics[_StaticPlayerAvatar[playerNum]].Texture = _OriginalPlayerAvatarTextures[playerNum];
-            _Texts[_TextPlayer[playerNum]].Text = CProfiles.GetPlayerName(Guid.Empty, playerNum + 1);
+            if(playerNum < _PlayerStaticAvatar.Length)
+                _Statics[_PlayerStaticAvatar[playerNum]].Texture = _OriginalPlayerAvatarTextures[playerNum];
+            if (playerNum < _PlayerText.Length)
+                _Texts[_PlayerText[playerNum]].Text = CProfiles.GetPlayerName(Guid.Empty, playerNum + 1);
             //Update profile-warning
             _CheckPlayers();
             //Update Tiles-List
@@ -820,6 +992,83 @@ namespace Vocaluxe.Screens
                 _Statics[_StaticWarningProfiles].Visible = false;
                 _Texts[_TextWarningProfiles].Visible = false;
             }
+        }
+
+        private void _AssignPlayerElements()
+        {
+            _PlayerStatic = new String[CGame.NumPlayers];
+            _PlayerStaticAvatar = new String[CGame.NumPlayers];
+            _PlayerText = new String[CGame.NumPlayers];
+            _PlayerButton = new String[CGame.NumPlayers];
+            _PlayerEqualizer = new String[CGame.NumPlayers];
+            _PlayerSelectSlideDuet = new String[CGame.NumPlayers];
+
+            int screenPlayers = CGame.NumPlayers / CConfig.GetNumScreens();
+            int remainingPlayers = CGame.NumPlayers - (screenPlayers * CConfig.GetNumScreens());
+            int player = 0;
+
+            for (int s = 0; s < CConfig.GetNumScreens(); s++)
+            {
+                for (int p = 0; p < screenPlayers; p++)
+                {
+                    if (remainingPlayers > 0)
+                    {
+                        if (screenPlayers == 3 && p > 1)
+                        {
+                            _LinkPlayerElementsToPlayer(player, s, p + 1);
+                            player++;
+                        }
+                        else
+                        {
+                            _LinkPlayerElementsToPlayer(player, s, p);
+                            player++;
+                        }
+                        if (p == screenPlayers - 1)
+                        {
+                            if (screenPlayers == 3 && p > 1)
+                            {
+                                _LinkPlayerElementsToPlayer(player, s, p + 2);
+                                player++;
+                            }
+                            else
+                            {
+                                _LinkPlayerElementsToPlayer(player, s, p + 1);
+                                player++;
+                            }
+                            remainingPlayers--;
+                        }
+                    }
+                    else
+                    {
+                        if(screenPlayers == 4 && p > 1)
+                        {
+                            _LinkPlayerElementsToPlayer(player, s, p + 1);
+                            player++;
+                        } else
+                        {
+                            _LinkPlayerElementsToPlayer(player, s, p);
+                            player++;
+                        }
+                    }
+                }
+                //Handle when players < screens
+                if (screenPlayers == 0 && remainingPlayers > 0)
+                {
+                    _LinkPlayerElementsToPlayer(player, s, 0);
+                    player++;
+                    remainingPlayers--;
+                }
+            }
+            //_PopulateVoiceSelection();
+        }
+        private void _LinkPlayerElementsToPlayer(int player, int screen, int element)
+        {
+            _PlayerStatic[player] = _StaticPlayer[screen, element];
+            _PlayerStaticAvatar[player] = _StaticPlayerAvatar[screen, element];
+            _PlayerText[player] = _TextPlayer[screen, element];
+            _PlayerButton[player] = _ButtonPlayer[screen, element];
+            _PlayerEqualizer[player] = _EqualizerPlayer[screen, element];
+            _PlayerSelectSlideDuet[player] = _SelectSlideDuetPlayer[screen, element];
         }
         #endregion private methods
     }
