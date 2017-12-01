@@ -88,6 +88,7 @@ namespace Vocaluxe.Base
             _PopupScreens.Add(new CPopupScreenPlayerControl());
             _PopupScreens.Add(new CPopupScreenVolumeControl());
             _PopupScreens.Add(new CPopupScreenServerQR());
+            _PopupScreens.Add(new CPopupScreenNewPlayer());
 
             CLog.StopBenchmark("Build Screen List");
 
