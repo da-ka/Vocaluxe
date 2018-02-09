@@ -62,7 +62,7 @@ namespace Vocaluxe.Base
         public static void Init()
         {
             // Add Screens, must be the same order as in EScreens!
-            CLog.StartBenchmark("Build Screen List");
+            using (CBenchmark.Time("Build Screen List"))
 
             _Screens.Add(new CScreenTest());
             _Screens.Add(new CScreenLoad());
@@ -90,8 +90,6 @@ namespace Vocaluxe.Base
             _PopupScreens.Add(new CPopupScreenVolumeControl());
             _PopupScreens.Add(new CPopupScreenServerQR());
             _PopupScreens.Add(new CPopupScreenNewPlayer());
-
-            CLog.StopBenchmark("Build Screen List");
 
             CurrentScreen = _Screens[(int)EScreen.Load];
             NextScreen = null;
