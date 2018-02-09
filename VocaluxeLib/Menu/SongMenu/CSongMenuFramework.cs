@@ -321,6 +321,11 @@ namespace VocaluxeLib.Menu.SongMenu
             _PreviewNr = _SelectionNr;
         }
 
+        public void LeaveSelectedCategory()
+        {
+            _LeaveCategory();
+        }
+
         public virtual void UnloadSkin() {}
 
         public virtual void LoadSkin()

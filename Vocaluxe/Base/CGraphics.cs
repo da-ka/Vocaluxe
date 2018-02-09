@@ -24,6 +24,7 @@ using Vocaluxe.Base.Fonts;
 using Vocaluxe.Base.ThemeSystem;
 using Vocaluxe.Screens;
 using VocaluxeLib;
+using VocaluxeLib.Log;
 using VocaluxeLib.Menu;
 
 namespace Vocaluxe.Base
@@ -100,9 +101,10 @@ namespace Vocaluxe.Base
             GlobalAlpha = 1f;
             ZOffset = 0f;
 
-            CLog.StartBenchmark("Load Theme");
-            LoadTheme();
-            CLog.StopBenchmark("Load Theme");
+            using (CBenchmark.Time("Load Theme"))
+            {
+                LoadTheme();
+            }
         }
 
         public static void Close()
@@ -119,10 +121,11 @@ namespace Vocaluxe.Base
 
             for (int i = 0; i < _Screens.Count; i++)
             {
-                CLog.StartBenchmark("Load Theme " + Enum.GetNames(typeof(EScreen))[i]);
-                _Screens[i].Init();
-                _Screens[i].LoadTheme(CThemes.GetThemeScreensPath(_Screens[i].PartyModeID));
-                CLog.StopBenchmark("Load Theme " + Enum.GetNames(typeof(EScreen))[i]);
+                using (CBenchmark.Time("Load Theme " + Enum.GetNames(typeof(EScreen))[i]))
+                {
+                    _Screens[i].Init();
+                    _Screens[i].LoadTheme(CThemes.GetThemeScreensPath(_Screens[i].PartyModeID));
+                }
             }
 
             foreach (IMenu popup in _PopupScreens)
@@ -437,6 +440,11 @@ namespace Vocaluxe.Base
                         ShowPopup(EPopupScreens.PopupServerQR);
                     else
                         HidePopup(EPopupScreens.PopupServerQR);
+                }
+
+                if (keyEvent.Key == Keys.F8)
+                {
+                    CLog.ShowLogAssistant("", null);
                 }
 
                 if (popupPlayerControlAllowed && keyEvent.Key == Keys.Tab)
