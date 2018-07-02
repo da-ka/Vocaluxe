@@ -73,14 +73,7 @@ namespace Vocaluxe
             }
             catch (Exception e)
             {
-                string stackTrace = "";
-                try
-                {
-                    stackTrace = e.StackTrace;
-                }
-                catch {}
-                MessageBox.Show("Unhandled error: " + e.Message + stackTrace);
-                CLog.Error("Unhandled error: " + e.Message + stackTrace);
+                CLog.Fatal(e, "Unhandled error: {ErrorMessage}", CLog.Params(e.Message));
             }
 #else
             _Run(args);
@@ -98,7 +91,13 @@ namespace Vocaluxe
                 Directory.CreateDirectory(CSettings.DataFolder);
 
                 // Init Log
-                CLog.Init(CSettings.FolderNameLogs, CSettings.FileNameMainLog, CSettings.FileNameSongLog, CSettings.FileNameCrashMarker, CSettings.GetFullVersionText(), CReporter.ShowReporterFunc);
+                CLog.Init(CSettings.FolderNameLogs,
+                    CSettings.FileNameMainLog, 
+                    CSettings.FileNameSongLog, 
+                    CSettings.FileNameCrashMarker, 
+                    CSettings.GetFullVersionText(), 
+                    CReporter.ShowReporterFunc, 
+                    ELogLevel.Information);
 
                 if (!CProgrammHelper.CheckRequirements())
                     return;
