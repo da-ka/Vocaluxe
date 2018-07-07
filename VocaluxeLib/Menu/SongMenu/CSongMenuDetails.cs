@@ -662,6 +662,8 @@ namespace VocaluxeLib.Menu.SongMenu
                 if (i + offset < itemCount)
                 {
                     _Tiles[i].Color = new SColorF(1f, 1f, 1f, 1f);
+                    _Tiles[i].Visible = true;
+                    _TilesBG[i].Visible = true;
                     if (isInCategory)
                     {
                         CSong currentSong = CBase.Songs.GetVisibleSong(i + offset);
@@ -681,6 +683,9 @@ namespace VocaluxeLib.Menu.SongMenu
                 }
                 else
                 {
+                    _Tiles[i].Visible = false;
+                    _TilesBG[i].Visible = false;
+                    _Tiles[i].Texture = _CoverBGTexture;
                     _Tiles[i].Color.A = 0;
                     _Artists[i].Text = "";
                     _Titles[i].Text = "";
