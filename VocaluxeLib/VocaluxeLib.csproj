@@ -155,6 +155,7 @@
     <Compile Include="Draw\CTextureRef.cs" />
     <Compile Include="Menu\IThemeable.cs" />
     <Compile Include="Menu\SingNotes\CNoteBars.cs" />
+    <Compile Include="Menu\SongMenu\CSongMenuDetails.cs" />
     <Compile Include="Utils\Combinatorics\CCombinations.cs" />
     <Compile Include="Utils\ObjectPool.cs" />
     <Compile Include="XmlStructs.cs" />
