@@ -59,11 +59,11 @@ namespace VocaluxeLib.Menu.SongMenu
         private float _TileSpacing;
         private float _TileTextIndent;
 
-        private int _ListLength;
+        private List<SDBScoreEntry>[] _Scores;
 
+        private int _ListLength;
         private float _ListTextWidth;
 
-        // Offset is the song or categoryNr of the tile in the left upper corner
         private int _Offset;
 
         private float _Length = -1f;
@@ -193,7 +193,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 var cover = new CStatic(_PartyModeID, _CoverBGTexture, _Color, rect);
                 _Covers.Add(cover);
 
-                //Create Tile BG
+                //Create Tile
                 var BGrect = new SRectF(MaxRect.X, MaxRect.Y + i * (_Tile.H + _TileSpacing), MaxRect.W, _Tile.H, Rect.Z + 0.5f);
                 var tilebg = new CStatic(_PartyModeID, _TileBGTexture, new SColorF(0, 0, 0, 0.6f), BGrect);
                 _Tiles.Add(tilebg);
@@ -226,8 +226,8 @@ namespace VocaluxeLib.Menu.SongMenu
             foreach (CStatic cover in _Covers)
                 cover.Selected = false;
 
-            foreach (CStatic tilebg in _Tiles)
-                tilebg.Selected = false;
+            foreach (CStatic tile in _Tiles)
+                tile.Selected = false;
 
             int tileNr = _SelectionNr - _Offset;
             if (tileNr >= 0 && tileNr < _Covers.Count)
@@ -521,7 +521,7 @@ namespace VocaluxeLib.Menu.SongMenu
         public override void Draw()
         {
             _DrawScrollBar();
-            _DrawTileBGs();
+            _DrawTiles();
             _DrawCovers();
             _DrawVideoPreview();
 
@@ -568,22 +568,33 @@ namespace VocaluxeLib.Menu.SongMenu
             _UpdateListIfRequired();
         }
 
-        private void _DrawTileBGs()
+        private void _DrawTiles()
         {
+            int i = 0;
             foreach (CStatic tilebg in _Tiles)
             {
                 if (tilebg.Selected)
                 {
+                    SRectF selectedrect = new SRectF(_Tile.X, _Tile.Y, _Tile.W, _Tile.H, _Tile.Z);
+                    selectedrect.Y = Rect.Y + i * (_TileCoverH + _TileSpacing);
+                    selectedrect = selectedrect.Scale(SelectedTileZoomFactor);
+                    selectedrect.X = (float)Math.Round(selectedrect.X);
+                    selectedrect.Y = (float)Math.Round(selectedrect.Y);
+                    selectedrect.H = (float)Math.Round(selectedrect.H);
+                    selectedrect.W = (float)Math.Round(selectedrect.W);
+                    tilebg.MaxRect = selectedrect;
                     tilebg.Color = _TileSelected.Color;
                     tilebg.Z = _Tile.Z - 0.1f;
-                    tilebg.Draw(EAspect.Stretch, SelectedTileZoomFactor);
                 }
                 else
                 {
+                    tilebg.MaxRect = _Tile.MaxRect;
+                    tilebg.Y = Rect.Y + i * (_TileCoverH + _TileSpacing);
                     tilebg.Color = _Tile.Color;
                     tilebg.Z = _Tile.Z;
-                    tilebg.Draw();
                 }
+                tilebg.Draw();
+                i++;
             }
         }
 
@@ -595,16 +606,24 @@ namespace VocaluxeLib.Menu.SongMenu
                 EAspect aspect = (cover.Texture != _CoverBGTexture) ? EAspect.Crop : EAspect.Stretch;
                 if (cover.Selected)
                 {
+                    SRectF selectedrect = new SRectF(_Tile.X, _Tile.Y, _Tile.H, _Tile.H, _Tile.Z);
+                    selectedrect.Y = Rect.Y + i * (_TileCoverH + _TileSpacing);
+                    selectedrect = selectedrect.Scale(SelectedTileZoomFactor);
+                    selectedrect.X = MaxRect.X - (MaxRect.W * (SelectedTileZoomFactor - 1) / 2);
+                    selectedrect.Y = (float)Math.Round(selectedrect.Y);
+                    selectedrect.H = (float)Math.Round(selectedrect.H);
+                    selectedrect.W = (float)Math.Round(selectedrect.W);
+                    selectedrect.X = MaxRect.X - (MaxRect.W * (SelectedTileZoomFactor - 1) / 2);
+                    cover.MaxRect = selectedrect;
                     cover.Color.A = 1f;
                     cover.Z = Rect.Z - 0.1f;
-                    cover.X = Rect.X + (cover.W * (SelectedTileZoomFactor - 1)) / 2 - (_Tile.W * (SelectedTileZoomFactor - 1)) / 2;
-                    cover.Draw(aspect, SelectedTileZoomFactor);
+                    cover.Draw();
                 }
                 else
                 {
+                    cover.MaxRect = new SRectF(_Tile.X, _Tile.Y, _Tile.H, _Tile.H, _Tile.Z);
+                    cover.Y = Rect.Y + i * (_TileCoverH + _TileSpacing);
                     cover.Color.A = 0.4f;
-                    cover.Z = Rect.Z;
-                    cover.X = Rect.X;
                     cover.Draw(aspect);
                 }
                 i++;
@@ -672,6 +691,7 @@ namespace VocaluxeLib.Menu.SongMenu
         private void _DrawScrollBar()
         {
             if (CBase.Songs.GetNumSongsVisible() > _ListLength) {
+
                 float Adjust = (((float)_Offset / (CBase.Songs.GetNumSongsVisible() - _ListLength)) * (_ScrollBar.H - _ScrollBarPointer.H));
                 float ScrollBarPosition = _ScrollBar.Y + Adjust;
                 _ScrollBarPointer.Y = ScrollBarPosition;
@@ -700,7 +720,7 @@ namespace VocaluxeLib.Menu.SongMenu
             ScaledText.Color.A = 1f;
             float X = MaxRect.X - (MaxRect.W * (SelectedTileZoomFactor - 1) / 2);
             X += (_TileCoverW + _TileTextIndent) * SelectedTileZoomFactor;
-            ScaledText.X = X;
+            ScaledText.X = (float)Math.Round(X);
             ScaledText.Draw();
         }
 
