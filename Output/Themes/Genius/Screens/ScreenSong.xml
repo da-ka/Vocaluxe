@@ -19,9 +19,9 @@
       <Color Name="BackgroundColorAlpha" />
       <Rect>
         <X>0</X>
-        <Y>00</Y>
+        <Y>0</Y>
         <W>1280</W>
-        <H>120</H>
+        <H>40</H>
         <Z>-5</Z>
       </Rect>
     </Static>
@@ -30,9 +30,9 @@
       <Color Name="BackgroundColorAlpha" />
       <Rect>
         <X>0</X>
-        <Y>640</Y>
+        <Y>680</Y>
         <W>1280</W>
-        <H>80</H>
+        <H>40</H>
         <Z>-5</Z>
       </Rect>
     </Static>
@@ -1050,9 +1050,9 @@
       <SongMenuDetails>
         <TileAreaRect>
           <X>670</X>
-          <Y>140</Y>
+          <Y>40</Y>
           <W>500</W>
-          <H>480</H>
+          <H>640</H>
           <Z>-1</Z>
         </TileAreaRect>
         <TileBleedCount>2</TileBleedCount>
@@ -1065,7 +1065,7 @@
             <X>670</X>
             <Y>120</Y>
             <W>500</W>
-            <H>78</H>
+            <H>60</H>
             <Z>-1</Z>
           </Rect>
         </StaticTile>
@@ -1085,9 +1085,9 @@
           <Color Name="Visible" />
           <Rect>
             <X>1200</X>
-            <Y>140</Y>
+            <Y>60</Y>
             <W>10</W>
-            <H>480</H>
+            <H>600</H>
             <Z>-10</Z>
           </Rect>
         </StaticScrollBar>

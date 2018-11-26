@@ -309,9 +309,9 @@
       <A>0.400</A>
     </SongTileBGColor>
     <SongTileBGSelColor>
-      <R>0.900</R>
-      <G>0.900</G>
-      <B>0.900</B>
+      <R>0.500</R>
+      <G>0.500</G>
+      <B>0.500</B>
       <A>0.800</A>
     </SongTileBGSelColor>
   </Colors>
