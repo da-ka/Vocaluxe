@@ -476,6 +476,12 @@ namespace Vocaluxe.Screens
                 }
             }
 
+            if (mouseEvent.LB && _Buttons[_ButtonOptionsSing].Selected)
+            {
+                _StartSong(_SongMenu.GetPreviewSongNr());
+                return true;
+            }
+
             if (_CurSongOptionsView == ESongOptionsView.None)
             {
                 if (_SongMenu.HandleMouse(ref mouseEvent, _Sso))
@@ -503,12 +509,7 @@ namespace Vocaluxe.Screens
                         _ToggleSongOptions(ESongOptionsView.None);
                         return true;
                     }
-                    if (_Buttons[_ButtonOptionsSing].Selected)
-                    {
-                        _ToggleSongOptions(ESongOptionsView.None);
-                        _StartSong(_SongMenu.GetPreviewSongNr());
-                        return true;
-                    }
+                    
                     if (_Buttons[_ButtonOptionsPlaylist].Selected)
                     {
                         _ToggleSongOptions(ESongOptionsView.None);
@@ -658,7 +659,7 @@ namespace Vocaluxe.Screens
                 }
                 else
                 {
-                    _SongMenu.LeaveSelectedCategory();
+                    //_SongMenu.LeaveSelectedCategory();
                 }
             }
             _SearchActive = _Sso.Sorting.SearchActive;
@@ -857,9 +858,9 @@ namespace Vocaluxe.Screens
             if (CSongs.IsInCategory && (songNr >= 0))
             {
                 EGameMode gm;
-                if (_AvailableGameModes.Count >= _SelectSlides[_SelectSlideOptionsMode].Selection)
+                /*if (_AvailableGameModes.Count >= _SelectSlides[_SelectSlideOptionsMode].Selection)
                     gm = _AvailableGameModes[_SelectSlides[_SelectSlideOptionsMode].Selection];
-                else
+                else*/
                     gm = CSongs.VisibleSongs[songNr].IsDuet ? EGameMode.TR_GAMEMODE_DUET : EGameMode.TR_GAMEMODE_NORMAL;
 
                 CGame.Reset();
@@ -1171,7 +1172,7 @@ namespace Vocaluxe.Screens
             _SelectSlides[_SelectSlideOptionsPlaylistOpen].Visible = false;
             _SelectSlides[_SelectSlideOptionsNumMedleySongs].Visible = false;
             _Buttons[_ButtonOptionsClose].Visible = false;
-            _Buttons[_ButtonOptionsSing].Visible = false;
+            _Buttons[_ButtonOptionsSing].Visible = true;
             _Buttons[_ButtonOptionsPlaylist].Visible = false;
             _Buttons[_ButtonOptionsRandom].Visible = false;
             _Buttons[_ButtonOptionsRandomCategory].Visible = false;

@@ -43,31 +43,26 @@ namespace VocaluxeLib.Menu.SongMenu
         public SThemeSongMenuTileBoard SongMenuTileBoard;
     }
 
+
     public struct SThemeSongMenuDetails
     {
-        /// <summary>
-        ///     Number of visible songs in list
-        /// </summary>
-        public int ListLength;
+        public SRectF TileAreaRect;
 
-        /// <summary>
-        ///     Space between tiles horizontal
-        /// </summary>
-        public float SpaceW;
+        public float TileBleedCount;
+        public float TileSpacing;
+        public float TileTextIndent;
 
-        /// <summary>
-        ///     Space between tiles vertical
-        /// </summary>
-        public float SpaceH;
-
-        public SRectF TileRect;
-        public SRectF TileRectSmall;
+        public SThemeStatic StaticTile;
+        public SThemeStatic StaticTileSelected;
+        public SThemeStatic StaticScrollBar;
+        public SThemeStatic StaticScrollBarPointer;
 
         public SThemeText TextArtist;
         public SThemeText TextTitle;
         public SThemeText TextSongLength;
 
-        public SThemeStatic StaticCoverBig;
+        public SThemeStatic StaticBigCover;
+        public SThemeStatic StaticVideoBG;
         public SThemeStatic StaticTextBG;
         public SThemeStatic StaticDuetIcon;
         public SThemeStatic StaticVideoIcon;
