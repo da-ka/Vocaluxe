@@ -441,6 +441,8 @@ namespace Vocaluxe.Screens
 
             for (int p = 0; p < players.Length; p++)
             {
+                _ProgressBars[_PlayerProgressBarPoints[p]].Progress = 0;
+
                 string name = CProfiles.GetPlayerName(players[p].ProfileID, p);
                 if (song != null && song.IsDuet)
                 {

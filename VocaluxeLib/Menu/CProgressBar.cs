@@ -250,7 +250,7 @@ namespace VocaluxeLib.Menu
 
                 if (_TextureProgressMid != null)
                 {
-                    CBase.Drawing.DrawTexture(_TextureProgressMid, _RectProgressMid, color, AllMonitors);
+                    CBase.Drawing.DrawTexture(_TextureProgressMid, new SRectF(Rect.X, Rect.Y, Rect.H * _TextureProgressMid.OrigAspect, Rect.H, Rect.Z), color, _RectProgressMid, false, AllMonitors);
                     if (Reflection)
                         CBase.Drawing.DrawTextureReflection(_TextureProgressMid, _RectProgressMid, color, _RectProgressMid, ReflectionSpace, ReflectionHeight, AllMonitors);
                 }
