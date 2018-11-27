@@ -74,7 +74,8 @@ namespace VocaluxeLib.Menu.SongMenu
         private bool _MouseWasInRect;
 
         private int _OldMouseY;
-        private float _DragDiffY;
+        private float _ListDragDiffY;
+        private float _ScrollDragDiffY;
         private bool _DragActive;
         private Stopwatch _DragTimer;
 
@@ -410,8 +411,6 @@ namespace VocaluxeLib.Menu.SongMenu
                     //Check for >0 so we do not allow selection of nothing (-1)
                     if (_SelectionNr > 0 && moveAllowed)
                     {
-                        _SelectionNr--;
-                        _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
                     break;
@@ -419,8 +418,6 @@ namespace VocaluxeLib.Menu.SongMenu
                 case Keys.Right:
                     if (moveAllowed)
                     {
-                        _SelectionNr++;
-                        _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
                     break;
@@ -477,7 +474,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 int lastSelection = _SelectionNr;
             }
             _MouseWasInRect = CHelper.IsInBounds(Rect, mouseEvent);
-            if (mouseEvent.LB && !_DragTimer.IsRunning)
+            if (mouseEvent.LB && !_DragTimer.IsRunning && (CHelper.IsInBounds(_ScrollRect, mouseEvent) || CHelper.IsInBounds(_ScrollBar.Rect, mouseEvent)))
             {
                 _DragTimer.Start();
                 _OldMouseY = mouseEvent.Y;
@@ -498,21 +495,28 @@ namespace VocaluxeLib.Menu.SongMenu
                     return true;
                 }
             }
-            if (mouseEvent.LBH && CHelper.IsInBounds(_ScrollRect, mouseEvent))
+            if (mouseEvent.LBH && _DragActive && CHelper.IsInBounds(_ScrollBar.Rect, mouseEvent))
             {
-                _DragDiffY = _OldMouseY - mouseEvent.Y;
-                while(_DragDiffY > _Tile.H)
+                float ebarpos = mouseEvent.Y - _ScrollBar.Y - (_ScrollBarPointer.H / 2);
+                float offset = ((ebarpos / (_ScrollBar.H - _ScrollBarPointer.H)) * (CBase.Songs.GetNumSongsVisible() - _ListLength));
+                _UpdateList((int)offset);
+                _UpdateTileSelection();
+            }
+            else if (mouseEvent.LBH && _DragActive && CHelper.IsInBounds(_ScrollRect, mouseEvent))
+            {
+                _ListDragDiffY = _OldMouseY - mouseEvent.Y;
+                while(_ListDragDiffY > _Tile.H)
                 {
                     _UpdateList(_Offset + 1);
                     _UpdateTileSelection();
-                    _DragDiffY -= _Tile.H;
+                    _ListDragDiffY -= _Tile.H;
                     _OldMouseY -= (int)_Tile.H;
                 }
-                while (_DragDiffY < -_Tile.H)
+                while (_ListDragDiffY < -_Tile.H)
                 {
                     _UpdateList(_Offset - 1);
                     _UpdateTileSelection();
-                    _DragDiffY += _Tile.H;
+                    _ListDragDiffY += _Tile.H;
                     _OldMouseY += (int)_Tile.H;
                 }
                 
@@ -522,16 +526,16 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 if (_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _DragDiffY = 0;
+                _ListDragDiffY = 0;
                 _DragActive = false;
                 
                 return true;
             }
-            else if (_DragActive && _DragDiffY < 25 && _DragTimer.ElapsedMilliseconds < 200 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
+            else if (_DragActive && _ListDragDiffY < 25 && _DragTimer.ElapsedMilliseconds < 200 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
             {
                 if (_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _DragDiffY = 0;
+                _ListDragDiffY = 0;
                 _DragActive = false;
 
                 int i = 0;
@@ -574,7 +578,7 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 if(_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _DragDiffY = 0;
+                _ListDragDiffY = 0;
                 _DragActive = false;
 
                 return true;
@@ -640,7 +644,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 if (tilebg.Selected)
                 {
                     SRectF selectedrect = new SRectF(_Tile.X, _Tile.Y, _Tile.W, _Tile.H, _Tile.Z);
-                    selectedrect.Y = Rect.Y - _DragDiffY + i * (_TileCoverH + _TileSpacing);
+                    selectedrect.Y = Rect.Y - _ListDragDiffY + i * (_TileCoverH + _TileSpacing);
                     selectedrect = selectedrect.Scale(SelectedTileZoomFactor);
                     selectedrect.X = (float)Math.Round(selectedrect.X);
                     selectedrect.Y = (float)Math.Round(selectedrect.Y);
@@ -653,7 +657,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 else
                 {
                     tilebg.MaxRect = _Tile.MaxRect;
-                    tilebg.Y = Rect.Y - _DragDiffY + i * (_TileCoverH + _TileSpacing);
+                    tilebg.Y = Rect.Y - _ListDragDiffY + i * (_TileCoverH + _TileSpacing);
                     tilebg.Color = _Tile.Color;
                     tilebg.Z = _Tile.Z;
                 }
@@ -671,7 +675,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 if (cover.Selected)
                 {
                     SRectF selectedrect = new SRectF(_Tile.X, _Tile.Y, _Tile.H, _Tile.H, _Tile.Z);
-                    selectedrect.Y = Rect.Y - _DragDiffY + i * (_TileCoverH + _TileSpacing);
+                    selectedrect.Y = Rect.Y - _ListDragDiffY + i * (_TileCoverH + _TileSpacing);
                     selectedrect = selectedrect.Scale(SelectedTileZoomFactor);
                     selectedrect.X = MaxRect.X - (MaxRect.W * (SelectedTileZoomFactor - 1) / 2);
                     selectedrect.Y = (float)Math.Round(selectedrect.Y);
@@ -686,7 +690,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 else
                 {
                     cover.MaxRect = new SRectF(_Tile.X, _Tile.Y, _Tile.H, _Tile.H, _Tile.Z);
-                    cover.Y = Rect.Y - _DragDiffY + i * (_TileCoverH + _TileSpacing);
+                    cover.Y = Rect.Y - _ListDragDiffY + i * (_TileCoverH + _TileSpacing);
                     cover.Color.A = 0.4f;
                     cover.Draw(aspect);
                 }
@@ -725,7 +729,7 @@ namespace VocaluxeLib.Menu.SongMenu
                     CText drawtext = new CText(text);
                     drawtext.Color.A = 0.4f;
                     drawtext.X = MaxRect.X + _TileCoverW + _TileTextIndent;
-                    drawtext.Y -= _DragDiffY;
+                    drawtext.Y -= _ListDragDiffY;
                     drawtext.Draw();
                 }
                 else
@@ -747,7 +751,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 {
                     CText drawtext = new CText(text);
                     drawtext.Color.A = 0.4f;
-                    drawtext.Y -= _DragDiffY;
+                    drawtext.Y -= _ListDragDiffY;
                     drawtext.Draw();
                 }
                 else
@@ -789,7 +793,7 @@ namespace VocaluxeLib.Menu.SongMenu
             float X = MaxRect.X - (MaxRect.W * (SelectedTileZoomFactor - 1) / 2);
             X += (_TileCoverW + _TileTextIndent) * SelectedTileZoomFactor;
             ScaledText.X = (float)Math.Round(X);
-            ScaledText.Y -= _DragDiffY;
+            ScaledText.Y -= _ListDragDiffY;
             ScaledText.Draw();
         }
 
