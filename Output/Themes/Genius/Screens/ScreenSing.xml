@@ -6,6 +6,17 @@
   </Informations>
   <Backgrounds/>
   <Statics>
+    <Static Name="StaticDefaultAvatar">
+      <Skin>VocaluxeIcon</Skin>
+      <Color Name="Invisible" />
+      <Rect>
+        <X>0</X>
+        <Y>0</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-1</Z>
+      </Rect>
+    </Static>
     <Static Name="StaticSongText">
       <Skin>Score</Skin>
       <Color Name="StaticColor" />

@@ -443,7 +443,7 @@ namespace Vocaluxe.Screens
             {
                 _ProgressBars[_PlayerProgressBarPoints[p]].Progress = 0;
 
-                string name = CProfiles.GetPlayerName(players[p].ProfileID, p);
+                string name = CProfiles.GetPlayerName(players[p].ProfileID, p + 1);
                 if (song != null && song.IsDuet)
                 {
                     if (song.Notes.VoiceNames.IsSet(players[p].VoiceNr))
@@ -474,6 +474,8 @@ namespace Vocaluxe.Screens
 
                 if (CProfiles.IsProfileIDValid(players[p].ProfileID))
                     _Statics[_PlayerStaticAvatar[p]].Texture = CProfiles.GetAvatarTextureFromProfile(players[p].ProfileID);
+                else
+                    _Statics[_PlayerStaticAvatar[p]].Texture = _Statics["StaticDefaultAvatar"].Texture;
             }
         }
 

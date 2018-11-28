@@ -14,6 +14,17 @@
     </Background>
   </Backgrounds>
   <Statics>
+    <Static Name="StaticDefaultAvatar">
+      <Skin>VocaluxeIcon</Skin>
+      <Color Name="Invisible" />
+      <Rect>
+        <X>0</X>
+        <Y>0</Y>
+        <W>1280</W>
+        <H>50</H>
+        <Z>-1</Z>
+      </Rect>
+    </Static>
     <Static Name="StaticMenuBar">
       <Skin />
       <Color Name="BackgroundColorAlpha" />
@@ -1492,7 +1503,7 @@
   </ScreenSettings>
   <ProgressBars>
     <ProgressBar Name="ProgressBarPointsP1N1">
-	  <SkinBackground>PointsBarBG</SkinBackground>
+      <SkinBackground>PointsBarBG</SkinBackground>
       <SkinForeground />
       <SkinProgressLeft />
       <SkinProgressMid />
@@ -1503,10 +1514,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1528,10 +1539,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1542,7 +1553,7 @@
       </Rect>
     </ProgressBar>
     <ProgressBar Name="ProgressBarPointsP2N2">
-	  <SkinBackground>PointsBarBG</SkinBackground>
+      <SkinBackground>PointsBarBG</SkinBackground>
       <SkinForeground />
       <SkinProgressLeft />
       <SkinProgressMid />
@@ -1553,10 +1564,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player2" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player2" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1578,10 +1589,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1603,10 +1614,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player2" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player2" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1628,10 +1639,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player3" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player3" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>520</X>
@@ -1653,10 +1664,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1678,10 +1689,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player2" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player2" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1703,10 +1714,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player3" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player3" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -1728,10 +1739,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player4" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player4" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -1753,10 +1764,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1778,10 +1789,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player2" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player2" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1803,10 +1814,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player3" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player3" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1828,10 +1839,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player4" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player4" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -1853,10 +1864,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player5" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player5" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -1878,10 +1889,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player1" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player1" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1903,10 +1914,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player2" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player2" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1928,10 +1939,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player3" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player3" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>210</X>
@@ -1953,10 +1964,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player4" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player4" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -1978,10 +1989,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player5" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player5" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -2003,10 +2014,10 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <ProgressColors>
-		<ProgressColor>
-			<From>0</From>
-			<Color Name="Player6" />
-		</ProgressColor>
+        <ProgressColor>
+          <From>0</From>
+          <Color Name="Player6" />
+        </ProgressColor>
       </ProgressColors>
       <Rect>
         <X>820</X>
@@ -2015,6 +2026,6 @@
         <H>10</H>
         <Z>0</Z>
       </Rect>
-    </ProgressBar>  
+    </ProgressBar>
   </ProgressBars>
 </Screen>

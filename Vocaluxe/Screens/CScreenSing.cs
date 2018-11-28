@@ -58,6 +58,7 @@ namespace Vocaluxe.Screens
         private string[,,] _TextNames;
         private List<string> _TextsPause;
 
+        private const string _StaticDefaultAvatar = "StaticDefaultAvatar";
         private const string _StaticSongText = "StaticSongText";
         private const string _StaticLyrics = "StaticLyrics";
         private const string _StaticLyricsDuet = "StaticLyricsDuet";
@@ -1889,7 +1890,7 @@ namespace Vocaluxe.Screens
                 if (CProfiles.IsProfileIDValid(CGame.Players[i].ProfileID))
                     _Statics[_PlayerStaticAvatar[i]].Texture = CProfiles.GetAvatarTextureFromProfile(CGame.Players[i].ProfileID);
                 else
-                    _Statics[_PlayerStaticAvatar[i]].Visible = false;
+                    _Statics[_PlayerStaticAvatar[i]].Texture = _Statics[_StaticDefaultAvatar].Texture;
             }
         }
 
@@ -1897,10 +1898,7 @@ namespace Vocaluxe.Screens
         {
             for (int i = 0; i < CGame.NumPlayers; i++)
             {
-                if (CProfiles.IsProfileIDValid(CGame.Players[i].ProfileID))
-                    _Texts[_PlayerTextName[i]].Text = CProfiles.GetPlayerName(CGame.Players[i].ProfileID);
-                else
-                    _Texts[_PlayerTextName[i]].Visible = false;
+                _Texts[_PlayerTextName[i]].Text = CProfiles.GetPlayerName(CGame.Players[i].ProfileID, i + 1);
             }
         }
         private void _AssignPlayerElements()

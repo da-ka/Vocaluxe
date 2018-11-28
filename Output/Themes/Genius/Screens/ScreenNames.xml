@@ -48,7 +48,7 @@
       </Rect>
     </Static>
     <Static Name="StaticPlayerAvatar">
-      <Skin/>
+      <Skin>VocaluxeIcon</Skin>
       <Color Name="Visible" />
       <Rect>
         <X>5</X>
@@ -108,7 +108,8 @@
       <ResizeAlign>Center</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
-      <Text /></Text>
+      <Text />
+    </Text>
     <Text Name="TextWarningProfiles">
       <X>640</X>
       <Y>652</Y>
@@ -121,7 +122,8 @@
       <ResizeAlign>Center</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
-      <Text /></Text>
+      <Text />
+    </Text>
     <Text Name="TextScreen">
       <X>186</X>
       <Y>4</Y>
@@ -148,7 +150,8 @@
       <ResizeAlign>Center</ResizeAlign>
       <Style>Bold</Style>
       <Font>Outline</Font>
-      <Text /></Text>
+      <Text />
+    </Text>
   </Texts>
   <Buttons>
     <Button Name="ButtonPlayer">
@@ -408,10 +411,10 @@
     </NameSelection>
     <NameSelection Name="2ScreenNameSelection">
       <Rect>
-        <X>172</X>
-        <Y>327</Y>
+        <X>55</X>
+        <Y>150</Y>
         <W>945</W>
-        <H>393</H>
+        <H>550</H>
         <Z>0</Z>
       </Rect>
       <SkinEmptyTile>CoverTile</SkinEmptyTile>
@@ -423,12 +426,12 @@
       </ColorEmptyTile>
       <SkinTileSelected>PlayerSelector</SkinTileSelected>
       <Tiles>
-        <W>50</W>
-        <H>50</H>
-        <NumW>6</NumW>
-        <NumH>2</NumH>
-        <SpaceW>20.71</SpaceW>
-        <SpaceH>30</SpaceH>
+        <W>75</W>
+        <H>75</H>
+        <NumW>8</NumW>
+        <NumH>4</NumH>
+        <SpaceW>20</SpaceW>
+        <SpaceH>20</SpaceH>
         <Name>
           <Space>2</Space>
           <H>17</H>
