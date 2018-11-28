@@ -171,6 +171,7 @@ namespace Vocaluxe.Base
             [DefaultValue(EOffOn.TR_CONFIG_ON)] public EOffOn IgnoreArticles;
             [DefaultValue(ETimerMode.TR_CONFIG_TIMERMODE_REMAINING)] public ETimerMode TimerMode;
             [XmlAltName("NumPlayer"), DefaultValue(2)] public int NumPlayers;
+            [XmlAltName("JudgmentDistance"), DefaultValue(100)] public int JudgementDistance;
             [DefaultValue(EOffOn.TR_CONFIG_OFF)] public EOffOn Tabs;
             [DefaultValue(EOffOn.TR_CONFIG_OFF)] public EOffOn AutoplayPreviews;
             [XmlAltName("AutoplayPreviewDelay"), DefaultValue(500)] public int AutoplayPreviewDelay;
@@ -515,6 +516,8 @@ namespace Vocaluxe.Base
                     return "TimerMode: " + CHelper.ListStrings(Enum.GetNames(typeof(ETimerMode)));
                 case "NumPlayers":
                     return "NumPlayers: 1 - "+CSettings.MaxNumPlayer+" (Limited by " + CSettings.MaxScreenPlayer + " * NumScreens)";
+                case "JudgementDistance":
+                    return "Distance to Judgement-Line";
                 case "Tabs":
                     return "Order songs in tabs: " + CHelper.ListStrings(Enum.GetNames(typeof(EOffOn)));
                 case "AutoplayPreviews":

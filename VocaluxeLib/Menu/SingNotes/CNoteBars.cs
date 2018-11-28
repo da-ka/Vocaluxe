@@ -60,7 +60,7 @@ namespace VocaluxeLib.Menu.SingNotes
 
         private int _CurrentLine = -1;
 
-        private readonly int _JudgementLine = 100;
+        private readonly int _JudgementLine = CBase.Config.GetJudgementDistance();
 
         private readonly Stopwatch _Timer = new Stopwatch();
         private readonly Stopwatch _ToneHelperTimer = new Stopwatch();

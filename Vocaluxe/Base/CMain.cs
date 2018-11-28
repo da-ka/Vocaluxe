@@ -127,6 +127,11 @@ namespace Vocaluxe.Base
             return CConfig.Config.Graphics.CoverSize;
         }
 
+        public int GetJudgementDistance()
+        {
+            return CConfig.Config.Game.JudgementDistance;
+        }
+
         public IEnumerable<string> GetSongFolders()
         {
             return CConfig.SongFolders;
