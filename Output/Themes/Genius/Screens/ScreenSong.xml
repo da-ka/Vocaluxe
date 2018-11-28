@@ -91,8 +91,8 @@
   </Statics>
   <Texts>
     <Text Name="TextScreenTitle">
-      <X>50</X>
-      <Y>40</Y>
+      <X>80</X>
+      <Y>50</Y>
       <Z>-11</Z>
       <H>50</H>
       <MaxW>900</MaxW>
