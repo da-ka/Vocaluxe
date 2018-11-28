@@ -766,9 +766,9 @@ namespace VocaluxeLib.Menu.SongMenu
 
         private void _DrawScrollBar()
         {
-            if (CBase.Songs.GetNumSongsVisible() > _ListLength) {
+            if (CBase.Songs.GetNumSongsVisible() > _ListLength - 2 * _LAdj) {
 
-                float Adjust = (((float)_Offset / (CBase.Songs.GetNumSongsVisible() - _ListLength)) * (_ScrollBar.H - _ScrollBarPointer.H));
+                float Adjust = (((float)_Offset / (CBase.Songs.GetNumSongsVisible() - _ListLength + 2 * _LAdj)) * (_ScrollBar.H - _ScrollBarPointer.H));
                 float ScrollBarPosition = _ScrollBar.Y + Adjust;
                 _ScrollBarPointer.Y = ScrollBarPosition;
 
