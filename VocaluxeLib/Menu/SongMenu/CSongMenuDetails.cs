@@ -75,9 +75,10 @@ namespace VocaluxeLib.Menu.SongMenu
 
         private int _OldMouseY;
         private float _ListDragDiffY;
-        private float _ScrollDragDiffY;
+        private float _OldListDragDiffY;
         private bool _DragActive;
         private Stopwatch _DragTimer;
+        private int _LAdj = 2;
 
         private readonly List<IMenuElement> _SubElements = new List<IMenuElement>();
 
@@ -190,8 +191,6 @@ namespace VocaluxeLib.Menu.SongMenu
             _Titles = new List<CText>();
 
             _ListLength = (int)(MaxRect.H / (_Tile.H + (_TileSpacing/2)));
-            _ListLength += 2;
-            int listDiff = (int)(MaxRect.H - ((_Tile.H + (_TileSpacing / 2) * _ListLength)));
             _TileCoverH = _Tile.H;
             _TileCoverW = _TileCoverH;
 
@@ -202,7 +201,7 @@ namespace VocaluxeLib.Menu.SongMenu
             for (int i = 0; i < _ListLength; i++)
             {
                 //Create Cover
-                var rect = new SRectF(Rect.X, Rect.Y + (listDiff/2) + (i * (_TileCoverH + _TileSpacing)), _TileCoverW, _TileCoverH, Rect.Z);
+                var rect = new SRectF(Rect.X, Rect.Y + (i * (_TileCoverH + _TileSpacing)), _TileCoverW, _TileCoverH, Rect.Z);
                 var cover = new CStatic(_PartyModeID, _CoverBGTexture, _Color, rect);
                 _Covers.Add(cover);
 
@@ -242,7 +241,7 @@ namespace VocaluxeLib.Menu.SongMenu
             foreach (CStatic tile in _Tiles)
                 tile.Selected = false;
 
-            int tileNr = _SelectionNr - _Offset;
+            int tileNr = _SelectionNr - _Offset + _LAdj;
             if (tileNr >= 0 && tileNr < _Covers.Count)
                 _Covers[tileNr].Selected = _Tiles[tileNr].Selected = true;
         }
@@ -504,15 +503,15 @@ namespace VocaluxeLib.Menu.SongMenu
             }
             else if (mouseEvent.LBH && _DragActive && CHelper.IsInBounds(_ScrollRect, mouseEvent))
             {
-                _ListDragDiffY = _OldMouseY - mouseEvent.Y;
-                while(_ListDragDiffY > _Tile.H)
+                _ListDragDiffY = _OldListDragDiffY + _OldMouseY - mouseEvent.Y;
+                while(_ListDragDiffY > _Tile.H/2)
                 {
                     _UpdateList(_Offset + 1);
                     _UpdateTileSelection();
                     _ListDragDiffY -= _Tile.H;
                     _OldMouseY -= (int)_Tile.H;
                 }
-                while (_ListDragDiffY < -_Tile.H)
+                while (_ListDragDiffY < -_Tile.H/2)
                 {
                     _UpdateList(_Offset - 1);
                     _UpdateTileSelection();
@@ -526,16 +525,18 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 if (_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _ListDragDiffY = 0;
+                //_ListDragDiffY = 0;
+                _OldListDragDiffY = _ListDragDiffY;
                 _DragActive = false;
                 
                 return true;
             }
-            else if (_DragActive && _ListDragDiffY < 25 && _DragTimer.ElapsedMilliseconds < 200 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
+            else if (_DragActive && _ListDragDiffY-_OldListDragDiffY < 25 && _DragTimer.ElapsedMilliseconds < 200 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
             {
                 if (_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _ListDragDiffY = 0;
+                //_ListDragDiffY = 0;
+                _OldListDragDiffY = _ListDragDiffY;
                 _DragActive = false;
 
                 int i = 0;
@@ -546,9 +547,11 @@ namespace VocaluxeLib.Menu.SongMenu
                     SRectF songRect = new SRectF(tile.Rect.X, tile.Rect.Y, Rect.W, tile.Rect.H, tile.Rect.Z);
                     if (tile.Visible && CHelper.IsInBounds(songRect, mouseEvent))
                     {
-                        _SelectionNr = i + _Offset;
+                        _SelectionNr = i -_LAdj + _Offset;
                         if (!CBase.Songs.IsInCategory())
-                            _PreviewNr = i + _Offset;
+                            _PreviewNr = i -_LAdj + _Offset;
+                        if (_SelectionNr >= _Offset +_Tiles.Count - 2 * _LAdj - 1 || _SelectionNr <= _Offset)
+                            _OldListDragDiffY = _ListDragDiffY = 0;
                         break;
                     }
                     i++;
@@ -578,7 +581,8 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 if(_DragTimer.IsRunning)
                     _DragTimer.Reset();
-                _ListDragDiffY = 0;
+                //_ListDragDiffY = 0;
+                _OldListDragDiffY = _ListDragDiffY;
                 _DragActive = false;
 
                 return true;
@@ -842,8 +846,8 @@ namespace VocaluxeLib.Menu.SongMenu
             int offset;
             if (_SelectionNr < _Offset && _SelectionNr >= 0)
                 offset = _SelectionNr;
-            else if (_SelectionNr >= _Offset + _ListLength)
-                offset = _SelectionNr - _ListLength + 1;
+            else if (_SelectionNr >= _Offset + _ListLength - 2 * _LAdj)
+                offset = _SelectionNr - _ListLength + 1 + 2 * _LAdj;
             else
                 offset = _Offset;
             _UpdateList(offset, force);
@@ -853,6 +857,7 @@ namespace VocaluxeLib.Menu.SongMenu
         {
             bool isInCategory = CBase.Songs.IsInCategory();
             int itemCount = isInCategory ? CBase.Songs.GetNumSongsVisible() : CBase.Songs.GetNumCategories();
+            itemCount += 2 * _LAdj;
             int totalSongNumber = CBase.Songs.GetNumSongs();
 
             offset = offset.Clamp(0, itemCount - _ListLength, true);
@@ -862,21 +867,29 @@ namespace VocaluxeLib.Menu.SongMenu
 
             for (int i = 0; i < _Covers.Count; i++)
             {
-                if (i + offset < itemCount)
+                if(offset + i < _LAdj || offset + i > itemCount - _LAdj -1)
+                {
+                    _Covers[i].Visible = false;
+                    _Tiles[i].Visible = false;
+                    _Covers[i].Texture = _CoverBGTexture;
+                    _Artists[i].Text = "";
+                    _Titles[i].Text = "";
+                }
+                else if (i - _LAdj + offset < itemCount - _LAdj)
                 {
                     _Covers[i].Color = new SColorF(1f, 1f, 1f, 1f);
                     _Covers[i].Visible = true;
                     _Tiles[i].Visible = true;
                     if (isInCategory)
                     {
-                        CSong currentSong = CBase.Songs.GetVisibleSong(i + offset);
+                        CSong currentSong = CBase.Songs.GetVisibleSong(i - _LAdj + offset);
                         _Covers[i].Texture = currentSong.CoverTextureSmall;
                         _Artists[i].Text = currentSong.Artist;
                         _Titles[i].Text = currentSong.Title;
                     }
                     else
                     {
-                        CCategory currentCat = CBase.Songs.GetCategory(i + offset);
+                        CCategory currentCat = CBase.Songs.GetCategory(i - _LAdj + offset);
                         _Covers[i].Texture = currentCat.CoverTextureSmall;
                         int num = currentCat.GetNumSongsNotSung();
                         String songOrSongs = (num == 1) ? "TR_SCREENSONG_NUMSONG" : "TR_SCREENSONG_NUMSONGS";

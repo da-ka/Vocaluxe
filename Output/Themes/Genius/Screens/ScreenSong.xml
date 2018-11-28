@@ -16,7 +16,7 @@
   <Statics>
     <Static Name="StaticTopOverlay">
       <Skin />
-      <Color Name="BackgroundColorAlpha" />
+      <Color Name="invisible" />
       <Rect>
         <X>0</X>
         <Y>0</Y>
@@ -27,7 +27,7 @@
     </Static>
     <Static Name="BottomOverlay">
       <Skin />
-      <Color Name="BackgroundColorAlpha" />
+      <Color Name="Invisible" />
       <Rect>
         <X>0</X>
         <Y>680</Y>
@@ -1050,9 +1050,9 @@
       <SongMenuDetails>
         <TileAreaRect>
           <X>670</X>
-          <Y>40</Y>
+          <Y>-70</Y>
           <W>500</W>
-          <H>640</H>
+          <H>872</H>
           <Z>-1</Z>
         </TileAreaRect>
         <TileBleedCount>2</TileBleedCount>
@@ -1086,7 +1086,7 @@
           <Rect>
             <X>1200</X>
             <Y>60</Y>
-            <W>10</W>
+            <W>20</W>
             <H>600</H>
             <Z>-10</Z>
           </Rect>
@@ -1097,7 +1097,7 @@
           <Rect>
             <X>1200</X>
             <Y>140</Y>
-            <W>10</W>
+            <W>20</W>
             <H>50</H>
             <Z>-11</Z>
           </Rect>
