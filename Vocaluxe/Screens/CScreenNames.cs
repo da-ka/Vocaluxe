@@ -483,6 +483,10 @@ namespace Vocaluxe.Screens
                     _StartSong();
                 else if (_Buttons[_ButtonNewProfile].Selected)
                     CGraphics.ShowPopup(EPopupScreens.PopupNewPlayer);
+                else if (_Buttons["ButtonScrollUp"].Selected)
+                    _NameSelections[_NameSelection].UpdateList(_NameSelections[_NameSelection].Offset - 1);
+                else if (_Buttons["ButtonScrollDown"].Selected)
+                    _NameSelections[_NameSelection].UpdateList(_NameSelections[_NameSelection].Offset + 1);
                 else
                     _UpdatePlayerNumber();
                 //Update Tiles-List

@@ -181,6 +181,60 @@
         <Text></Text>
       </Text>
     </Button>
+    <Button Name="ButtonScrollUp">
+      <Skin>ScrollUp</Skin>
+      <SkinSelected>ScrollUp</SkinSelected>
+      <Rect>
+        <X>800</X>
+        <Y>325</Y>
+        <W>40</W>
+        <H>20</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="ButtonColor" />
+      <SelColor Name="ButtonSelColor" />
+      <Text Name="Text">
+        <X>75</X>
+        <Y>12</Y>
+        <Z>0</Z>
+        <H>27</H>
+        <MaxW>142</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Center</Align>
+        <ResizeAlign>Center</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
+    <Button Name="ButtonScrollDown">
+      <Skin>ScrollDown</Skin>
+      <SkinSelected>ScrollDown</SkinSelected>
+      <Rect>
+        <X>800</X>
+        <Y>355</Y>
+        <W>40</W>
+        <H>20</H>
+        <Z>0</Z>
+      </Rect>
+      <Color Name="ButtonColor" />
+      <SelColor Name="ButtonSelColor" />
+      <Text Name="Text">
+        <X>75</X>
+        <Y>12</Y>
+        <Z>0</Z>
+        <H>27</H>
+        <MaxW>142</MaxW>
+        <Color Name="ButtonTextSelColor" />
+        <SelColor Name="ButtonTextSelColor" />
+        <Align>Center</Align>
+        <ResizeAlign>Center</ResizeAlign>
+        <Style>Bold</Style>
+        <Font>Outline</Font>
+        <Text></Text>
+      </Text>
+    </Button>
     <Button Name="ButtonBack">
       <Skin>Button</Skin>
       <SkinSelected>Button</SkinSelected>
