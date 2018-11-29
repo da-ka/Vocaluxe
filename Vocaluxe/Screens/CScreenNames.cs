@@ -753,7 +753,7 @@ namespace Vocaluxe.Screens
             _UpdateSlides();
             _UpdatePlayerNumber();
             _CheckMics();
-            _CheckPlayers();
+            //_CheckPlayers();
 
             _LoadPlayerPanels();
             
@@ -887,7 +887,7 @@ namespace Vocaluxe.Screens
             }
             CConfig.SaveConfig();
             _CheckMics();
-            _CheckPlayers();
+            //_CheckPlayers();
         }
 
         private void _UpdateSelectedProfile(int playerNum, Guid profileId)
@@ -903,7 +903,7 @@ namespace Vocaluxe.Screens
             _Statics[_PlayerStaticAvatar[playerNum]].Texture = CProfiles.GetAvatarTextureFromProfile(profileId);
             _Texts[_PlayerText[playerNum]].Text = CProfiles.GetPlayerName(profileId);
             //Update profile-warning
-            _CheckPlayers();
+            //_CheckPlayers();
             //Update Tiles-List
             _NameSelections[_NameSelection].UpdateList();
         }
@@ -937,7 +937,7 @@ namespace Vocaluxe.Screens
             if (playerNum < _PlayerText.Length)
                 _Texts[_PlayerText[playerNum]].Text = CProfiles.GetPlayerName(Guid.Empty, playerNum + 1);
             //Update profile-warning
-            _CheckPlayers();
+            //_CheckPlayers();
             //Update Tiles-List
             _NameSelections[_NameSelection].UpdateList();
         }
