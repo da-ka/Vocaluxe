@@ -836,6 +836,7 @@ namespace Vocaluxe.Screens
                     _Statics[_StaticPlayer[screen, player]].Visible = false;
                     _Statics[_StaticPlayerAvatar[screen, player]].Visible = false;
                     _Buttons[_ButtonPlayer[screen, player]].Visible = false;
+                    _Buttons[_ButtonPlayer[screen, player]].Selectable = false;
                     _Texts[_TextPlayer[screen, player]].Visible = false;
                     _Equalizers[_EqualizerPlayer[screen, player]].Visible = false;
                     _SelectSlides[_SelectSlideDuetPlayer[screen, player]].Visible = false;
