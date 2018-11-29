@@ -1084,10 +1084,10 @@
           <Skin>SongScrollBar</Skin>
           <Color Name="Visible" />
           <Rect>
-            <X>1200</X>
-            <Y>60</Y>
-            <W>20</W>
-            <H>600</H>
+            <X>1185</X>
+            <Y>45</Y>
+            <W>50</W>
+            <H>630</H>
             <Z>-10</Z>
           </Rect>
         </StaticScrollBar>
@@ -1095,10 +1095,10 @@
           <Skin>SongScrollBarPointer</Skin>
           <Color Name="Visible" />
           <Rect>
-            <X>1200</X>
-            <Y>140</Y>
-            <W>20</W>
-            <H>50</H>
+            <X>1185</X>
+            <Y>135</Y>
+            <W>50</W>
+            <H>80</H>
             <Z>-11</Z>
           </Rect>
         </StaticScrollBarPointer>
