@@ -695,7 +695,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 {
                     cover.MaxRect = new SRectF(_Tile.X, _Tile.Y, _Tile.H, _Tile.H, _Tile.Z);
                     cover.Y = Rect.Y - _ListDragDiffY + i * (_TileCoverH + _TileSpacing);
-                    cover.Color.A = 0.4f;
+                    cover.Color.A = 0.5f;
                     cover.Draw(aspect);
                 }
                 i++;
@@ -731,7 +731,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 else if (i < _Covers.Count)
                 {
                     CText drawtext = new CText(text);
-                    drawtext.Color.A = 0.4f;
+                    drawtext.Color.A = 0.5f;
                     drawtext.X = MaxRect.X + _TileCoverW + _TileTextIndent;
                     drawtext.Y -= _ListDragDiffY;
                     drawtext.Draw();
@@ -754,7 +754,7 @@ namespace VocaluxeLib.Menu.SongMenu
                 else if (i < _Covers.Count)
                 {
                     CText drawtext = new CText(text);
-                    drawtext.Color.A = 0.4f;
+                    drawtext.Color.A = 0.5f;
                     drawtext.Y -= _ListDragDiffY;
                     drawtext.Draw();
                 }
