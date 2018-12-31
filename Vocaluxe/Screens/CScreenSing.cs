@@ -567,6 +567,8 @@ namespace Vocaluxe.Screens
                             {
                                 _Lyrics[_PlayerLyricSubs[j]].X = _Lyrics[_PlayerLyrics[j]].X + _Lyrics[_PlayerLyrics[j]].Width + 10;
                                 _Lyrics[_PlayerLyricSubs[j]].SetLine(lines[nr + 1]);
+                                float maxwidth = _Lyrics[_PlayerLyrics[j]].Rect.W - _Lyrics[_PlayerLyrics[j]].Width;
+                                _Lyrics[_PlayerLyricSubs[j]].MaxWidth = maxwidth;
                             }
                             else
                             {

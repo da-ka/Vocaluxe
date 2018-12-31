@@ -45,12 +45,10 @@ namespace VocaluxeLib.Menu
         private CSongLine _Line;
         private CText _Text;
 
-        private float _Width;
+        public float Width { get; private set; }
 
-        public float Width
-        {
-            get { return _Width; }
-        }
+        public float MaxWidth { get; set; }
+
         private float _Alpha = 1f;
 
         private float _CurrentBeat = -1;
@@ -144,7 +142,8 @@ namespace VocaluxeLib.Menu
 
             _Line = l._Line;
             _Text = l._Text;
-            _Width = l._Width;
+            Width = l.Width;
+            MaxWidth = l.MaxWidth;
 
             _Align = l._Align;
 
@@ -158,21 +157,22 @@ namespace VocaluxeLib.Menu
 
             _Line = new CSongLine();
             _Text = new CText(_PartyModeID);
-            _Width = 1f;
+            Width = 1f;
+            MaxWidth = 0f;
 
             LyricStyle = ELyricStyle.TR_CONFIG_LYRICSTYLE_FILL;
 
             ThemeLoaded = true;
         }
 
-        public void SetLine(CSongLine line)
+        public void SetLine(CSongLine line, int maxwidth = -1)
         {
             _Line = line;
-            _Width = 0f;
+            Width = 0f;
             foreach (CSongNote note in line.Notes)
             {
                 _SetText(note);
-                _Width += _Text.Rect.W;
+                Width += _Text.Rect.W;
             }
         }
 
@@ -191,10 +191,10 @@ namespace VocaluxeLib.Menu
         public float GetCurrentLyricPosX()
         {
             if (_Align == EAlignment.Right)
-                return X - _Width;
+                return X - Width;
             if (_Align == EAlignment.Left)
                 return X;
-            return X - _Width / 2;
+            return X - Width / 2;
         }
 
         public void Update(float currentBeat)
@@ -228,10 +228,10 @@ namespace VocaluxeLib.Menu
 
         private void _DrawSlide()
         {
-            float x = X - _Width / 2;
+            float x = X - Width / 2;
 
             if (_Align == EAlignment.Right)
-                x = X - _Width;
+                x = X - Width;
             if (_Align == EAlignment.Left)
                 x = X;
 
@@ -275,10 +275,10 @@ namespace VocaluxeLib.Menu
 
         private void _DrawFill()
         {
-            float x = X - _Width / 2;
+            float x = X - Width / 2;
 
             if (_Align == EAlignment.Right)
-                x = X - _Width;
+                x = X - Width;
             if (_Align == EAlignment.Left)
                 x = X;
 
@@ -355,10 +355,10 @@ namespace VocaluxeLib.Menu
 
         private void _DrawZoomOrJump()
         {
-            float x = X - _Width / 2;
+            float x = X - Width / 2;
 
             if (_Align == EAlignment.Right)
-                x = X - _Width;
+                x = X - Width;
             if (_Align == EAlignment.Left)
                 x = X;
 
@@ -393,6 +393,8 @@ namespace VocaluxeLib.Menu
                 }
                 else
                 {
+                    if (MaxWidth > 0 && _Text.Rect.Right - Rect.X > MaxWidth)
+                        continue;
                     // not passed
                     _Text.Color = _Color;
                     _Text.Draw();
