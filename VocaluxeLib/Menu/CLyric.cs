@@ -141,7 +141,7 @@ namespace VocaluxeLib.Menu
             MaxRect = l.MaxRect;
 
             _Line = l._Line;
-            _Text = l._Text;
+            _Text = new CText(l._Text);
             Width = l.Width;
             MaxWidth = l.MaxWidth;
 
