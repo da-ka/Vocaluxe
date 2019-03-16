@@ -228,7 +228,7 @@ namespace Vocaluxe.Lib.Sound
             for (int i = 0; i < apiCount; i++)
             {
                 PortAudio.PaHostApiInfo apiInfo = PortAudio.Pa_GetHostApiInfo(i);
-                if ((apiInfo.type == PortAudio.PaHostApiTypeId.paDirectSound)
+                if ((apiInfo.type == PortAudio.PaHostApiTypeId.paASIO)
                     || (apiInfo.type == PortAudio.PaHostApiTypeId.paALSA))
                     selectedHostApi = i;
             }

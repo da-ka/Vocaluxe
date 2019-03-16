@@ -121,7 +121,7 @@ namespace Vocaluxe.Lib.Sound.Record.PortAudio
                         out _RecHandle[dev],
                         ref inputParams,
                         44100,
-                        882,
+                        PortAudioSharp.PortAudio.paFramesPerBufferUnspecified,
                         PortAudioSharp.PortAudio.PaStreamFlags.paNoFlag,
                         _MyRecProc,
                         new IntPtr(dev)))
