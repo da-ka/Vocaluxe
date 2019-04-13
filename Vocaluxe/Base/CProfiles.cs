@@ -19,9 +19,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
 using VocaluxeLib;
 using VocaluxeLib.Draw;
+using Newtonsoft.Json;
 using VocaluxeLib.Log;
 using VocaluxeLib.Profile;
 
@@ -62,6 +65,8 @@ namespace Vocaluxe.Base
         private static readonly List<ProfileChangedCallback> _ProfileChangedCallbacks = new List<ProfileChangedCallback>();
         private static bool _ProfilesChanged;
         private static bool _AvatarsChanged;
+
+        private static readonly HttpClient _Client = new HttpClient();
         #endregion private vars
 
         #region properties
@@ -521,7 +526,7 @@ namespace Vocaluxe.Base
         #endregion avatar texture
 
         #region private methods
-        private static void _LoadProfiles()
+        private async static void _LoadProfiles()
         {
             _LoadAvatars();
 
@@ -539,20 +544,38 @@ namespace Vocaluxe.Base
                 }
             }
 
-
-            var files = new List<string>();
-            foreach (string path in CConfig.ProfileFolders)
-                files.AddRange(CHelper.ListFiles(path, "*.xml", true, true));
-
-            foreach (string file in files)
+            if (CConfig.UseCloudServer)
             {
-                if (knownFiles.Contains(Path.GetFileName(file)))
-                    continue;
+                string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey });
 
-                var profile = new CProfile();
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                string responseString = "";
+                var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/getProfiles", content);
+                responseString = await response.Content.ReadAsStringAsync();
+                CProfile[] CloudProfiles = JsonConvert.DeserializeObject<CProfile[]>(responseString);
+                Console.Write(CloudProfiles);
+                foreach (CProfile profile in CloudProfiles)
+                {
+                     _Profiles.Add(profile.ID, profile);
+                }
+            }
+            else
+            {
+                var files = new List<string>();
+               
+                foreach (string path in CConfig.ProfileFolders)
+                    files.AddRange(CHelper.ListFiles(path, "*.xml", true, true));
 
-                if (profile.LoadProfile(file))
-                    _Profiles.Add(profile.ID, profile);
+                foreach (string file in files)
+                {
+                    if (knownFiles.Contains(Path.GetFileName(file)))
+                        continue;
+
+                    var profile = new CProfile();
+
+                    if (profile.LoadProfile(file))
+                        _Profiles.Add(profile.ID, profile);
+                }
             }
             _ProfilesChanged = true;
         }
