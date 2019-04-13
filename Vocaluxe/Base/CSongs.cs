@@ -22,6 +22,9 @@ using System.Linq;
 using System.Threading;
 using System.IO;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
 using VocaluxeLib;
 using VocaluxeLib.Log;
 using VocaluxeLib.Songs;
@@ -45,6 +48,18 @@ namespace Vocaluxe.Base
 
         private static Thread _CoverLoaderThread;
         public static event CategoryChangedHandler OnCategoryChanged;
+
+        private static readonly HttpClient _Client = new HttpClient();
+
+        private class CloudSong
+        {
+            public string Artist { get; set; }
+            public string Title { get; set; }
+            public List<string> Editions { get; set; }
+            public List<string> Genres { get; set; }
+            public string Album { get; set; }
+            public string Year { get; set; }
+        }
 
         public static List<CSong> Songs
         {
@@ -332,7 +347,7 @@ namespace Vocaluxe.Base
             Categorizer.Tabs = tabs;
         }
 
-        public static void LoadSongs()
+        public static async void LoadSongs()
         {
             using (CBenchmark.Time("Load Songs"))
             {
@@ -365,9 +380,30 @@ namespace Vocaluxe.Base
                         if (song.LoadNotes())
                             _Songs.Add(song);
                     }
+                    if (CConfig.UseCloudServer)
+                    {
+                        List<CloudSong> songs = new List<CloudSong>();
+                        foreach (CSong song in _Songs)
+                        {
+                            songs.Add(new CloudSong { Artist = song.Artist, Title = song.Title, Editions = song.Editions, Genres = song.Genres, Album = song.Album, Year = song.Year });
+                            //out _Song.NumPlayed, out _Song.DateAdded, out _Song.DataBaseSongID
+                        }
+                        string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, Data = songs });
+
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+                        string responseString = "";
+                        var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/loadSongs", content);
+                        responseString = await response.Content.ReadAsStringAsync();
+                        /*CProfile[] CloudProfiles = JsonConvert.DeserializeObject<CProfile[]>(responseString);
+                        Console.Write(CloudProfiles);
+                        foreach (CProfile profile in CloudProfiles)
+                        {
+                            _Profiles.Add(profile.ID, profile);
+                        }*/
+                    }
                 }
-                
-                using (CBenchmark.Time("Sorted Songs"))
+
+                    using (CBenchmark.Time("Sorted Songs"))
                 {
                     Sorter.SongSorting = CConfig.Config.Game.SongSorting;
                     Sorter.IgnoreArticles = CConfig.Config.Game.IgnoreArticles;

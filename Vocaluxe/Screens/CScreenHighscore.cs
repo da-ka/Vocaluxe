@@ -18,7 +18,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using Vocaluxe.Base;
 using VocaluxeLib;
 using VocaluxeLib.Game;
@@ -29,6 +32,8 @@ namespace Vocaluxe.Screens
 {
     public class CScreenHighscore : CMenu
     {
+        private static readonly HttpClient _Client = new HttpClient();
+
         // Version number for theme files. Increment it, if you've changed something on the theme files!
         protected override int _ScreenVersion
         {
@@ -212,7 +217,7 @@ namespace Vocaluxe.Screens
             return _NewEntryIDs.Any(t => t == id);
         }
 
-        private void _AddScoresToDB()
+        private async void _AddScoresToDB()
         {
             CPoints points = CGame.GetPoints();
             if (points == null)
@@ -224,8 +229,24 @@ namespace Vocaluxe.Screens
 
                 for (int p = 0; p < players.Length; p++)
                 {
-                    if (players[p].Points > CSettings.MinScoreForDB && players[p].SongFinished && !CProfiles.IsGuestProfile(players[p].ProfileID))
-                        _NewEntryIDs.Add(CDataBase.AddScore(players[p]));
+                    if (players[p].Points > CSettings.MinScoreForDB && !players[p].SongFinished && !CProfiles.IsGuestProfile(players[p].ProfileID))
+                    {
+                        if (CConfig.UseCloudServer)
+                        {
+                            string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, Data = players[p] });
+
+                            var content = new StringContent(json, Encoding.UTF8, "application/json");
+                            string responseString = "";
+                            var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/putScore", content);
+                            responseString = await response.Content.ReadAsStringAsync();
+                            Console.Write(responseString);
+
+                        }
+                        else
+                        {
+                            _NewEntryIDs.Add(CDataBase.AddScore(players[p]));
+                        }
+                    }
                 }
             }
         }
