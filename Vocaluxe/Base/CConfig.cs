@@ -177,6 +177,9 @@ namespace Vocaluxe.Base
             [XmlAltName("AutoplayPreviewDelay"), DefaultValue(500)] public int AutoplayPreviewDelay;
             [DefaultValue(ELyricsPosition.TR_CONFIG_LYRICSPOSITION_BOTTOM)] public ELyricsPosition LyricsPosition;
             [DefaultValue(0.1f)] public float MinLineBreakTime; //Minimum time to show the text before it is (to be) sung (if possible)
+            [DefaultValue(EOffOn.TR_CONFIG_OFF)] public EOffOn UseCloudServer;
+            public string CloudServerURL;
+            public string CloudServerKey;
             [XmlArrayItem("Player"), XmlArray] public string[] Players;
             [DefaultValue(EHighscoreStyle.TR_CONFIG_HIGHSCORE_LIST_BEST)] public EHighscoreStyle HighscoreStyle;
         }
@@ -348,6 +351,20 @@ namespace Vocaluxe.Base
                 if (SongMenuChanged != null)
                     SongMenuChanged();
             }
+        }
+
+        public static bool UseCloudServer
+        {
+            get { return Config.Game.UseCloudServer == EOffOn.TR_CONFIG_ON; }
+        }
+
+        public static string CloudServerURL
+        {
+            get { return Config.Game.CloudServerURL; }
+        }
+        public static string CloudServerKey
+        {
+            get { return Config.Game.CloudServerKey; }
         }
 
         public static void Init()
@@ -528,6 +545,12 @@ namespace Vocaluxe.Base
                     return "Position if lyrics on screen: " + CHelper.ListStrings(Enum.GetNames(typeof(ELyricsPosition)));
                 case "MinLineBreakTime":
                     return "MinLineBreakTime: Value >= 0 in s. Minimum time the text is shown before it is to be sung";
+                case "UseCloudServer":
+                    return "Use cloud server for player and high score data: " + CHelper.ListStrings(Enum.GetNames(typeof(EOffOn)));
+                case "CloudServerURL":
+                    return "URL for cloud server";
+                case "CloudServerKey":
+                    return "API key for cloud server";
                 case "Players":
                     return "Default profile for players 1 - " + CSettings.MaxNumPlayer + ":";
                 case "VideoDecoder":
