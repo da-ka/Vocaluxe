@@ -59,6 +59,9 @@ namespace Vocaluxe.Base
             public List<string> Genres { get; set; }
             public string Album { get; set; }
             public string Year { get; set; }
+            public int DataBaseSongId { get; set; }
+            public int NumPlayed { get; set; }
+            public System.DateTime DateAdded { get; set; }
         }
 
         public static List<CSong> Songs
@@ -386,7 +389,6 @@ namespace Vocaluxe.Base
                         foreach (CSong song in _Songs)
                         {
                             songs.Add(new CloudSong { Artist = song.Artist, Title = song.Title, Editions = song.Editions, Genres = song.Genres, Album = song.Album, Year = song.Year });
-                            //out _Song.NumPlayed, out _Song.DateAdded, out _Song.DataBaseSongID
                         }
                         string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, Data = songs });
 
@@ -394,12 +396,13 @@ namespace Vocaluxe.Base
                         string responseString = "";
                         var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/loadSongs", content);
                         responseString = await response.Content.ReadAsStringAsync();
-                        /*CProfile[] CloudProfiles = JsonConvert.DeserializeObject<CProfile[]>(responseString);
-                        Console.Write(CloudProfiles);
-                        foreach (CProfile profile in CloudProfiles)
+                        CloudSong[] CloudSongs = JsonConvert.DeserializeObject<CloudSong[]>(responseString);
+                        for (int i = 0; i < CloudSongs.Length; i++)
                         {
-                            _Profiles.Add(profile.ID, profile);
-                        }*/
+                            _Songs[i].setDataBaseSongID(CloudSongs[i].DataBaseSongId);
+                            _Songs[i].setNumPlayed(CloudSongs[i].NumPlayed);
+                            _Songs[i].setDateAdded(CloudSongs[i].DateAdded);
+                        }
                     }
                 }
 
