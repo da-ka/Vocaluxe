@@ -240,7 +240,7 @@ namespace Vocaluxe.Screens
                             var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/putScore", content).Result.Content;
                             responseString = response.ReadAsStringAsync().Result;
                             Console.Write(responseString);
-
+                            _NewEntryIDs.Add(JsonConvert.DeserializeObject<SDBScoreEntry>(responseString).ID);
                         }
                         else
                         {
@@ -261,7 +261,26 @@ namespace Vocaluxe.Screens
                 int songID = CGame.GetSong(round).ID;
                 EGameMode gameMode = CGame.GetGameMode(round);
                 EHighscoreStyle style = CBase.Config.GetHighscoreStyle();
-                _Scores[round] = CDataBase.LoadScore(songID, gameMode, style);
+                if (CConfig.UseCloudServer)
+                {
+                    string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, DataBaseSongID = CSongs.GetSong(CGame.GetSong(round).ID).DataBaseSongID, GameMode = gameMode, Style = style });
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    string responseString = "";
+                    var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/getHighScores", content).Result.Content;
+                    responseString = response.ReadAsStringAsync().Result;
+                    Console.Write(responseString);
+                    _Scores[round] = new List<SDBScoreEntry>();
+                    SDBScoreEntry[] cloudScores = JsonConvert.DeserializeObject<SDBScoreEntry[]>(responseString);
+                    foreach (SDBScoreEntry scoreEntry in cloudScores)
+                    {
+                        _Scores[round].Add(scoreEntry);
+                    }
+                }
+                else
+                {
+                    _Scores[round] = CDataBase.LoadScore(songID, gameMode, style);
+                }
             }
         }
 
