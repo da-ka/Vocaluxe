@@ -236,10 +236,8 @@ namespace Vocaluxe.Screens
                             string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, DataBaseSongID = CSongs.GetSong(players[p].SongID).DataBaseSongID, Data = players[p] });
 
                             var content = new StringContent(json, Encoding.UTF8, "application/json");
-                            string responseString = "";
                             var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/putScore", content).Result.Content;
-                            responseString = response.ReadAsStringAsync().Result;
-                            Console.Write(responseString);
+                            string responseString = response.ReadAsStringAsync().Result;
                             _NewEntryIDs.Add(JsonConvert.DeserializeObject<SDBScoreEntry>(responseString).ID);
                         }
                         else
@@ -266,10 +264,8 @@ namespace Vocaluxe.Screens
                     string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, DataBaseSongID = CSongs.GetSong(CGame.GetSong(round).ID).DataBaseSongID, GameMode = gameMode, Style = style });
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    string responseString = "";
                     var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/getHighScores", content).Result.Content;
-                    responseString = response.ReadAsStringAsync().Result;
-                    Console.Write(responseString);
+                    string responseString = response.ReadAsStringAsync().Result;
                     _Scores[round] = new List<SDBScoreEntry>();
                     SDBScoreEntry[] cloudScores = JsonConvert.DeserializeObject<SDBScoreEntry[]>(responseString);
                     foreach (SDBScoreEntry scoreEntry in cloudScores)

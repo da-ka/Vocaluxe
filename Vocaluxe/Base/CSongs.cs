@@ -393,9 +393,8 @@ namespace Vocaluxe.Base
                         string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, Data = songs });
 
                         var content = new StringContent(json, Encoding.UTF8, "application/json");
-                        string responseString = "";
                         var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/loadSongs", content).Result.Content;
-                        responseString = response.ReadAsStringAsync().Result;
+                        string responseString = response.ReadAsStringAsync().Result;
                         CloudSong[] CloudSongs = JsonConvert.DeserializeObject<CloudSong[]>(responseString);
                         for (int i = 0; i < CloudSongs.Length; i++)
                         {

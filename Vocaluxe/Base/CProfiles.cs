@@ -549,11 +549,9 @@ namespace Vocaluxe.Base
                 string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey });
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                string responseString = "";
                 var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/getProfiles", content).Result.Content;
-                responseString = response.ReadAsStringAsync().Result;
+                string responseString = response.ReadAsStringAsync().Result;
                 CProfile[] CloudProfiles = JsonConvert.DeserializeObject<CProfile[]>(responseString);
-                Console.Write(CloudProfiles);
                 foreach (CProfile profile in CloudProfiles)
                 {
                      _Profiles.Add(profile.ID, profile);
