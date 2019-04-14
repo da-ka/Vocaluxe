@@ -217,7 +217,7 @@ namespace Vocaluxe.Screens
             return _NewEntryIDs.Any(t => t == id);
         }
 
-        private async void _AddScoresToDB()
+        private void _AddScoresToDB()
         {
             CPoints points = CGame.GetPoints();
             if (points == null)
@@ -237,8 +237,8 @@ namespace Vocaluxe.Screens
 
                             var content = new StringContent(json, Encoding.UTF8, "application/json");
                             string responseString = "";
-                            var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/putScore", content);
-                            responseString = await response.Content.ReadAsStringAsync();
+                            var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/putScore", content).Result.Content;
+                            responseString = response.ReadAsStringAsync().Result;
                             Console.Write(responseString);
 
                         }

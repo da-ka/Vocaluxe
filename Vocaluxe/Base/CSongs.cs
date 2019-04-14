@@ -350,7 +350,7 @@ namespace Vocaluxe.Base
             Categorizer.Tabs = tabs;
         }
 
-        public static async void LoadSongs()
+        public static void LoadSongs()
         {
             using (CBenchmark.Time("Load Songs"))
             {
@@ -394,8 +394,8 @@ namespace Vocaluxe.Base
 
                         var content = new StringContent(json, Encoding.UTF8, "application/json");
                         string responseString = "";
-                        var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/loadSongs", content);
-                        responseString = await response.Content.ReadAsStringAsync();
+                        var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/loadSongs", content).Result.Content;
+                        responseString = response.ReadAsStringAsync().Result;
                         CloudSong[] CloudSongs = JsonConvert.DeserializeObject<CloudSong[]>(responseString);
                         for (int i = 0; i < CloudSongs.Length; i++)
                         {

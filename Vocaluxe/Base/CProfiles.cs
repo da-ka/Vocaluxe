@@ -526,7 +526,7 @@ namespace Vocaluxe.Base
         #endregion avatar texture
 
         #region private methods
-        private async static void _LoadProfiles()
+        private static void _LoadProfiles()
         {
             _LoadAvatars();
 
@@ -550,8 +550,8 @@ namespace Vocaluxe.Base
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 string responseString = "";
-                var response = await _Client.PostAsync(CConfig.CloudServerURL + "/api/getProfiles", content);
-                responseString = await response.Content.ReadAsStringAsync();
+                var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/getProfiles", content).Result.Content;
+                responseString = response.ReadAsStringAsync().Result;
                 CProfile[] CloudProfiles = JsonConvert.DeserializeObject<CProfile[]>(responseString);
                 Console.Write(CloudProfiles);
                 foreach (CProfile profile in CloudProfiles)
