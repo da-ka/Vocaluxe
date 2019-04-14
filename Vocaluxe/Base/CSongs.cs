@@ -399,9 +399,9 @@ namespace Vocaluxe.Base
                         CloudSong[] CloudSongs = JsonConvert.DeserializeObject<CloudSong[]>(responseString);
                         for (int i = 0; i < CloudSongs.Length; i++)
                         {
-                            _Songs[i].setDataBaseSongID(CloudSongs[i].DataBaseSongId);
-                            _Songs[i].setNumPlayed(CloudSongs[i].NumPlayed);
-                            _Songs[i].setDateAdded(CloudSongs[i].DateAdded);
+                            _Songs[i].DataBaseSongID = CloudSongs[i].DataBaseSongId;
+                            _Songs[i].NumPlayed = CloudSongs[i].NumPlayed;
+                            _Songs[i].DateAdded = CloudSongs[i].DateAdded;
                         }
                     }
                 }

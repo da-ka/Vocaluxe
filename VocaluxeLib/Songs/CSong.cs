@@ -178,18 +178,6 @@ namespace VocaluxeLib.Songs
         public int NumPlayed;
         public int NumPlayedSession;
 
-        public void setDataBaseSongID(int id)
-        {
-            DataBaseSongID = id;
-        }
-        public void setDateAdded(DateTime id)
-        {
-            DateAdded = id;
-        }
-        public void setNumPlayed(int id)
-        {
-            NumPlayed = id;
-        }
         // Notes
         public readonly CNotes Notes = new CNotes();
 

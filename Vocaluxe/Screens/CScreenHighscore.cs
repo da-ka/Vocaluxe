@@ -229,11 +229,11 @@ namespace Vocaluxe.Screens
 
                 for (int p = 0; p < players.Length; p++)
                 {
-                    if (players[p].Points > CSettings.MinScoreForDB && !players[p].SongFinished && !CProfiles.IsGuestProfile(players[p].ProfileID))
+                    if (players[p].Points > CSettings.MinScoreForDB && players[p].SongFinished && !CProfiles.IsGuestProfile(players[p].ProfileID))
                     {
                         if (CConfig.UseCloudServer)
                         {
-                            string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, Data = players[p] });
+                            string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, DataBaseSongID = CSongs.GetSong(players[p].SongID).DataBaseSongID, Data = players[p] });
 
                             var content = new StringContent(json, Encoding.UTF8, "application/json");
                             string responseString = "";
