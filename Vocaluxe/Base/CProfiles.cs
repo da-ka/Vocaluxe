@@ -526,7 +526,7 @@ namespace Vocaluxe.Base
         #endregion avatar texture
 
         #region private methods
-        private static void _LoadProfiles()
+        private async static void _LoadProfiles()
         {
             _LoadAvatars();
 
@@ -559,6 +559,7 @@ namespace Vocaluxe.Base
             }
             else
             {
+
                 var files = new List<string>();
                
                 foreach (string path in CConfig.ProfileFolders)
