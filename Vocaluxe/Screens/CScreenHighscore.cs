@@ -233,6 +233,7 @@ namespace Vocaluxe.Screens
                     {
                         if (CConfig.UseCloudServer)
                         {
+                            players[p].NoteDiff = (int)CProfiles.GetDifficulty(players[p].ProfileID);
                             string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey, DataBaseSongID = CSongs.GetSong(players[p].SongID).DataBaseSongID, Data = players[p] });
 
                             var content = new StringContent(json, Encoding.UTF8, "application/json");
