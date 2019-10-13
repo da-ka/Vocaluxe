@@ -91,7 +91,7 @@ namespace Vocaluxe.Screens
             base.OnShow();
 
             //Check if there is a mic-configuration
-            if (!CConfig.IsMicConfig())
+            /*if (!CConfig.IsMicConfig())
             {
                 //If not, try to assaign players 1 and 2 automatically to usb-mics
                 if (CConfig.AutoAssignMics())
@@ -100,7 +100,7 @@ namespace Vocaluxe.Screens
                     CConfig.SaveConfig();
                 }
             }
-
+            */
             _Texts[_TextStatus].Text = CLanguage.Translate("TR_SCREENLOAD_TOTAL") + ": 0 " +
                                        CLanguage.Translate("TR_SCREENLOAD_SONGS") + " (0 " +
                                        CLanguage.Translate("TR_SCREENLOAD_LOADED") + ")";
