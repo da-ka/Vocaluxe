@@ -207,5 +207,15 @@ namespace Vocaluxe.Base.Server
             UriTemplate = "/hasUserRight?right={right}")]
         bool HasUserRight(int right);
         #endregion
+
+        [OperationContract, WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "/startSong?songId={songId}")]
+        bool StartSong(int songId);
+
+        [OperationContract, WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "/setPlayer?player={player}&playerGuid={playerGuid}")]
+        bool SetPlayer(int player, Guid playerGuid);
     }
 }

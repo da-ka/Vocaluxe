@@ -556,5 +556,15 @@ namespace Vocaluxe.Base.Server
             return true;
         }
         #endregion
+
+        public bool StartSong(int songID)
+        {
+            return CVocaluxeServer.DoTask(CVocaluxeServer.StartSong, songID);
+        }
+
+        public bool SetPlayer(int player, Guid playerGUID)
+        {
+            return CVocaluxeServer.DoTask(CVocaluxeServer.SetPlayer, player, playerGUID);
+        }
     }
 }

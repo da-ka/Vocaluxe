@@ -912,6 +912,39 @@ namespace Vocaluxe.Base.Server
         }
         #endregion
 
+        #region game control
+        public static bool StartSong(int songID)
+        {
+            if (GetCurrentSongId() != -1)
+                return false;
+
+            EGameMode gm = CSongs.GetSong(songID).IsDuet ? EGameMode.TR_GAMEMODE_DUET : EGameMode.TR_GAMEMODE_NORMAL;
+
+            CGame.Reset();
+            CGame.ClearSongs();
+
+            if (CGame.AddSong(songID, gm))
+            {
+                CGraphics.FadeTo(EScreen.Sing);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public static bool SetPlayer(int player, Guid playerGUID)
+        {
+            if (player > CGame.NumPlayers || !CProfiles.IsProfileIDValid(playerGUID))
+                return false;
+            CGame.Players[player-1].ProfileID = playerGUID;
+            
+            return true;
+        }
+        #endregion
+
         private static string _SaveImage(CBase64Image imageDate, string name, string folder)
         {
             Image avatarImage = imageDate.GetImage();
