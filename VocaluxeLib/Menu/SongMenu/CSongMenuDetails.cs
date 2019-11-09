@@ -248,7 +248,7 @@ namespace VocaluxeLib.Menu.SongMenu
 
         public override void Update(SScreenSongOptions songOptions)
         {
-            if (CBase.BackgroundMusic.GetSongID() != -1)
+            if (CBase.BackgroundMusic.GetSongID() != -1 && _PreviewNr != CBase.Songs.GetVisibleSongNumber(CBase.BackgroundMusic.GetSongID()))
             {
                 _SelectionNr = CBase.Songs.GetVisibleSongNumber(CBase.BackgroundMusic.GetSongID());
                 _PreviewNr = _SelectionNr;
