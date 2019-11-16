@@ -24,6 +24,9 @@ using VocaluxeLib.Draw;
 using VocaluxeLib.Menu;
 using VocaluxeLib.Songs;
 using VocaluxeLib.Profile;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Vocaluxe.Screens
 {
@@ -75,6 +78,8 @@ namespace Vocaluxe.Screens
         private bool _AvatarsChanged;
         private bool _ProfilesChanged;
         private int _PreviousPlayerSelection = -1;
+
+        private static readonly HttpClient _Client = new HttpClient();
 
         public override EMusicType CurrentMusicType
         {
@@ -580,6 +585,11 @@ namespace Vocaluxe.Screens
         public override void OnShow()
         {
             base.OnShow();
+
+            if (CConfig.UseCloudServer)
+            {
+                _AssignPlayersFromCloud();
+            }
 
             CRecord.Start();
 
@@ -1099,6 +1109,23 @@ namespace Vocaluxe.Screens
             _PlayerButton[player] = _ButtonPlayer[screen, element];
             _PlayerEqualizer[player] = _EqualizerPlayer[screen, element];
             _PlayerSelectSlideDuet[player] = _SelectSlideDuetPlayer[screen, element];
+        }
+
+        private void _AssignPlayersFromCloud()
+        {
+            CProfiles.LoadProfiles();
+
+            string json = JsonConvert.SerializeObject(new { Key = CConfig.CloudServerKey });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = _Client.PostAsync(CConfig.CloudServerURL + "/api/getPlayers", content).Result.Content;
+            string responseString = response.ReadAsStringAsync().Result;
+
+            Guid[] cloudPlayers = JsonConvert.DeserializeObject<Guid[]>(responseString);
+
+            for (int i = 0; i < CGame.NumPlayers; i++)
+            {
+                CGame.Players[i].ProfileID = cloudPlayers[i];
+            }
         }
         #endregion private methods
     }
