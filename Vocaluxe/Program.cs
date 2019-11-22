@@ -30,6 +30,8 @@ using Vocaluxe.Base.Server;
 using Vocaluxe.Base.ThemeSystem;
 using Vocaluxe.Reporting;
 using VocaluxeLib.Log;
+using System.Net;
+using System.IO;
 
 [assembly: InternalsVisibleTo("VocaluxeTests")]
 
@@ -295,6 +297,26 @@ namespace Vocaluxe
             // Start Main Loop
             if (_SplashScreen != null)
                 _SplashScreen.Close();
+
+            if (CConfig.UseCloudServer)
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    Uri uri = new Uri(CConfig.CloudServerURL + "/eventstream/?Key=" + CConfig.CloudServerKey);
+                    wc.OpenReadCompleted += (object sender, OpenReadCompletedEventArgs e) =>
+                    {
+                        var sr = new StreamReader(e.Result);
+
+                        while (!sr.EndOfStream)
+                        {
+                            Console.WriteLine(sr.ReadLine());
+                        }
+                        sr.Close();
+                        wc.OpenReadAsync(uri);
+                    };
+                    wc.OpenReadAsync(uri);
+                }
+            }
 
             CDraw.MainLoop();
         }
