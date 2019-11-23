@@ -45,7 +45,8 @@ namespace Vocaluxe
 
     static class CMainProgram
     {
-        public static bool Pause;
+        public static bool PauseSong;
+        public static bool StopSong;
 
         private static CSplashScreen _SplashScreen;
 
@@ -325,11 +326,16 @@ namespace Vocaluxe
                                         CVocaluxeServer.DoTask(CVocaluxeServer.PreviewSong, message.songID);
                                         break;
                                     case "startSong":
+                                        StopSong = false;
                                         CCloud.AssignPlayersFromCloud();
                                         CVocaluxeServer.DoTask(CVocaluxeServer.StartSong, message.songID);
                                         break;
                                     case "togglePause":
-                                        Pause = !Pause;
+                                        PauseSong = !PauseSong;
+                                        break;
+                                    case "stopSong":
+                                        StopSong = true;
+                                        // Do stuff
                                         break;
                                     default:
                                         break;

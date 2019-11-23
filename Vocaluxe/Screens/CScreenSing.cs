@@ -224,13 +224,13 @@ namespace Vocaluxe.Screens
                 {
                     case Keys.Escape:
                         _TogglePause();
-                        if (CMainProgram.Pause)
+                        if ( CMainProgram.PauseSong)
                             _SelectElement(_Buttons[_ButtonCancel]);
                         break;
 
                     case Keys.P:
                         _TogglePause();
-                        if (CMainProgram.Pause)
+                        if ( CMainProgram.PauseSong)
                             _SelectElement(_Buttons[_ButtonContinue]);
                         break;
 
@@ -273,7 +273,7 @@ namespace Vocaluxe.Screens
                         }
                         break;
                     case Keys.Enter:
-                        if (CMainProgram.Pause)
+                        if ( CMainProgram.PauseSong)
                         {
                             if (_Buttons[_ButtonContinue].Selected)
                                 _SetPause(false);
@@ -316,14 +316,14 @@ namespace Vocaluxe.Screens
             if (mouseEvent.RB)
             {
                 _TogglePause();
-                if (CMainProgram.Pause)
+                if ( CMainProgram.PauseSong)
                     _SelectElement(_Buttons[_ButtonContinue]);
             }
 
-            if (mouseEvent.LB && !CMainProgram.Pause)
+            if (mouseEvent.LB && ! CMainProgram.PauseSong)
                 _TogglePause();
 
-            if (mouseEvent.LB && _IsMouseOverCurSelection(mouseEvent) && CMainProgram.Pause)
+            if (mouseEvent.LB && _IsMouseOverCurSelection(mouseEvent) &&  CMainProgram.PauseSong)
             {
                 if (_Buttons[_ButtonContinue].Selected)
                     _SetPause(false);
@@ -420,9 +420,14 @@ namespace Vocaluxe.Screens
 
         public override bool UpdateGame()
         {
-            if (CMainProgram.Pause != _PreviousPause)
+            if (CMainProgram.StopSong)
             {
-                _SetPause(CMainProgram.Pause);
+                CMainProgram.StopSong = false;
+                _Stop();
+            }
+            if ( CMainProgram.PauseSong != _PreviousPause)
+            {
+                _SetPause( CMainProgram.PauseSong);
             }
 
             bool finish = false;
@@ -1073,28 +1078,28 @@ namespace Vocaluxe.Screens
         }
         public void _TogglePause()
         {
-            _SetPause(!CMainProgram.Pause);
+            _SetPause(!CMainProgram.PauseSong);
         }
 
         private void _SetPause(bool paused)
         {
-            CMainProgram.Pause = paused;
+             CMainProgram.PauseSong = paused;
 
             _PreviousPause = paused;
 
             foreach (String s in _StaticsPause)
-                _Statics[s].Visible = CMainProgram.Pause;
+                _Statics[s].Visible =  CMainProgram.PauseSong;
 
             foreach (String s in _TextsPause)
-                _Texts[s].Visible = CMainProgram.Pause;
+                _Texts[s].Visible =  CMainProgram.PauseSong;
 
-            _Buttons[_ButtonCancel].Visible = CMainProgram.Pause;
-            _Buttons[_ButtonContinue].Visible = CMainProgram.Pause;
-            _Buttons[_ButtonSkip].Visible = CMainProgram.Pause && CGame.NumRounds > CGame.RoundNr && CGame.NumRounds > 1;
-            _Buttons[_ButtonRestartGame].Visible = CMainProgram.Pause;
-            _Buttons[_ButtonRestartRound].Visible = CMainProgram.Pause && CGame.NumRounds > 1;
+            _Buttons[_ButtonCancel].Visible =  CMainProgram.PauseSong;
+            _Buttons[_ButtonContinue].Visible =  CMainProgram.PauseSong;
+            _Buttons[_ButtonSkip].Visible =  CMainProgram.PauseSong && CGame.NumRounds > CGame.RoundNr && CGame.NumRounds > 1;
+            _Buttons[_ButtonRestartGame].Visible =  CMainProgram.PauseSong;
+            _Buttons[_ButtonRestartRound].Visible =  CMainProgram.PauseSong && CGame.NumRounds > 1;
 
-            if (CMainProgram.Pause)
+            if ( CMainProgram.PauseSong)
                 CSound.Pause(_CurrentStream);
             else
                 CSound.Play(_CurrentStream);
