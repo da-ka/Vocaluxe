@@ -325,6 +325,7 @@ namespace Vocaluxe
                                         CVocaluxeServer.DoTask(CVocaluxeServer.PreviewSong, message.songID);
                                         break;
                                     case "startSong":
+                                        CCloud.AssignPlayersFromCloud();
                                         CVocaluxeServer.DoTask(CVocaluxeServer.StartSong, message.songID);
                                         break;
                                     case "togglePause":
