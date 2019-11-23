@@ -343,10 +343,11 @@ namespace VocaluxeLib.Menu.SongMenu
 
         public override void OnShow()
         {
-            if (CBase.BackgroundMusic.GetSongID() != -1)
+            int song = CBase.BackgroundMusic.GetSongID();
+            if (song != -1)
             {
                 _EnterCategory(0);
-                _SelectionNr = CBase.Songs.GetVisibleSongNumber(CBase.BackgroundMusic.GetSongID());
+                _SelectionNr = CBase.Songs.GetVisibleSongNumber(song);
                 _PreviewNr = _SelectionNr;
             }
 
